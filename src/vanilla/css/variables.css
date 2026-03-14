@@ -1,0 +1,105 @@
+/* ========================================
+   DESIGN TOKENS — CSS Custom Properties
+   ======================================== */
+
+:root {
+  /* --- Premium Light Palette (Slate & Indigo) --- */
+  --color-primary: #4f46e5;
+  /* Indigo 600 */
+  --color-primary-hover: #4338ca;
+  /* Indigo 700 */
+  --color-secondary: #9333ea;
+  /* Purple 600 */
+  --color-accent: #e11d48;
+  /* Rose 600 */
+
+  /* --- Surfaces & Glassmorphism (Light Mode) --- */
+  --color-bg: #f8fafc;
+  /* Slate 50 */
+  --color-surface: rgba(255, 255, 255, 0.8);
+  --color-surface-hover: rgba(255, 255, 255, 0.95);
+  --color-surface-alt: #f1f5f9;
+  /* Slate 100 */
+  --color-border: #e2e8f0;
+  /* Slate 200 */
+  --color-border-hover: #cbd5e1;
+  /* Slate 300 */
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-blur: blur(12px);
+
+  /* --- Text (High Contrast) --- */
+  --color-text: #0f172a;
+  /* Slate 900 */
+  --color-text-secondary: #475569;
+  /* Slate 600 */
+  --color-text-muted: #64748b;
+  /* Slate 500 */
+  --color-text-inverse: #ffffff;
+
+  /* --- Semantic --- */
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
+
+  /* --- Category Specific (Vibrant Gradients) --- */
+  --grad-text: linear-gradient(135deg, #4f46e5, #9333ea);
+  --grad-calc: linear-gradient(135deg, #f59e0b, #d97706);
+  --grad-security: linear-gradient(135deg, #ef4444, #b91c1c);
+  --grad-developer: linear-gradient(135deg, #10b981, #059669);
+
+  /* --- Typography --- */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 2rem;
+  --fs-4xl: 3.5rem;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --line-height: 1.6;
+
+  /* --- Spacing --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* --- Radius --- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  /* --- Shadows (Soft Light Depth) --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.1);
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Layout --- */
+  --header-height: 5rem;
+  --max-width: 1280px;
+  --tool-max-width: 900px;
+}
