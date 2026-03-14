@@ -136,6 +136,10 @@ export function render(container: HTMLElement): void {
         previewImg.src = dataUrl;
         previewGroup.style.display = 'block';
 
+        const fileName = selectedFile.name || 'image.png';
+        const lastDot = fileName.lastIndexOf('.');
+        const baseName = lastDot > 0 ? fileName.substring(0, lastDot) : fileName;
+        const ext = lastDot > 0 ? fileName.substring(lastDot + 1) : 'png';
         downloadBtn.download = `${baseName}-${w}x${h}.${ext}`;
     });
 }
