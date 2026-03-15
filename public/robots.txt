@@ -19,4 +19,4 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
-Sitemap: https://tools-repository.com/sitemap.xml
+Sitemap: https://toolsrepository.com/sitemap.xml

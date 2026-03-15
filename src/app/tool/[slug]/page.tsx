@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title: `${tool.name} — Free Online Tool`,
             description: tool.description,
             type: 'website',
-            url: `https://tools-repository.com/tool/${tool.slug}`,
+            url: `https://toolsrepository.com/tool/${tool.slug}`,
         },
         alternates: {
-            canonical: `https://tools-repository.com/tool/${tool.slug}`,
+            canonical: `https://toolsrepository.com/tool/${tool.slug}`,
         }
     };
 }

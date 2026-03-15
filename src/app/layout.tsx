@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Tools Repository — Free Online Tools for Everyday Use',
         description: 'High-performance browser tools for the modern web.',
-        url: 'https://tools-repository.com',
+        url: 'https://toolsrepository.com',
         siteName: 'Tools Repository',
         locale: 'en_US',
         type: 'website',

@@ -1,443 +1,443 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tools-repository.com</loc>
+    <loc>https://toolsrepository.com</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/about</loc>
+    <loc>https://toolsrepository.com/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/contact</loc>
+    <loc>https://toolsrepository.com/contact</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/advertise</loc>
+    <loc>https://toolsrepository.com/advertise</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/privacy</loc>
+    <loc>https://toolsrepository.com/privacy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/terms</loc>
+    <loc>https://toolsrepository.com/terms</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/word-counter</loc>
+    <loc>https://toolsrepository.com/tool/word-counter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/character-counter</loc>
+    <loc>https://toolsrepository.com/tool/character-counter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/case-converter</loc>
+    <loc>https://toolsrepository.com/tool/case-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/remove-extra-spaces</loc>
+    <loc>https://toolsrepository.com/tool/remove-extra-spaces</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/text-reverser</loc>
+    <loc>https://toolsrepository.com/tool/text-reverser</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/palindrome-checker</loc>
+    <loc>https://toolsrepository.com/tool/palindrome-checker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/json-formatter</loc>
+    <loc>https://toolsrepository.com/tool/json-formatter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/lorem-ipsum-generator</loc>
+    <loc>https://toolsrepository.com/tool/lorem-ipsum-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/text-to-slug</loc>
+    <loc>https://toolsrepository.com/tool/text-to-slug</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/duplicate-line-remover</loc>
+    <loc>https://toolsrepository.com/tool/duplicate-line-remover</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/binary-converter</loc>
+    <loc>https://toolsrepository.com/tool/binary-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/morse-code-converter</loc>
+    <loc>https://toolsrepository.com/tool/morse-code-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/list-sorter</loc>
+    <loc>https://toolsrepository.com/tool/list-sorter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/markdown-previewer</loc>
+    <loc>https://toolsrepository.com/tool/markdown-previewer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/text-diff-checker</loc>
+    <loc>https://toolsrepository.com/tool/text-diff-checker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/csv-to-json</loc>
+    <loc>https://toolsrepository.com/tool/csv-to-json</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/json-to-csv</loc>
+    <loc>https://toolsrepository.com/tool/json-to-csv</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/yaml-to-json</loc>
+    <loc>https://toolsrepository.com/tool/yaml-to-json</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/nato-phonetic</loc>
+    <loc>https://toolsrepository.com/tool/nato-phonetic</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/sentiment-analyzer</loc>
+    <loc>https://toolsrepository.com/tool/sentiment-analyzer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/rot13-encoder</loc>
+    <loc>https://toolsrepository.com/tool/rot13-encoder</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/zalgo-text-generator</loc>
+    <loc>https://toolsrepository.com/tool/zalgo-text-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/upside-down-text</loc>
+    <loc>https://toolsrepository.com/tool/upside-down-text</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/text-to-speech</loc>
+    <loc>https://toolsrepository.com/tool/text-to-speech</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/email-extractor</loc>
+    <loc>https://toolsrepository.com/tool/email-extractor</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/basic-calculator</loc>
+    <loc>https://toolsrepository.com/tool/basic-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/percentage-calculator</loc>
+    <loc>https://toolsrepository.com/tool/percentage-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/age-calculator</loc>
+    <loc>https://toolsrepository.com/tool/age-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/bmi-calculator</loc>
+    <loc>https://toolsrepository.com/tool/bmi-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/discount-calculator</loc>
+    <loc>https://toolsrepository.com/tool/discount-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/loan-emi-calculator</loc>
+    <loc>https://toolsrepository.com/tool/loan-emi-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/scientific-calculator</loc>
+    <loc>https://toolsrepository.com/tool/scientific-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/time-duration-calculator</loc>
+    <loc>https://toolsrepository.com/tool/time-duration-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/tip-calculator</loc>
+    <loc>https://toolsrepository.com/tool/tip-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/compound-interest-calculator</loc>
+    <loc>https://toolsrepository.com/tool/compound-interest-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/bmr-calculator</loc>
+    <loc>https://toolsrepository.com/tool/bmr-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/sales-tax-calculator</loc>
+    <loc>https://toolsrepository.com/tool/sales-tax-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/savings-goal-calculator</loc>
+    <loc>https://toolsrepository.com/tool/savings-goal-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/fuel-cost-calculator</loc>
+    <loc>https://toolsrepository.com/tool/fuel-cost-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/gpa-calculator</loc>
+    <loc>https://toolsrepository.com/tool/gpa-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/cgpa-calculator</loc>
+    <loc>https://toolsrepository.com/tool/cgpa-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/auto-loan-calculator</loc>
+    <loc>https://toolsrepository.com/tool/auto-loan-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/mortgage-payoff-calculator</loc>
+    <loc>https://toolsrepository.com/tool/mortgage-payoff-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/unix-timestamp-converter</loc>
+    <loc>https://toolsrepository.com/tool/unix-timestamp-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/base-converter</loc>
+    <loc>https://toolsrepository.com/tool/base-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/aspect-ratio-calculator</loc>
+    <loc>https://toolsrepository.com/tool/aspect-ratio-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/date-difference-calculator</loc>
+    <loc>https://toolsrepository.com/tool/date-difference-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/inflation-calculator</loc>
+    <loc>https://toolsrepository.com/tool/inflation-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/password-generator</loc>
+    <loc>https://toolsrepository.com/tool/password-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/password-strength-checker</loc>
+    <loc>https://toolsrepository.com/tool/password-strength-checker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/random-number-generator</loc>
+    <loc>https://toolsrepository.com/tool/random-number-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/random-name-picker</loc>
+    <loc>https://toolsrepository.com/tool/random-name-picker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/uuid-generator</loc>
+    <loc>https://toolsrepository.com/tool/uuid-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/qr-code-generator</loc>
+    <loc>https://toolsrepository.com/tool/qr-code-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/color-palette-generator</loc>
+    <loc>https://toolsrepository.com/tool/color-palette-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/sha256-hash</loc>
+    <loc>https://toolsrepository.com/tool/sha256-hash</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/md5-hash</loc>
+    <loc>https://toolsrepository.com/tool/md5-hash</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/coin-flip-dice</loc>
+    <loc>https://toolsrepository.com/tool/coin-flip-dice</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/random-string-generator</loc>
+    <loc>https://toolsrepository.com/tool/random-string-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/base64-encode-decode</loc>
+    <loc>https://toolsrepository.com/tool/base64-encode-decode</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/url-encoder-decoder</loc>
+    <loc>https://toolsrepository.com/tool/url-encoder-decoder</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/html-minifier</loc>
+    <loc>https://toolsrepository.com/tool/html-minifier</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/css-minifier</loc>
+    <loc>https://toolsrepository.com/tool/css-minifier</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/js-minifier</loc>
+    <loc>https://toolsrepository.com/tool/js-minifier</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/gradient-generator</loc>
+    <loc>https://toolsrepository.com/tool/gradient-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/box-shadow-generator</loc>
+    <loc>https://toolsrepository.com/tool/box-shadow-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/border-radius-generator</loc>
+    <loc>https://toolsrepository.com/tool/border-radius-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/glassmorphism-generator</loc>
+    <loc>https://toolsrepository.com/tool/glassmorphism-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/svg-blob-generator</loc>
+    <loc>https://toolsrepository.com/tool/svg-blob-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/flexbox-generator</loc>
+    <loc>https://toolsrepository.com/tool/flexbox-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/grid-generator</loc>
+    <loc>https://toolsrepository.com/tool/grid-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/button-generator</loc>
+    <loc>https://toolsrepository.com/tool/button-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/filter-effects-generator</loc>
+    <loc>https://toolsrepository.com/tool/filter-effects-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/meta-tag-generator</loc>
+    <loc>https://toolsrepository.com/tool/meta-tag-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/json-to-ts</loc>
+    <loc>https://toolsrepository.com/tool/json-to-ts</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/contrast-checker</loc>
+    <loc>https://toolsrepository.com/tool/contrast-checker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/robots-txt-generator</loc>
+    <loc>https://toolsrepository.com/tool/robots-txt-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/sitemap-generator</loc>
+    <loc>https://toolsrepository.com/tool/sitemap-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/html-table-generator</loc>
+    <loc>https://toolsrepository.com/tool/html-table-generator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/image-to-base64</loc>
+    <loc>https://toolsrepository.com/tool/image-to-base64</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/base64-to-image</loc>
+    <loc>https://toolsrepository.com/tool/base64-to-image</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/image-resizer</loc>
+    <loc>https://toolsrepository.com/tool/image-resizer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/pomodoro-timer</loc>
+    <loc>https://toolsrepository.com/tool/pomodoro-timer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/habit-tracker</loc>
+    <loc>https://toolsrepository.com/tool/habit-tracker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/todo-list</loc>
+    <loc>https://toolsrepository.com/tool/todo-list</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/decision-wheel</loc>
+    <loc>https://toolsrepository.com/tool/decision-wheel</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/stopwatch</loc>
+    <loc>https://toolsrepository.com/tool/stopwatch</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/world-clock</loc>
+    <loc>https://toolsrepository.com/tool/world-clock</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/countdown-timer</loc>
+    <loc>https://toolsrepository.com/tool/countdown-timer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/leap-year-checker</loc>
+    <loc>https://toolsrepository.com/tool/leap-year-checker</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/morse-audio</loc>
+    <loc>https://toolsrepository.com/tool/morse-audio</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/simple-scratchpad</loc>
+    <loc>https://toolsrepository.com/tool/simple-scratchpad</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/water-intake</loc>
+    <loc>https://toolsrepository.com/tool/water-intake</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/ideal-weight</loc>
+    <loc>https://toolsrepository.com/tool/ideal-weight</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/body-fat</loc>
+    <loc>https://toolsrepository.com/tool/body-fat</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/macros-calculator</loc>
+    <loc>https://toolsrepository.com/tool/macros-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/running-pace</loc>
+    <loc>https://toolsrepository.com/tool/running-pace</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/interval-timer</loc>
+    <loc>https://toolsrepository.com/tool/interval-timer</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/steps-to-km</loc>
+    <loc>https://toolsrepository.com/tool/steps-to-km</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/bsa-calculator</loc>
+    <loc>https://toolsrepository.com/tool/bsa-calculator</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/length-converter</loc>
+    <loc>https://toolsrepository.com/tool/length-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/weight-converter</loc>
+    <loc>https://toolsrepository.com/tool/weight-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/temperature-converter</loc>
+    <loc>https://toolsrepository.com/tool/temperature-converter</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tools-repository.com/tool/digital-data-converter</loc>
+    <loc>https://toolsrepository.com/tool/digital-data-converter</loc>
     <priority>0.6</priority>
   </url>
 </urlset>
