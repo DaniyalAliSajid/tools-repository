@@ -60,7 +60,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     };
 
     return (
-        <>
+        <div className="container">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -74,19 +74,20 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 </div>
             </div>
 
-            <div className="tool-container">
+            <div className="tool-content-area">
                 <ToolWrapper slug={tool.slug} />
             </div>
 
             <FAQSection
                 faqs={getToolFAQs(tool)}
                 title={`${tool.name} FAQ`}
+                subtitle={`Common questions about our ${tool.name} tool.`}
             />
 
             {/* Ad Placeholder Bottom */}
-            <div className="ad-tool-bottom" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', padding: '1rem', background: 'var(--color-surface)', border: '1px dashed var(--color-border)', color: 'var(--color-text-muted)' }}>
+            <div className="ad-slot">
                 Advertisement Placeholder
             </div>
-        </>
+        </div>
     );
 }

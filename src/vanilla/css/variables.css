@@ -3,103 +3,101 @@
    ======================================== */
 
 :root {
-  /* --- Premium Light Palette (Slate & Indigo) --- */
-  --color-primary: #4f46e5;
-  /* Indigo 600 */
-  --color-primary-hover: #4338ca;
-  /* Indigo 700 */
-  --color-secondary: #9333ea;
-  /* Purple 600 */
-  --color-accent: #e11d48;
-  /* Rose 600 */
-
-  /* --- Surfaces & Glassmorphism (Light Mode) --- */
-  --color-bg: #f8fafc;
-  /* Slate 50 */
-  --color-surface: rgba(255, 255, 255, 0.8);
-  --color-surface-hover: rgba(255, 255, 255, 0.95);
+  /* --- Premium Industrial Palette (Slate & Indigo) --- */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #eff6ff;
+  
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  
+  --color-bg: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-hover: #f1f5f9;
   --color-surface-alt: #f1f5f9;
-  /* Slate 100 */
-  --color-border: #e2e8f0;
-  /* Slate 200 */
-  --color-border-hover: #cbd5e1;
-  /* Slate 300 */
-
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.5);
-  --glass-blur: blur(12px);
-
-  /* --- Text (High Contrast) --- */
+  
   --color-text: #0f172a;
-  /* Slate 900 */
-  --color-text-secondary: #475569;
-  /* Slate 600 */
+  --color-text-secondary: #334155;
   --color-text-muted: #64748b;
-  /* Slate 500 */
   --color-text-inverse: #ffffff;
+  
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
 
   /* --- Semantic --- */
-  --color-success: #059669;
-  --color-warning: #d97706;
-  --color-error: #dc2626;
-  --color-info: #2563eb;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #0ea5e9;
 
-  /* --- Category Specific (Vibrant Gradients) --- */
-  --grad-text: linear-gradient(135deg, #4f46e5, #9333ea);
-  --grad-calc: linear-gradient(135deg, #f59e0b, #d97706);
-  --grad-security: linear-gradient(135deg, #ef4444, #b91c1c);
-  --grad-developer: linear-gradient(135deg, #10b981, #059669);
+  /* --- Gradients --- */
+  --grad-primary: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
+  --grad-surface: linear-gradient(to bottom, #ffffff, #f8fafc);
+  --grad-text: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  --grad-glow: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
 
-  /* --- Typography --- */
+  /* --- Professional Typography --- */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
 
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-base: 1rem;
-  --fs-lg: 1.125rem;
-  --fs-xl: 1.25rem;
-  --fs-2xl: 1.5rem;
-  --fs-3xl: 2rem;
-  --fs-4xl: 3.5rem;
+  /* Fluid Font Sizes */
+  --fs-xs: 0.75rem;     /* 12px */
+  --fs-sm: 0.875rem;    /* 14px */
+  --fs-base: 1rem;      /* 16px */
+  --fs-md: 1.125rem;    /* 18px */
+  --fs-lg: 1.25rem;     /* 20px */
+  --fs-xl: 1.5rem;      /* 24px */
+  --fs-2xl: 1.875rem;   /* 30px */
+  --fs-3xl: 2.5rem;     /* 40px */
+  --fs-4xl: 3.5rem;     /* 56px */
+  --fs-5xl: 4.5rem;     /* 72px */
 
   --fw-normal: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
+  --fw-extrabold: 800;
   --line-height: 1.6;
 
-  /* --- Spacing --- */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
+  /* --- Spacing System (8px base) --- */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
 
   /* --- Radius --- */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
   --radius-full: 9999px;
 
-  /* --- Shadows (Soft Light Depth) --- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.1);
+  /* Professional Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
 
-  /* --- Transitions --- */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(12px);
 
   /* --- Layout --- */
   --header-height: 5rem;
   --max-width: 1280px;
-  --tool-max-width: 900px;
-}
+  --tool-max-width: 1000px;
+}

@@ -19,170 +19,111 @@ export default function HomeClient() {
 
     return (
         <>
-            <section className="hero" style={{ padding: 'var(--space-16) 0 var(--space-8)', textAlign: 'center' }}>
-                <div style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 'var(--space-2)',
-                    padding: '8px 16px',
-                    background: 'rgba(79, 70, 229, 0.08)',
-                    border: '1px solid rgba(79, 70, 229, 0.15)',
-                    borderRadius: 'var(--radius-full)',
-                    color: 'var(--color-primary)',
-                    fontSize: 'var(--fs-xs)',
-                    fontWeight: 'var(--fw-bold)',
-                    marginBottom: 'var(--space-6)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                }}>
-                    <span>✨</span> {tools.length}+ Premium Tools Available
+            <section className="hero container animate-fade-in">
+                <div className="hero__badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                    <span>Premium tools repository</span>
                 </div>
-                <h1 style={{
-                    fontSize: 'var(--fs-4xl)',
-                    fontWeight: '800',
-                    letterSpacing: '-0.04em',
-                    marginBottom: 'var(--space-6)',
-                    lineHeight: '1.2',
-                    color: 'var(--color-text)',
-                    fontFamily: 'var(--font-display)'
-                }}>
+                <h1 className="hero__title">
                     Smart Tools for the <br />
-                    <span style={{
-                        background: 'var(--grad-text)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                    }}>Modern Web</span>
+                    <span className="text-gradient">Modern Web</span>
                 </h1>
-                <p style={{
-                    fontSize: 'var(--fs-lg)',
-                    color: 'var(--color-text-secondary)',
-                    maxWidth: '680px',
-                    margin: '0 auto var(--space-12)',
-                    lineHeight: '1.7',
-                    fontWeight: 'var(--fw-medium)'
-                }}>
-                    A curated collection of high-performance, privacy-first utility tools designed to speed up your workflow. 100% free and open source.
+                <p className="hero__description">
+                    A curated collection of high-performance, privacy-first utility tools designed to speed up your workflow. 100% free, no tracking, and open source.
                 </p>
+                
+                <div className="hero__actions">
+                    <a href="#tools" className="btn btn--primary">Browse Tools</a>
+                    <a href="/about" className="btn btn--secondary">Learn More</a>
+                </div>
+                <div className="hero__divider"></div>
+            </section>
 
-                <div style={{ maxWidth: '640px', margin: '0 auto', position: 'relative' }}>
-                    <div className="search-bar" style={{
-                        position: 'relative',
-                        background: 'white',
-                        border: '1px solid var(--color-border)',
-                        borderRadius: 'var(--radius-xl)',
-                        padding: '6px',
-                        boxShadow: 'var(--shadow-lg)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        transition: 'all var(--transition-normal)'
-                    }}>
-                        <span style={{ padding: '0 var(--space-4)', color: 'var(--color-text-muted)', fontSize: '20px' }}>🔍</span>
+            <section id="tools" className="section container">
+                <div className="search-container">
+                    <div className="search-bar">
+                        <span className="search-bar__icon">🔍</span>
                         <input
                             type="text"
-                            style={{
-                                flex: 1,
-                                background: 'transparent',
-                                border: 'none',
-                                padding: '14px 0',
-                                fontSize: '18px',
-                                color: 'var(--color-text)',
-                                outline: 'none',
-                                fontWeight: 'var(--fw-medium)'
-                            }}
+                            className="search-bar__input"
                             placeholder="What tool do you need today?"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
-                        <div style={{ padding: '0 var(--space-4)' }}>
-                            <span style={{
-                                padding: '4px 8px',
-                                background: 'var(--color-bg)',
-                                border: '1px solid var(--color-border)',
-                                borderRadius: '6px',
-                                fontSize: '12px',
-                                color: 'var(--color-text-muted)',
-                                fontWeight: 'var(--fw-bold)'
-                            }}>ESC</span>
-                        </div>
+                        <span className="search-bar__shortcut">ESC</span>
                     </div>
+                </div>
+
+                <nav className="category-nav">
+                    <div className="category-nav__list">
+                        <button
+                            className={`category-nav__item ${activeCategory === 'all' ? 'active' : ''}`}
+                            onClick={() => setActiveCategory('all')}
+                        >
+                            All Tools
+                        </button>
+                        {categories.map((cat) => (
+                            <button
+                                key={cat.id}
+                                className={`category-nav__item ${activeCategory === cat.id ? 'active' : ''}`}
+                                onClick={() => setActiveCategory(cat.id)}
+                            >
+                                {cat.name}
+                            </button>
+                        ))}
+                    </div>
+                </nav>
+
+                <div className="tool-grid">
+                    {filteredTools.length > 0 ? (
+                        filteredTools.map((tool) => (
+                            <ToolCard key={tool.id} tool={tool} />
+                        ))
+                    ) : (
+                        <div className="no-results" style={{ gridColumn: '1 / -1' }}>
+                            <div className="no-results__icon">🕵️‍♀️</div>
+                            <h3 className="no-results__text">No tools matched your search</h3>
+                            <button
+                                onClick={() => { setSearch(''); setActiveCategory('all'); }}
+                                style={{ marginTop: 'var(--space-6)', color: 'var(--color-primary)', fontWeight: 'var(--fw-bold)', cursor: 'pointer', background: 'none', border: 'none' }}
+                            >
+                                Reset everything
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
 
-            <nav className="category-nav" style={{ marginBottom: 'var(--space-12)' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-                    <button
-                        className={`category-nav__item ${activeCategory === 'all' ? 'active' : ''}`}
-                        onClick={() => setActiveCategory('all')}
-                        style={{
-                            padding: '10px 22px',
-                            borderRadius: 'var(--radius-full)',
-                            fontSize: 'var(--fs-sm)',
-                            fontWeight: 'var(--fw-bold)',
-                            background: activeCategory === 'all' ? 'var(--color-primary)' : 'white',
-                            color: activeCategory === 'all' ? 'white' : 'var(--color-text-secondary)',
-                            border: '1px solid',
-                            borderColor: activeCategory === 'all' ? 'var(--color-primary)' : 'var(--color-border)',
-                            transition: 'all var(--transition-fast)',
-                            cursor: 'pointer',
-                            boxShadow: activeCategory === 'all' ? 'var(--shadow-glow)' : 'var(--shadow-sm)'
-                        }}
-                    >
-                        Home
-                    </button>
-                    {categories.map((cat) => (
-                        <button
-                            key={cat.id}
-                            className={`category-nav__item ${activeCategory === cat.id ? 'active' : ''}`}
-                            onClick={() => setActiveCategory(cat.id)}
-                            style={{
-                                padding: '10px 22px',
-                                borderRadius: 'var(--radius-full)',
-                                fontSize: 'var(--fs-sm)',
-                                fontWeight: 'var(--fw-bold)',
-                                background: activeCategory === cat.id ? 'var(--color-primary)' : 'white',
-                                color: activeCategory === cat.id ? 'white' : 'var(--color-text-secondary)',
-                                border: '1px solid',
-                                borderColor: activeCategory === cat.id ? 'var(--color-primary)' : 'var(--color-border)',
-                                transition: 'all var(--transition-fast)',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                boxShadow: activeCategory === cat.id ? 'var(--shadow-glow)' : 'var(--shadow-sm)'
-                            }}
-                        >
-                            <span style={{ filter: activeCategory === cat.id ? 'none' : 'grayscale(0.5)' }}>{cat.icon}</span> {cat.name}
-                        </button>
-                    ))}
+            <section className="features container">
+                <div className="section-title">
+                    <h2>Everything you need. <span className="text-gradient">Nothing you don't.</span></h2>
+                    <p>We built Tools Repository to be the fastest, most reliable tool companion for developers and creators.</p>
                 </div>
-            </nav>
-
-            <div id="tools" className="tool-grid" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: 'var(--space-6)',
-                paddingBottom: 'var(--space-16)'
-            }}>
-                {filteredTools.length > 0 ? (
-                    filteredTools.map((tool, index) => (
-                        <div key={tool.id} style={{ '--index': index } as React.CSSProperties}>
-                            <ToolCard tool={tool} />
+                
+                <div className="features-grid">
+                    <div className="feature-card">
+                        <div className="feature-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         </div>
-                    ))
-                ) : (
-                    <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '6rem 2rem', background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)', border: '1px dashed var(--color-border)' }}>
-                        <div style={{ fontSize: '48px', marginBottom: 'var(--space-4)' }}>🕵️‍♀️</div>
-                        <h3 style={{ fontSize: 'var(--fs-xl)', marginBottom: 'var(--space-2)' }}>No tools matched your search</h3>
-                        <p style={{ color: 'var(--color-text-secondary)' }}>Try adjusting your keywords or category filters.</p>
-                        <button
-                            onClick={() => { setSearch(''); setActiveCategory('all'); }}
-                            style={{ marginTop: 'var(--space-6)', color: 'var(--color-primary)', fontWeight: 'var(--fw-bold)', cursor: 'pointer', background: 'none', border: 'none' }}
-                        >
-                            Reset everything
-                        </button>
+                        <h3>Privacy First</h3>
+                        <p>Your data never leaves your browser. All processing happens locally on your machine.</p>
                     </div>
-                )}
-            </div>
+                    <div className="feature-card">
+                        <div className="feature-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+                        </div>
+                        <h3>Blazing Fast</h3>
+                        <p>No account required. Open the page and start using your favorite tool instantly.</p>
+                    </div>
+                    <div className="feature-card">
+                        <div className="feature-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        </div>
+                        <h3>Modern Tech</h3>
+                        <p>Built with Next.js and pure CSS for a lightweight, performant, and premium experience.</p>
+                    </div>
+                </div>
+            </section>
 
             <FAQSection faqs={HOME_FAQS} title="Tools Repository - Frequently Asked Questions" />
         </>
