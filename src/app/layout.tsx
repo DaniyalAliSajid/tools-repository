@@ -1,5 +1,3 @@
-'use client';
-
 import type { Metadata } from 'next';
 import '../vanilla/css/variables.css';
 import '../vanilla/css/base.css';
@@ -7,27 +5,54 @@ import '../vanilla/css/layout.css';
 import '../vanilla/css/components.css';
 import '../vanilla/css/themes.css';
 import './globals.css';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import ClientLayout from '../components/ClientLayout';
+
+export const metadata: Metadata = {
+    title: {
+        default: 'Tools Repository — 100+ Free Online Utility Tools',
+        template: '%s | Tools Repository'
+    },
+    description: 'A collection of 100+ free, fast, and easy-to-use utility tools for designers, developers, and creators. No tracking, no login, 100% free.',
+    keywords: ['online tools', 'developer tools', 'text converters', 'calculators', 'unit converters', 'productivity tools'],
+    authors: [{ name: 'Tools Repository' }],
+    creator: 'Tools Repository',
+    publisher: 'Tools Repository',
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
+    openGraph: {
+        title: 'Tools Repository — Free Online Tools for Everyday Use',
+        description: 'High-performance browser tools for the modern web.',
+        url: 'https://tools-repository.com',
+        siteName: 'Tools Repository',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tools Repository',
+        description: 'Free Online Tools for Everyday Use',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+};
 
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    // Prevent scrolling when drawer is open
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }, [isMenuOpen]);
-
-    const closeMenu = () => setIsMenuOpen(false);
-
     return (
         <html lang="en">
             <head>
@@ -36,106 +61,9 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
             </head>
             <body>
-                <div id="app">
-                    <header className="header">
-                        <div className="header__container">
-                            <Link href="/" onClick={closeMenu}>
-                                <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" />
-                            </Link>
-
-                            <button
-                                className="header__nav-mobile-toggle"
-                                onClick={() => setIsMenuOpen(true)}
-                                aria-label="Open Navigation"
-                            >
-                                ☰
-                            </button>
-
-                            <nav className="header__nav">
-                                <Link href="/" className="header__link">Home</Link>
-                                <Link href="/about" className="header__link">About</Link>
-                                <Link href="/contact" className="header__link">Contact</Link>
-                                <Link href="/advertise" className="header__link">Advertise with us</Link>
-                                <Link
-                                    href="/#tools"
-                                    className="btn btn--blue btn--sm"
-                                    style={{
-                                        textDecoration: 'none',
-                                        fontWeight: 'var(--fw-bold)',
-                                        boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
-                                    }}
-                                >
-                                    Get Started
-                                </Link>
-                            </nav>
-                        </div>
-                    </header>
-
-                    {/* Side Drawer */}
-                    <div className={`drawer-overlay ${isMenuOpen ? 'open' : ''}`} onClick={closeMenu} />
-                    <aside className={`drawer ${isMenuOpen ? 'open' : ''}`}>
-                        <div className="drawer__header">
-                            <img src="/logo.svg" alt="Tools Repository" style={{ height: '32px' }} />
-                            <button className="drawer__close" onClick={closeMenu} aria-label="Close menu">✕</button>
-                        </div>
-                        <nav className="drawer__nav">
-                            <Link href="/" className="drawer__link" onClick={closeMenu}>Home</Link>
-                            <Link href="/about" className="drawer__link" onClick={closeMenu}>About Us</Link>
-                            <Link href="/contact" className="drawer__link" onClick={closeMenu}>Contact</Link>
-                            <Link href="/advertise" className="drawer__link" onClick={closeMenu}>Advertise with Us</Link>
-                        </nav>
-                        <div className="drawer__footer">
-                            <Link
-                                href="/#tools"
-                                className="btn btn--blue btn--block"
-                                onClick={closeMenu}
-                                style={{ textDecoration: 'none' }}
-                            >
-                                Get Started
-                            </Link>
-                        </div>
-                    </aside>
-
-                    <main className="main">
-                        {children}
-                    </main>
-
-                    <footer className="footer">
-                        <div className="footer__container">
-                            <div className="footer__inner">
-                                <div className="footer__column">
-                                    <Link href="/">
-                                        <img src="/logo.svg" alt="Tools Repository" className="footer__logo-img" />
-                                    </Link>
-                                    <p className="footer__column-text">
-                                        High-performance browser tools for developers and creators. No tracking, 100% free, forever.
-                                    </p>
-                                </div>
-                                <div className="footer__column">
-                                    <h3 className="footer__column-title">Explore</h3>
-                                    <Link href="/" className="footer__link">Home</Link>
-                                    <Link href="/about" className="footer__link">About Us</Link>
-                                    <Link href="/contact" className="footer__link">Contact</Link>
-                                    <Link href="/advertise" className="footer__link">Advertise with Us</Link>
-                                </div>
-                                <div className="footer__column">
-                                    <h3 className="footer__column-title">Legal</h3>
-                                    <Link href="/privacy" className="footer__link">Privacy Policy</Link>
-                                    <Link href="/terms" className="footer__link">Terms of Service</Link>
-                                </div>
-                            </div>
-
-                            <div className="footer__bottom">
-                                <p className="footer__copyright">&copy; {new Date().getFullYear()} Tools Repository. Crafted for the modern web.</p>
-                                <div className="footer__stack-icons">
-                                    <span>⚛️</span>
-                                    <span>⚡</span>
-                                    <span>🛡️</span>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
+                <ClientLayout>
+                    {children}
+                </ClientLayout>
             </body>
         </html>
     );
