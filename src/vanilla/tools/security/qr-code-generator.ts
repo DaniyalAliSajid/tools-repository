@@ -8,9 +8,10 @@ export function render(container: HTMLElement): void {
         overflow-x: auto;
         gap: var(--space-2);
         padding-bottom: var(--space-4);
-        border-bottom: 1px solid var(--color-border);
-        margin-bottom: var(--space-6);
+        border-bottom: 2px solid var(--color-border);
+        margin-bottom: var(--space-8);
         scrollbar-width: none;
+        -ms-overflow-style: none;
       }
       .qr-tabs::-webkit-scrollbar { display: none; }
       .qr-tab {
@@ -18,23 +19,74 @@ export function render(container: HTMLElement): void {
         flex-direction: column;
         align-items: center;
         gap: var(--space-2);
-        padding: var(--space-3) var(--space-4);
-        border-radius: var(--radius-lg);
+        padding: var(--space-4) var(--space-6);
+        border-radius: var(--radius-xl);
         background: var(--color-surface-alt);
         color: var(--color-text-secondary);
         cursor: pointer;
-        transition: all var(--transition-fast);
-        min-width: 120px;
-        border: 1px solid transparent;
+        transition: all var(--transition-normal);
+        min-width: 140px;
+        border: 2px solid transparent;
         flex-shrink: 0;
       }
-      .qr-tab:hover { background: var(--color-surface-hover); color: var(--color-primary); }
-      .qr-tab.active { background: var(--color-primary-light); color: var(--color-primary); border-color: var(--color-primary); }
-      .qr-tab__icon { font-size: 1.5rem; }
+      .qr-tab:hover { 
+        background: var(--color-surface-hover); 
+        color: var(--color-primary);
+        transform: translateY(-2px);
+      }
+      .qr-tab.active { 
+        background: var(--color-primary-light); 
+        color: var(--color-primary); 
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-md);
+      }
+      .qr-tab__icon { font-size: 2rem; }
       .qr-tab__label { font-size: var(--fs-xs); font-weight: var(--fw-bold); text-transform: uppercase; white-space: nowrap; }
       .qr-form { display: none; }
-      .qr-form.active { display: flex; flex-direction: column; gap: var(--space-4); }
+      .qr-form.active { display: flex; flex-direction: column; gap: var(--space-6); animation: fadeIn 0.3s ease-out; }
+      
+      .preview-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-8);
+        background: var(--color-surface-alt);
+        border-radius: var(--radius-2xl);
+        border: 2px dashed var(--color-border);
+        margin: var(--space-8) 0;
+        min-height: 400px;
+        position: relative;
+      }
+      
+      #qr-canvas {
+        background: white;
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        max-width: 100%;
+        height: auto;
+      }
+      
+      .qr-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+        width: 100%;
+        max-width: 500px;
+      }
+      
+      .input-group label {
+        margin-bottom: var(--space-1);
+        display: block;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
     </style>
+    
     <div class="qr-tabs" id="qr-tabs">
       <div class="qr-tab active" data-type="website">
         <span class="qr-tab__icon">🌐</span>
@@ -42,7 +94,7 @@ export function render(container: HTMLElement): void {
       </div>
       <div class="qr-tab" data-type="vcard">
         <span class="qr-tab__icon">📇</span>
-        <span class="qr-tab__label">Digital Business Card</span>
+        <span class="qr-tab__label">vCard</span>
       </div>
       <div class="qr-tab" data-type="text">
         <span class="qr-tab__icon">📝</span>
@@ -130,7 +182,7 @@ export function render(container: HTMLElement): void {
         <div class="input-group">
           <label for="input-pdf">PDF URL</label>
           <input type="url" id="input-pdf" class="input-field" placeholder="https://example.com/document.pdf">
-          <p class="tool-page__description" style="font-size: var(--fs-xs); margin-top: var(--space-2);">Note: Host your PDF online and paste the link here.</p>
+          <p style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: var(--space-2);">Note: Host your PDF online and paste the link here.</p>
         </div>
       </div>
 
@@ -155,13 +207,16 @@ export function render(container: HTMLElement): void {
         </div>
       </div>
       
-      <div style="text-align:center;padding:var(--space-6); background: var(--color-surface-alt); border-radius: var(--radius-xl); border: 1px solid var(--color-border);">
-        <canvas id="qr-canvas" style="border:1px solid var(--color-border);border-radius:var(--radius-lg);max-width:100%; box-shadow: var(--shadow-md);"></canvas>
+      <button class="btn btn--primary btn--block" id="btn-generate" style="margin-top: var(--space-4); font-size: var(--fs-lg); padding: var(--space-4);">✨ Generate QR Code</button>
+
+      <div class="preview-container">
+        <canvas id="qr-canvas"></canvas>
+        <div id="qr-placeholder" style="color: var(--color-text-muted); text-align: center;">Your QR code will appear here</div>
       </div>
 
-      <div class="tool-grid-2">
-        <button class="btn btn--primary" id="btn-download">⬇️ Download PNG</button>
-        <button class="btn btn--secondary" id="btn-copy">📋 Copy Link to Clipboard</button>
+      <div class="qr-actions" style="margin: 0 auto;">
+        <button class="btn btn--secondary" id="btn-download">⬇️ Download</button>
+        <button class="btn btn--secondary" id="btn-copy">📋 Copy Text</button>
       </div>
     </div>
   `;
@@ -169,6 +224,8 @@ export function render(container: HTMLElement): void {
   const tabs = container.querySelectorAll('.qr-tab');
   const forms = container.querySelectorAll('.qr-form');
   const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+  const placeholder = document.getElementById('qr-placeholder')!;
+  const generateBtn = document.getElementById('btn-generate')!;
 
   let activeType = 'website';
 
@@ -181,16 +238,24 @@ export function render(container: HTMLElement): void {
       const type = (tab as HTMLElement).dataset.type!;
       activeType = type;
       document.getElementById(`form-${type}`)!.classList.add('active');
-      generateQR();
+      // Clear canvas when switching tabs? Or just wait for generate?
+      // Let's keep the old one until new generation
     });
   });
 
-  // Listen for all inputs to auto-generate
+  // Trigger generation on button click
+  generateBtn.addEventListener('click', () => generateQR());
+
+  // Also auto-generate on load and maybe on change for better UX, but let's prioritize the button
   container.querySelectorAll('input, select, textarea').forEach(el => {
-    el.addEventListener('input', () => generateQR());
+    el.addEventListener('change', () => generateQR());
   });
 
   document.getElementById('btn-download')!.addEventListener('click', () => {
+    if (placeholder.style.display !== 'none') {
+        alert('Please generate a QR code first');
+        return;
+    }
     const link = document.createElement('a');
     link.download = `qrcode-${activeType}.png`;
     link.href = canvas.toDataURL();
@@ -199,6 +264,7 @@ export function render(container: HTMLElement): void {
 
   document.getElementById('btn-copy')!.addEventListener('click', () => {
     const text = getQRText();
+    if (!text) return;
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById('btn-copy')!;
       const original = btn.innerHTML;
@@ -210,24 +276,26 @@ export function render(container: HTMLElement): void {
   function getQRText(): string {
     switch (activeType) {
       case 'website':
-        return (document.getElementById('input-website') as HTMLInputElement).value || 'https://toolrepository.com';
+        return (document.getElementById('input-website') as HTMLInputElement).value.trim() || 'https://toolrepository.com';
       case 'vcard':
-        const name = (document.getElementById('input-vcard-name') as HTMLInputElement).value;
-        const phone = (document.getElementById('input-vcard-phone') as HTMLInputElement).value;
-        const email = (document.getElementById('input-vcard-email') as HTMLInputElement).value;
-        const org = (document.getElementById('input-vcard-org') as HTMLInputElement).value;
+        const name = (document.getElementById('input-vcard-name') as HTMLInputElement).value.trim();
+        const phone = (document.getElementById('input-vcard-phone') as HTMLInputElement).value.trim();
+        const email = (document.getElementById('input-vcard-email') as HTMLInputElement).value.trim();
+        const org = (document.getElementById('input-vcard-org') as HTMLInputElement).value.trim();
+        if (!name && !phone && !email) return '';
         return `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nFN:${name}\nORG:${org}\nTEL;TYPE=CELL:${phone}\nEMAIL:${email}\nEND:VCARD`;
       case 'text':
-        return (document.getElementById('input-text') as HTMLTextAreaElement).value || 'Hello';
+        return (document.getElementById('input-text') as HTMLTextAreaElement).value.trim();
       case 'wifi':
-        const ssid = (document.getElementById('input-wifi-ssid') as HTMLInputElement).value;
-        const pass = (document.getElementById('input-wifi-pass') as HTMLInputElement).value;
+        const ssid = (document.getElementById('input-wifi-ssid') as HTMLInputElement).value.trim();
+        const pass = (document.getElementById('input-wifi-pass') as HTMLInputElement).value.trim();
         const enc = (document.getElementById('input-wifi-encryption') as HTMLSelectElement).value;
+        if (!ssid) return '';
         return `WIFI:S:${ssid};T:${enc};P:${pass};;`;
       case 'pdf':
-        return (document.getElementById('input-pdf') as HTMLInputElement).value || '';
+        return (document.getElementById('input-pdf') as HTMLInputElement).value.trim();
       case 'app':
-        return (document.getElementById('input-app') as HTMLInputElement).value || '';
+        return (document.getElementById('input-app') as HTMLInputElement).value.trim();
       default:
         return '';
     }
@@ -235,12 +303,17 @@ export function render(container: HTMLElement): void {
 
   async function generateQR() {
     const text = getQRText();
-    if (!text) return;
+    if (!text) {
+        alert('Please enter some data to generate a QR code');
+        return;
+    }
 
     const size = parseInt((document.getElementById('qr-size') as HTMLInputElement).value) || 300;
     const color = (document.getElementById('qr-color') as HTMLInputElement).value || '#000000';
 
     try {
+      placeholder.style.display = 'none';
+      canvas.style.display = 'block';
       await QRCode.toCanvas(canvas, text, {
         width: size,
         margin: 2,
@@ -251,8 +324,12 @@ export function render(container: HTMLElement): void {
       });
     } catch (err) {
       console.error(err);
+      placeholder.style.display = 'block';
+      canvas.style.display = 'none';
+      placeholder.innerHTML = '<span style="color:var(--color-error)">Failed to generate QR code</span>';
     }
   }
 
+  // Initial generation for the default website
   generateQR();
 }
