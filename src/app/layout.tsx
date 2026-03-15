@@ -10,6 +10,19 @@ import Link from 'next/link';
 export const metadata: Metadata = {
     title: 'Tools Repository — Free Online Tools for Everyday Use',
     description: 'A collection of 50 free, fast, and easy-to-use utility tools including text converters, calculators, generators, and developer tools.',
+    openGraph: {
+        title: 'Tools Repository — Free Online Tools for Everyday Use',
+        description: 'A collection of high-performance utility tools for the modern web.',
+        url: 'https://tools-repository.com',
+        siteName: 'Tools Repository',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tools Repository',
+        description: 'Free Online Tools for Everyday Use',
+    },
 };
 
 export default function RootLayout({
@@ -40,26 +53,8 @@ export default function RootLayout({
                         zIndex: 100
                     }}>
                         <div style={{ width: '100%', maxWidth: 'var(--max-width)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', textDecoration: 'none' }}>
-                                <div style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    background: 'var(--grad-text)',
-                                    borderRadius: '10px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: 'white',
-                                    fontSize: '20px',
-                                    boxShadow: 'var(--shadow-glow)'
-                                }}>💡</div>
-                                <h1 style={{
-                                    fontSize: 'var(--fs-xl)',
-                                    fontWeight: 'var(--fw-bold)',
-                                    color: 'var(--color-text)',
-                                    fontFamily: 'var(--font-display)',
-                                    margin: 0
-                                }}>Tools Repository</h1>
+                            <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                                <img src="/logo.svg" alt="Tools Repository" style={{ height: '44px', width: 'auto' }} />
                             </Link>
 
                             <nav style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
@@ -86,9 +81,8 @@ export default function RootLayout({
                         <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto' }}>
                             <div className="footer__inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-12)', marginBottom: 'var(--space-12)' }}>
                                 <div className="footer__column">
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
-                                        <span style={{ fontSize: '20px' }}>💡</span>
-                                        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', margin: 0, color: 'var(--color-text)' }}>Tools Repository</h3>
+                                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
+                                        <img src="/logo.svg" alt="Tools Repository" style={{ height: '36px', width: 'auto' }} />
                                     </div>
                                     <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: '1.6' }}>
                                         High-performance browser tools for developers and creators. No tracking, 100% free, forever.
