@@ -68,5 +68,13 @@ export async function handleRoute(): Promise<void> {
         }
     });
 
+    // Update active header links
+    const headerLinks = document.querySelectorAll('.header__link');
+    headerLinks.forEach((link) => {
+        const route = (link as HTMLElement).dataset.route;
+        const isActive = (hash === '' && route === '/') || (hash === route) || (hash.startsWith(route + '/') && route !== '/');
+        link.classList.toggle('active', isActive);
+    });
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
