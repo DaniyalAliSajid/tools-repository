@@ -29,6 +29,10 @@ app.innerHTML = `
         aria-label="Search tools"
       />
     </div>
+    <nav class="header__nav">
+      <a href="#/" class="header__link" data-route="/">Home</a>
+      <a href="#/about" class="header__link" data-route="/about">About</a>
+    </nav>
     <div class="header__actions">
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         ${getCurrentTheme() === 'dark' ? '☀️' : '🌙'}
