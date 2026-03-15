@@ -157,22 +157,28 @@ export function render(container: HTMLElement): void {
 
       <!-- WiFi -->
       <div class="qr-form" id="form-wifi">
-        <div class="input-group">
-          <label for="input-wifi-ssid">Network Name (SSID)</label>
-          <input type="text" id="input-wifi-ssid" class="input-field" placeholder="My WiFi Network">
-        </div>
         <div class="tool-grid-2">
           <div class="input-group">
-            <label for="input-wifi-pass">Password</label>
-            <input type="password" id="input-wifi-pass" class="input-field" placeholder="password123">
+            <label for="input-wifi-ssid">Network Name (SSID)</label>
+            <input type="text" id="input-wifi-ssid" class="input-field" placeholder="My WiFi Network">
           </div>
           <div class="input-group">
             <label for="input-wifi-encryption">Encryption</label>
             <select id="input-wifi-encryption" class="input-field">
               <option value="WPA">WPA/WPA2</option>
               <option value="WEP">WEP</option>
-              <option value="nopass">None</option>
+              <option value="nopass">None (Open)</option>
             </select>
+          </div>
+        </div>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="input-wifi-pass">Password</label>
+            <input type="password" id="input-wifi-pass" class="input-field" placeholder="password123">
+          </div>
+          <div class="input-group" style="flex-direction: row; align-items: center; gap: var(--space-2); margin-top: auto; height: 50px;">
+            <input type="checkbox" id="input-wifi-hidden" style="width: 20px; height: 20px;">
+            <label for="input-wifi-hidden" style="margin-bottom: 0; cursor: pointer;">Hidden Network</label>
           </div>
         </div>
       </div>
@@ -273,6 +279,10 @@ export function render(container: HTMLElement): void {
     });
   });
 
+  function escapeWiFiValue(value: string): string {
+    return value.replace(/([\\;:,"])/g, '\\$1');
+  }
+
   function getQRText(): string {
     switch (activeType) {
       case 'website':
@@ -290,8 +300,17 @@ export function render(container: HTMLElement): void {
         const ssid = (document.getElementById('input-wifi-ssid') as HTMLInputElement).value.trim();
         const pass = (document.getElementById('input-wifi-pass') as HTMLInputElement).value.trim();
         const enc = (document.getElementById('input-wifi-encryption') as HTMLSelectElement).value;
+        const hidden = (document.getElementById('input-wifi-hidden') as HTMLInputElement).checked;
         if (!ssid) return '';
-        return `WIFI:S:${ssid};T:${enc};P:${pass};;`;
+
+        let wifiStr = `WIFI:S:${escapeWiFiValue(ssid)};T:${enc};`;
+        if (enc !== 'nopass') {
+          wifiStr += `P:${escapeWiFiValue(pass)};`;
+        }
+        if (hidden) {
+          wifiStr += `H:true;`;
+        }
+        return wifiStr + ';';
       case 'pdf':
         return (document.getElementById('input-pdf') as HTMLInputElement).value.trim();
       case 'app':
