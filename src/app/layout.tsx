@@ -8,7 +8,7 @@ import '../vanilla/css/components.css';
 import '../vanilla/css/themes.css';
 import './globals.css';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function RootLayout({
     children,
@@ -16,6 +16,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Prevent scrolling when drawer is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [isMenuOpen]);
+
+    const closeMenu = () => setIsMenuOpen(false);
 
     return (
         <html lang="en">
@@ -28,27 +39,26 @@ export default function RootLayout({
                 <div id="app">
                     <header className="header">
                         <div className="header__container">
-                            <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/" onClick={closeMenu}>
                                 <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" />
                             </Link>
 
                             <button
                                 className="header__nav-mobile-toggle"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                aria-label="Toggle Navigation"
+                                onClick={() => setIsMenuOpen(true)}
+                                aria-label="Open Navigation"
                             >
-                                {isMenuOpen ? '✕' : '☰'}
+                                ☰
                             </button>
 
-                            <nav className={`header__nav ${isMenuOpen ? 'open' : ''}`}>
-                                <Link href="/" className="header__link" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                                <Link href="/about" className="header__link" onClick={() => setIsMenuOpen(false)}>About</Link>
-                                <Link href="/contact" className="header__link" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-                                <Link href="/advertise" className="header__link" onClick={() => setIsMenuOpen(false)}>Advertise with us</Link>
+                            <nav className="header__nav">
+                                <Link href="/" className="header__link">Home</Link>
+                                <Link href="/about" className="header__link">About</Link>
+                                <Link href="/contact" className="header__link">Contact</Link>
+                                <Link href="/advertise" className="header__link">Advertise with us</Link>
                                 <Link
                                     href="/#tools"
                                     className="btn btn--blue btn--sm"
-                                    onClick={() => setIsMenuOpen(false)}
                                     style={{
                                         textDecoration: 'none',
                                         fontWeight: 'var(--fw-bold)',
@@ -60,6 +70,31 @@ export default function RootLayout({
                             </nav>
                         </div>
                     </header>
+
+                    {/* Side Drawer */}
+                    <div className={`drawer-overlay ${isMenuOpen ? 'open' : ''}`} onClick={closeMenu} />
+                    <aside className={`drawer ${isMenuOpen ? 'open' : ''}`}>
+                        <div className="drawer__header">
+                            <img src="/logo.svg" alt="Tools Repository" style={{ height: '32px' }} />
+                            <button className="drawer__close" onClick={closeMenu} aria-label="Close menu">✕</button>
+                        </div>
+                        <nav className="drawer__nav">
+                            <Link href="/" className="drawer__link" onClick={closeMenu}>Home</Link>
+                            <Link href="/about" className="drawer__link" onClick={closeMenu}>About Us</Link>
+                            <Link href="/contact" className="drawer__link" onClick={closeMenu}>Contact</Link>
+                            <Link href="/advertise" className="drawer__link" onClick={closeMenu}>Advertise with Us</Link>
+                        </nav>
+                        <div className="drawer__footer">
+                            <Link
+                                href="/#tools"
+                                className="btn btn--blue btn--block"
+                                onClick={closeMenu}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                Get Started
+                            </Link>
+                        </div>
+                    </aside>
 
                     <main className="main">
                         {children}
