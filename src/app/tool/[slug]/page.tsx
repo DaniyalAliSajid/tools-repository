@@ -84,10 +84,6 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 subtitle={`Common questions about our ${tool.name} tool.`}
             />
 
-            {/* Ad Placeholder Bottom */}
-            <div className="ad-slot">
-                Advertisement Placeholder
-            </div>
         </div>
     );
 }

@@ -102,18 +102,18 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                             </p>
                         </div>
                         <div className="footer__column">
-                            <h2 className="footer__heading">Product</h2>
+                            <h3>Product</h3>
                             <Link href="/" className="footer__link">Tools Registry</Link>
                             <Link href="/#faq" className="footer__link">Frequently Asked</Link>
                             <Link href="/advertise" className="footer__link">Advertise</Link>
                         </div>
                         <div className="footer__column">
-                            <h2 className="footer__heading">Company</h2>
+                            <h3>Company</h3>
                             <Link href="/about" className="footer__link">About Us</Link>
                             <Link href="/contact" className="footer__link">Contact Support</Link>
                         </div>
                         <div className="footer__column">
-                            <h2 className="footer__heading">Legal</h2>
+                            <h3>Legal</h3>
                             <Link href="/privacy" className="footer__link">Privacy Policy</Link>
                             <Link href="/terms" className="footer__link">Terms of Service</Link>
                         </div>
