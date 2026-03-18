@@ -1,59 +1,77 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="iw-height">Height (cm)</label>
-          <input type="number" id="iw-height" class="input-field" value="175">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Personal Metrics</h4>
+        <div class="input-group" style="margin-bottom: var(--space-4);">
+          <label>Biological Gender</label>
+          <div class="toggle-group" id="iw-gender">
+            <button class="btn btn--sm active" data-gender="male">Male</button>
+            <button class="btn btn--sm" data-gender="female">Female</button>
+          </div>
         </div>
-        <div class="input-group">
-          <label for="iw-gender">Gender</label>
-          <select id="iw-gender" class="input-field">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="iw-height">Height (cm)</label>
+          <input type="number" id="iw-height" class="input-field" value="175" style="padding: var(--space-3); font-weight: 700;">
         </div>
       </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Miller Formula:</strong> This calculation is based on the popular Miller formula used by health professionals worldwide.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Healthy Projections</h3>
+      </div>
+      
+      <div class="stat-card" style="margin-bottom: var(--space-6); background: var(--color-primary-light); border-color: rgba(37, 99, 235, 0.2); text-align: center; padding: var(--space-10);">
+        <div class="stat-card__label" style="color: var(--color-primary);">Ideal Body Weight</div>
+        <div class="stat-card__value" id="iw-result" style="font-size: 5rem; color: var(--color-primary); line-height: 1;">--</div>
+      </div>
 
-      <div class="input-group" style="margin-top: var(--space-8);">
-        <label>Ideal Weight Range (Miller Formula)</label>
-        <div class="result-box" style="text-align: center; padding: var(--space-8); background: #fdf2f8;">
-           <div id="iw-result" style="font-size: 3.5rem; font-weight: 700; color: #be185d;">--</div>
-           <div id="iw-details" style="margin-top: var(--space-2); font-weight: 600; color: #9d174d;">Healthy BMI: 18.5 - 25</div>
-        </div>
+      <div class="p-card" style="background: var(--color-surface-hover);">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%;"></div>
+              <div style="font-size: var(--fs-sm); font-weight: 600; color: var(--color-text-secondary);" id="iw-details">BMI Target: 18.5 - 25</div>
+          </div>
+      </div>
+
+      <div style="margin-top: var(--space-6); text-align: center;">
+          <p style="font-size: var(--fs-xs); color: var(--color-text-muted);">
+            <em>Note: Clinical ideal weight is an estimation and does not account for muscle mass or bone density.</em>
+          </p>
       </div>
     </div>
   `;
 
     const heightIn = document.getElementById('iw-height') as HTMLInputElement;
-    const genderIn = document.getElementById('iw-gender') as HTMLSelectElement;
+    const genderBtns = container.querySelectorAll('#iw-gender button');
     const resultEl = document.getElementById('iw-result')!;
+
+    let gender = 'male';
+
+    genderBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            genderBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            gender = (btn as HTMLElement).dataset.gender!;
+            calculate();
+        });
+    });
 
     const calculate = () => {
         const height = parseFloat(heightIn.value) || 0;
-        const gender = genderIn.value;
-
         if (height < 100) return;
 
-        // Miller Formula:
-        // Male: 56.2 kg + 1.41 kg per inch over 5 feet
-        // Female: 53.1 kg + 1.36 kg per inch over 5 feet
         const inchesOver5ft = (height / 2.54) - 60;
-        let ideal = 0;
-        if (gender === 'male') {
-            ideal = 56.2 + (1.41 * inchesOver5ft);
-        } else {
-            ideal = 53.1 + (1.36 * inchesOver5ft);
-        }
-
-        // Also calculate BMI based range
-        const minWeight = 18.5 * Math.pow(height / 100, 2);
-        const maxWeight = 25 * Math.pow(height / 100, 2);
-
+        let ideal = gender === 'male' ? 56.2 + (1.41 * inchesOver5ft) : 53.1 + (1.36 * inchesOver5ft);
         resultEl.textContent = `${ideal.toFixed(1)} kg`;
-        // resultEl.title = `Healthy range: ${minWeight.toFixed(1)}kg - ${maxWeight.toFixed(1)}kg`;
     };
 
-    [heightIn, genderIn].forEach(inp => inp.addEventListener('input', calculate));
+    heightIn.addEventListener('input', calculate);
     calculate();
 }

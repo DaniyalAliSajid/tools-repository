@@ -1,16 +1,17 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="csv-input">CSV Input</label>
-        <textarea class="input-field" id="csv-input" rows="10" placeholder="name,age,city\nJohn,30,New York\nJane,25,London"></textarea>
+        <label for="csv-input">Source CSV</label>
+        <textarea class="input-field" id="csv-input" rows="18" placeholder="name,age,city\nJohn,30,New York\nJane,25,London" style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>JSON Result</label>
-        <div class="result-box" id="csv-result" style="height: 250px; overflow: auto; background: white;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="csv-copy">Copy JSON</button>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated JSON</h3>
+        <button class="btn btn--secondary btn--sm" id="csv-copy">📋 Copy Code</button>
       </div>
+      <div class="result-box" id="csv-result" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 400px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

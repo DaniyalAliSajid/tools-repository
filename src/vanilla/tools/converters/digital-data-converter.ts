@@ -20,23 +20,42 @@ const UNIT_NAMES: { [key: string]: string } = {
 
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Input Data</h4>
         <div class="input-group">
-          <label for="data-value">From</label>
-          <input type="number" class="input-field" id="data-value" placeholder="1024">
-          <select class="input-field" id="data-from">
-            ${Object.entries(UNIT_NAMES).map(([id, name]) => `<option value="${id}" ${id === 'MB' ? 'selected' : ''}>${name}</option>`).join('')}
-          </select>
+          <label for="data-value">Value to Convert</label>
+          <div style="display: flex; gap: var(--space-2);">
+            <input type="number" class="input-field" id="data-value" placeholder="1024" style="flex: 2; padding: var(--space-3);">
+            <select class="input-field" id="data-from" style="flex: 1; padding: var(--space-3);">
+              ${Object.entries(UNIT_NAMES).map(([id, name]) => `<option value="${id}" ${id === 'MB' ? 'selected' : ''}>${id}</option>`).join('')}
+            </select>
+          </div>
         </div>
-        <div class="input-group">
-          <label>To</label>
-          <div class="result-box" id="data-result" style="display: flex; align-items: center; justify-content: center; font-size: var(--fs-xl); font-weight: bold;">0</div>
-          <select class="input-field" id="data-to">
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="data-to">Target Unit</label>
+          <select class="input-field" id="data-to" style="padding: var(--space-3);">
              ${Object.entries(UNIT_NAMES).map(([id, name]) => `<option value="${id}" ${id === 'GB' ? 'selected' : ''}>${name}</option>`).join('')}
           </select>
         </div>
       </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Conversion Logic:</strong> Uses binary prefix (1 KB = 1024 Bytes) for calculations.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Conversion Result</h3>
+      </div>
+      <div class="result-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; background: var(--color-surface-hover);">
+        <div id="data-result" style="font-size: 4rem; font-weight: 800; color: var(--color-primary); letter-spacing: -0.02em;">0</div>
+        <div id="data-result-unit" style="font-size: var(--fs-lg); color: var(--color-text-muted); margin-top: var(--space-2); font-weight: 600;">Gigabytes</div>
+      </div>
+      <p style="text-align: center; color: var(--color-text-muted); font-size: var(--fs-xs); margin-top: var(--space-4);">Live calculation updated on input</p>
     </div>
   `;
 
@@ -55,6 +74,7 @@ export function render(container: HTMLElement): void {
         const targetVal = baseVal / UNITS[to];
 
         resultDiv.textContent = targetVal.toLocaleString(undefined, { maximumFractionDigits: 8 });
+        document.getElementById('data-result-unit')!.textContent = UNIT_NAMES[to].split(' (')[0];
     };
 
     [valInput, fromSelect, toSelect].forEach(inp => inp.addEventListener('input', update));

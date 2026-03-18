@@ -1,31 +1,46 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="ar-w1">Width 1</label>
-          <input type="number" class="input-field" id="ar-w1" value="1920">
-        </div>
-        <div class="input-group">
-          <label for="ar-h1">Height 1</label>
-          <input type="number" class="input-field" id="ar-h1" value="1080">
-        </div>
-        <div class="input-group">
-          <label for="ar-w2">Width 2 (Locked)</label>
-          <input type="number" class="input-field" id="ar-w2" value="1280">
-        </div>
-        <div class="input-group">
-          <label for="ar-h2">Height 2 (Locked)</label>
-          <input type="number" class="input-field" id="ar-h2" value="720">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Source Dimensions</h4>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="ar-w1">Width 1</label>
+            <input type="number" class="input-field" id="ar-w1" value="1920" style="padding: var(--space-3);">
+          </div>
+          <div class="input-group">
+            <label for="ar-h1">Height 1</label>
+            <input type="number" class="input-field" id="ar-h1" value="1080" style="padding: var(--space-3);">
+          </div>
         </div>
       </div>
 
-      <div class="input-group">
-        <label>Aspect Ratio</label>
-        <div class="result-box" id="ar-result" style="text-align: center; padding: var(--space-8);">
-           <div id="ar-ratio" style="font-size: var(--fs-xl); font-weight: 700; color: var(--color-primary);">16:9</div>
-           <div id="ar-details" style="margin-top: var(--space-2); opacity: 0.7;">Common resolutions: 1080p, 720p</div>
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">New Proportions</h4>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="ar-w2">New Width</label>
+            <input type="number" class="input-field" id="ar-w2" value="1280" style="padding: var(--space-3); border: 1px solid var(--color-primary-border); background: var(--color-primary-lightish);">
+          </div>
+          <div class="input-group">
+            <label for="ar-h2">New Height</label>
+            <input type="number" class="input-field" id="ar-h2" value="720" style="padding: var(--space-3); border: 1px solid var(--color-primary-border); background: var(--color-primary-lightish);">
+          </div>
         </div>
+        <p style="margin-top: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted);">Changing one value will automatically update the other to maintain the ratio.</p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Calculated Aspect Ratio</h3>
+      </div>
+      <div class="result-box" id="ar-result" style="padding: var(--space-12); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 250px;">
+         <div style="font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: var(--space-4);">DIMENSION RATIO</div>
+         <div id="ar-ratio" style="font-size: 5rem; font-weight: 900; color: var(--color-primary); line-height: 1;">16:9</div>
+         <div id="ar-details" style="margin-top: var(--space-8); font-size: var(--fs-sm); font-weight: 600; color: var(--color-text-secondary);">Widescreen Standard</div>
+         
+         <div style="margin-top: var(--space-10); width: 80px; height: 45px; border: 2px solid var(--color-primary); background: var(--color-primary-light); opacity: 0.2; border-radius: var(--radius-sm);"></div>
       </div>
     </div>
   `;

@@ -13,17 +13,24 @@ export function render(container: HTMLElement): void {
     };
 
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="upside-input">Upside Down Input</label>
-        <textarea class="input-field" id="upside-input" rows="5" placeholder="Enter text to flip..."></textarea>
+        <label for="upside-input">Original Text</label>
+        <textarea class="input-field" id="upside-input" rows="18" placeholder="Enter text to flip upside down..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>Flipped Result</label>
-        <div class="result-box" id="upside-result" style="height: 150px; overflow: auto; background: white; font-size: var(--fs-lg);"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="upside-copy">Copy Flipped</button>
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Fun Fact:</strong> This tool uses special Unicode characters to simulate an "upside down" effect.
+        </p>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Flipped Result</h3>
+        <button class="btn btn--secondary btn--sm" id="upside-copy">📋 Copy</button>
+      </div>
+      <div class="result-box" id="upside-result" style="padding: var(--space-6); font-family: 'JetBrains Mono'; font-size: 1.5rem; font-weight: 500; line-height: 1.6; height: calc(100% - 48px); min-height: 500px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap; background: var(--color-surface-hover); text-align: center; display: flex; align-items: center; justify-content: center;"></div>
     </div>
   `;
 

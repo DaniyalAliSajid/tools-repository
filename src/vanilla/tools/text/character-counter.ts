@@ -1,18 +1,25 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="cc-input">Enter your text</label>
-        <textarea class="input-field" id="cc-input" rows="8" placeholder="Type or paste text here..."></textarea>
+        <label for="cc-input">Source Content</label>
+        <textarea class="input-field" id="cc-input" rows="22" placeholder="Type or paste text here to see character density..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
-      <div class="stats-row">
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Density Analysis</h3>
+      </div>
+      
+      <div class="stats-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
         <div class="stat-card">
           <div class="stat-card__value" id="cc-total">0</div>
-          <div class="stat-card__label">Total Characters</div>
+          <div class="stat-card__label">Total</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__value" id="cc-no-spaces">0</div>
-          <div class="stat-card__label">Without Spaces</div>
+          <div class="stat-card__label">No Spaces</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__value" id="cc-letters">0</div>
@@ -24,8 +31,11 @@ export function render(container: HTMLElement): void {
         </div>
         <div class="stat-card">
           <div class="stat-card__value" id="cc-special">0</div>
-          <div class="stat-card__label">Special Chars</div>
+          <div class="stat-card__label">Special</div>
         </div>
+      </div>
+      <div style="margin-top: var(--space-6); padding: var(--space-4); background: var(--color-surface); border-radius: var(--radius-lg); font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: 1.5;">
+        <p>💡 Tip: Use this tool to verify length limits for social media posts, meta descriptions, or code snippets.</p>
       </div>
     </div>
   `;

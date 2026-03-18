@@ -1,26 +1,40 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Patient Metrics</h4>
         <div class="input-group">
           <label for="bsa-weight">Weight (kg)</label>
-          <input type="number" id="bsa-weight" class="input-field" value="70">
+          <input type="number" id="bsa-weight" class="input-field" value="70" style="padding: var(--space-3); font-weight: 700;">
         </div>
-        <div class="input-group">
+        <div class="input-group" style="margin-top: var(--space-4);">
           <label for="bsa-height">Height (cm)</label>
-          <input type="number" id="bsa-height" class="input-field" value="175">
+          <input type="number" id="bsa-height" class="input-field" value="175" style="padding: var(--space-3); font-weight: 700;">
         </div>
       </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Clinical Note:</strong> Body Surface Area is a more accurate indicator of metabolic mass than body weight because it is less affected by abnormal adipose tissue.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Calculated Surface Area</h3>
+      </div>
+      
+      <div class="stat-card" style="margin-bottom: var(--space-6); background: var(--color-primary-light); border-color: rgba(37, 99, 235, 0.2); text-align: center; padding: var(--space-10);">
+        <div class="stat-card__label" style="color: var(--color-primary);">Result (Du Bois Formula)</div>
+        <div class="stat-card__value" id="bsa-result" style="font-size: 5rem; color: var(--color-primary); line-height: 1;">-- m²</div>
+      </div>
 
-      <div class="input-group" style="margin-top: var(--space-8);">
-        <label>Body Surface Area (Du Bois Formula)</label>
-        <div class="result-box" style="text-align: center; padding: var(--space-8); background: #f5f3ff;">
-           <div id="bsa-result" style="font-size: 4rem; font-weight: 700; color: #7c3aed;">-- m²</div>
-           <div style="margin-top: var(--space-2); font-weight: 600; color: #6d28d9;">Square Meters</div>
-        </div>
-        <div style="font-size: var(--fs-sm); opacity: 0.7; margin-top: var(--space-4); text-align: center;">
-          BSA is used in clinical settings to calculate medication dosages and cardiac index.
-        </div>
+      <div class="p-card" style="background: var(--color-surface-hover);">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <div style="width: 12px; height: 12px; background: #8b5cf6; border-radius: 2px;"></div>
+              <div style="font-size: var(--fs-sm); font-weight: 600; color: var(--color-text-secondary);">Metric: Square Meters</div>
+          </div>
       </div>
     </div>
   `;

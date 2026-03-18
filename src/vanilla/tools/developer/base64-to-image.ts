@@ -1,26 +1,37 @@
 export function render(container: HTMLElement): void {
   container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="base64-input">Paste Base64 String</label>
-        <textarea class="input-field" id="base64-input" rows="8" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."></textarea>
-      </div>
-
-      <div class="tool-grid-2" style="margin-top: var(--space-4);">
-        <button class="btn btn--primary" id="btn-render">Render Image</button>
-        <button class="btn btn--secondary" id="btn-clear">Clear</button>
-      </div>
-
-      <div class="input-group" id="preview-group" style="display: none; text-align: center; margin-top: var(--space-6);">
-        <label>Image Preview</label>
-        <div style="margin-top: var(--space-2); margin-bottom: var(--space-4);">
-          <img id="img-preview" style="max-width: 100%; max-height: 400px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);" />
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Input Source</h4>
+        <div class="input-group">
+          <label for="base64-input">Base64 String</label>
+          <textarea class="input-field" id="base64-input" rows="12" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.75rem;"></textarea>
         </div>
-        <a id="btn-download" class="btn btn--primary" download="downloaded-image.png" style="text-decoration: none; display: inline-block;">Download Image</a>
+        <div class="tool-grid-2" style="margin-top: var(--space-4);">
+          <button class="btn btn--primary" id="btn-render">⚡ Render Image</button>
+          <button class="btn btn--secondary" id="btn-clear">Clear</button>
+        </div>
+      </div>
+      <div id="error-msg" style="display: none; padding: var(--space-4); background: #fee2e2; color: #991b1b; border-radius: var(--radius-lg); font-size: var(--fs-sm); border: 1px solid #fecaca;">
+        <strong>Invalid Format:</strong> Please make sure it starts with 'data:image/...'.
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Decoded Preview</h3>
+        <a id="btn-download" class="btn btn--secondary btn--sm" style="display: none;">💾 Download</a>
       </div>
       
-      <div id="error-msg" style="display: none; color: #e11d48; margin-top: var(--space-4); text-align: center; font-weight: 500;">
-        Invalid Base64 string. Please make sure it starts with 'data:image/...'.
+      <div id="preview-group" style="display: none;">
+        <div class="preview-area" style="min-height: 400px; padding: var(--space-4);">
+          <img id="img-preview" style="max-width: 95%; max-height: 380px; border-radius: var(--radius-lg); box-shadow: var(--shadow-2xl);" />
+        </div>
+      </div>
+
+      <div id="preview-placeholder" style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-text-muted); padding: var(--space-12); text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius-2xl);">
+        <span style="font-size: 3rem; margin-bottom: var(--space-4); opacity: 0.5;">🖼️</span>
+        <p>The decoded image will appear here after you paste a valid Base64 string and click Render.</p>
       </div>
     </div>
   `;
@@ -56,6 +67,8 @@ export function render(container: HTMLElement): void {
     previewImg.onload = () => {
       errorMsg.style.display = 'none';
       previewGroup.style.display = 'block';
+      downloadBtn.style.display = 'inline-flex';
+      document.getElementById('preview-placeholder')!.style.display = 'none';
 
       downloadBtn.href = src;
 
@@ -71,6 +84,8 @@ export function render(container: HTMLElement): void {
   clearBtn.addEventListener('click', () => {
     input.value = '';
     previewGroup.style.display = 'none';
+    downloadBtn.style.display = 'none';
+    document.getElementById('preview-placeholder')!.style.display = 'flex';
     errorMsg.style.display = 'none';
   });
 }

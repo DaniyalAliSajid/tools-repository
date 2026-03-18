@@ -1,20 +1,27 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="res-input">Enter your text</label>
-        <textarea class="input-field" id="res-input" rows="6" placeholder="Paste text with extra spaces..."></textarea>
+        <label for="res-input">Source Text</label>
+        <textarea class="input-field" id="res-input" rows="18" placeholder="Paste text with extra spaces..." style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem;"></textarea>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
-        <button class="btn btn--primary" id="btn-clean">Remove Extra Spaces</button>
-        <button class="btn btn--secondary" id="btn-trim-lines">Trim Each Line</button>
-        <button class="btn btn--secondary" id="btn-remove-blank">Remove Blank Lines</button>
-        <button class="btn btn--secondary" id="btn-copy">📋 Copy</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Quick Actions</h4>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-2)">
+          <button class="btn btn--primary" id="btn-clean">✨ Clean Spaces</button>
+          <button class="btn btn--secondary" id="btn-trim-lines">Trim Lines</button>
+          <button class="btn btn--secondary" id="btn-remove-blank">Remove Blanks</button>
+          <button class="btn btn--secondary" id="btn-copy">📋 Copy Result</button>
+        </div>
       </div>
-      <div class="input-group">
-        <label>Result</label>
-        <textarea class="input-field" id="res-output" rows="6" readonly></textarea>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Cleaned Result</h3>
       </div>
+      <textarea class="input-field" id="res-output" rows="22" readonly style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem; background: var(--color-surface-hover); border-color: var(--color-border);"></textarea>
     </div>
   `;
 

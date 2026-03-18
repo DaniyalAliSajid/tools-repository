@@ -1,26 +1,50 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="tts-input">Text to Speak</label>
-        <textarea class="input-field" id="tts-input" rows="5" placeholder="Enter text to read aloud..."></textarea>
+        <label for="tts-input">Text to Read</label>
+        <textarea class="input-field" id="tts-input" rows="12" placeholder="Enter text to read aloud..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
 
-      <div class="tool-grid-2">
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Voice Configuration</h4>
         <div class="input-group">
-          <label for="tts-voice">Voice</label>
-          <select id="tts-voice" class="input-field"></select>
+          <label for="tts-voice">Speaker Voice</label>
+          <select id="tts-voice" class="input-field" style="cursor: pointer;"></select>
         </div>
-        <div class="input-group">
-          <label for="tts-pitch">Pitch: <span id="tts-pitch-val">1</span></label>
+        <div class="slider-group" style="margin-top: var(--space-4);">
+          <div class="slider-group__header">
+            <span class="slider-group__label">Pitch Level</span>
+            <span class="slider-group__value" id="tts-pitch-val">1</span>
+          </div>
           <input type="range" id="tts-pitch" min="0" max="2" step="0.1" value="1">
         </div>
       </div>
-
-      <div style="display: flex; gap: var(--space-4);">
-        <button class="btn btn--primary" id="tts-play">Play Audio</button>
-        <button class="btn btn--secondary" id="tts-stop">Stop</button>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Playback Control</h3>
       </div>
+      
+      <div class="result-box" style="padding: var(--space-12); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px;">
+        <div id="tts-visualizer" style="display: flex; gap: 4px; height: 60px; align-items: center; margin-bottom: var(--space-8);">
+          <div style="width: 6px; height: 20px; background: var(--color-primary); border-radius: 3px; transition: height 0.2s;"></div>
+          <div style="width: 6px; height: 40px; background: var(--color-primary); border-radius: 3px; transition: height 0.2s;"></div>
+          <div style="width: 6px; height: 30px; background: var(--color-primary); border-radius: 3px; transition: height 0.2s;"></div>
+          <div style="width: 6px; height: 50px; background: var(--color-primary); border-radius: 3px; transition: height 0.2s;"></div>
+          <div style="width: 6px; height: 25px; background: var(--color-primary); border-radius: 3px; transition: height 0.2s;"></div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); width: 100%; max-width: 300px;">
+          <button class="btn btn--primary btn--lg" id="tts-play">🔊 Play</button>
+          <button class="btn btn--secondary btn--lg" id="tts-stop">⏹️ Stop</button>
+        </div>
+      </div>
+
+      <p style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: var(--space-6); text-align: center; line-height: 1.6;">
+        <strong>Note:</strong> Available voices depend on your browser and operating system settings.
+      </p>
     </div>
   `;
 

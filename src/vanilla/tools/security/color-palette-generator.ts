@@ -1,25 +1,41 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="cp-count">Number of Colors</label>
-          <input type="number" class="input-field" id="cp-count" value="5" min="2" max="12" />
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Palette Config</h4>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="cp-count">Colors Count</label>
+            <input type="number" class="input-field" id="cp-count" value="5" min="2" max="10" style="padding: var(--space-3);" />
+          </div>
+          <div class="input-group">
+            <label for="cp-harmony">Harmony Mode</label>
+            <select class="input-field" id="cp-harmony" style="padding: var(--space-3);">
+              <option value="random">Random</option>
+              <option value="analogous">Analogous</option>
+              <option value="complementary">Complementary</option>
+              <option value="triadic">Triadic</option>
+              <option value="monochromatic">Monochromatic</option>
+            </select>
+          </div>
         </div>
-        <div class="input-group">
-          <label for="cp-harmony">Harmony</label>
-          <select class="input-field" id="cp-harmony">
-            <option value="random">Random</option>
-            <option value="analogous">Analogous</option>
-            <option value="complementary">Complementary</option>
-            <option value="triadic">Triadic</option>
-            <option value="monochromatic">Monochromatic</option>
-          </select>
-        </div>
+        <button class="btn btn--primary btn--block btn--lg" id="btn-generate" style="margin-top: var(--space-6);">🎨 Generate New Palette</button>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-generate">🎨 Generate Palette</button>
-      <div id="cp-palette" style="display:flex;border-radius:var(--radius-xl);overflow:hidden;height:200px;box-shadow:var(--shadow-md);"></div>
-      <div id="cp-codes" style="display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center;margin-top:var(--space-4);"></div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> Click on any color swatch to copy its HEX code. Hover to expand.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Interactive Palette</h3>
+        <div style="font-size: var(--fs-xs); color: var(--color-text-muted); font-weight: 600;">CLICK TO COPY</div>
+      </div>
+      <div id="cp-palette" style="display:flex; border-radius: var(--radius-2xl); overflow:hidden; height:400px; box-shadow: var(--shadow-xl); border: 4px solid var(--color-surface-hover);"></div>
+      <div id="cp-codes" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:var(--space-2); margin-top:var(--space-6);"></div>
     </div>
   `;
 
@@ -39,11 +55,11 @@ function generate(): void {
         `<div style="flex:1;background:${c};cursor:pointer;transition:flex var(--transition-normal);" data-color="${c}" title="Click to copy ${c}" class="cp-swatch"></div>`
     ).join('');
 
-    codesEl.innerHTML = colors.map((c) =>
-        `<div style="display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:var(--color-surface-alt);border-radius:var(--radius-md);cursor:pointer;" class="cp-code" data-color="${c}">
-      <div style="width:20px;height:20px;border-radius:var(--radius-sm);background:${c};border:1px solid var(--color-border);"></div>
-      <span style="font-family:'Courier New',monospace;font-size:var(--fs-sm);">${c}</span>
-    </div>`
+    codesEl.innerHTML = colors.map((c) => `
+        <div style="display:flex; align-items:center; gap:var(--space-3); padding:var(--space-3); background:var(--color-surface-hover); border-radius:var(--radius-lg); cursor:pointer; border: 1px solid var(--color-border); transition: all 0.2s;" class="cp-code" data-color="${c}">
+          <div style="width:24px; height:24px; border-radius:var(--radius-full); background:${c}; border: 2px solid white; box-shadow: 0 0 0 1px var(--color-border);"></div>
+          <span style="font-family:'JetBrains Mono'; font-size:var(--fs-xs); font-weight: 600; color: var(--color-text);">${c.toUpperCase()}</span>
+        </div>`
     ).join('');
 
     // Hover expand

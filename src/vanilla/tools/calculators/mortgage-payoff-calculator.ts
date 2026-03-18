@@ -2,38 +2,47 @@ import { getCurrencyOptionsHTML } from '../../utils/currencies';
 
 export function render(container: HTMLElement): void {
   container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Current Mortgage</h4>
         <div class="input-group">
-          <label for="mp-currency">Currency</label>
-          <select id="mp-currency" class="input-field">
+          <label for="mp-currency">Currency Symbol</label>
+          <select id="mp-currency" class="input-field" style="padding: var(--space-3);">
             ${getCurrencyOptionsHTML()}
           </select>
         </div>
-        <div class="input-group">
-          <label for="mp-balance">Remaining Balance</label>
-          <input type="number" class="input-field" id="mp-balance" value="250000">
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="mp-balance">Remaining Principal Balance</label>
+          <input type="number" class="input-field" id="mp-balance" value="250000" style="padding: var(--space-3);">
         </div>
-        <div class="input-group">
-          <label for="mp-rate">Interest Rate (%)</label>
-          <input type="number" class="input-field" id="mp-rate" value="4.0" step="0.1">
+        <div class="tool-grid-2" style="margin-top: var(--space-4);">
+          <div class="input-group">
+            <label for="mp-rate">Interest Rate (%)</label>
+            <input type="number" class="input-field" id="mp-rate" value="4.0" step="0.1" style="padding: var(--space-3);">
+          </div>
+          <div class="input-group">
+            <label for="mp-term">Remaining Term (Yrs)</label>
+            <input type="number" class="input-field" id="mp-term" value="25" style="padding: var(--space-3);">
+          </div>
         </div>
-        <div class="input-group">
-          <label for="mp-term">Remaining Term (Years)</label>
-          <input type="number" class="input-field" id="mp-term" value="25">
-        </div>
-        <div class="input-group">
+        <div class="input-group" style="margin-top: var(--space-4);">
           <label for="mp-extra">Extra Monthly Payment</label>
-          <input type="number" class="input-field" id="mp-extra" value="500">
+          <input type="number" class="input-field" id="mp-extra" value="500" style="padding: var(--space-3); border: 1px solid var(--color-primary-border); background: var(--color-primary-lightish);">
         </div>
       </div>
-
-      <div class="input-group">
-        <label>Payoff Estimation</label>
-        <div class="result-box" id="mp-result" style="text-align: center; padding: var(--space-8);">
-           <div id="mp-time-saved" style="font-size: var(--fs-xl); font-weight: 700; color: var(--color-primary);">--</div>
-           <div id="mp-interest-saved" style="margin-top: var(--space-2); font-weight: 600; color: #166534;">Interest Saved: --</div>
-        </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Acceleration Analysis</h3>
+      </div>
+      <div class="result-box" id="mp-result" style="padding: var(--space-10); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 350px;">
+         <div style="font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">ESTIMATED TIME SAVED</div>
+         <div id="mp-time-saved" style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary); text-align: center; line-height: 1.1;">--</div>
+         <div id="mp-interest-saved" style="margin-top: var(--space-8); font-size: 1.25rem; font-weight: 700; color: #166534; background: rgba(22, 101, 52, 0.1); padding: var(--space-3) var(--space-6); border-radius: var(--radius-lg); border: 1px solid rgba(22, 101, 52, 0.2);">Interest Saved: --</div>
+         <p style="margin-top: var(--space-6); font-size: var(--fs-xs); color: var(--color-text-muted); text-align: center; max-width: 300px;">
+            By paying an extra amount monthly, you significantly reduce the total interest paid and shorten your mortgage term.
+         </p>
       </div>
     </div>
   `;

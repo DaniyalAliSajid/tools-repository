@@ -1,26 +1,26 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="section-gap">
-          <div class="input-group">
-            <label for="sm-base">Base URL</label>
-            <input type="text" id="sm-base" class="input-field" value="https://example.com">
-          </div>
-          <div class="input-group">
-            <label for="sm-urls">URLs (one per line)</label>
-            <textarea id="sm-urls" class="input-field" rows="10" placeholder="/\n/about\n/contact\n/tools/text-diff-checker"></textarea>
-          </div>
-        </div>
-
-        <div class="section-gap">
-          <div class="input-group">
-            <label>Sitemap XML</label>
-            <div class="result-box" id="sm-code" style="font-family: monospace; white-space: pre-wrap; background: white; height: 320px; overflow: auto;"></div>
-            <button class="btn btn--secondary btn--sm result-box__copy" id="sm-copy">Copy XML</button>
-          </div>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Domain Settings</h4>
+        <div class="input-group">
+          <label for="sm-base">Base URL</label>
+          <input type="text" id="sm-base" class="input-field" value="https://example.com">
         </div>
       </div>
+      
+      <div class="input-group">
+        <label for="sm-urls">URLs List (One per line)</label>
+        <textarea id="sm-urls" class="input-field" rows="18" placeholder="/\n/about\n/contact\n/tools/text-diff-checker" style="resize: vertical;"></textarea>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated Sitemap.xml</h3>
+        <button class="btn btn--secondary btn--sm" id="sm-copy">📋 Copy XML</button>
+      </div>
+      <div class="result-box" id="sm-code" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 480px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

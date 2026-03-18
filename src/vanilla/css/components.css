@@ -354,3 +354,86 @@
     animation: fadeIn 0.6s ease-out forwards;
 }
 
+/* --- UI Overhaul High-Contrast Components --- */
+.stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-primary-border);
+}
+
+.stat-card__value {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-1);
+    font-family: var(--font-display);
+}
+
+.stat-card__label {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--fw-semibold);
+}
+
+.p-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-4);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.input-group label {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-secondary);
+}
+
+.input-field {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-primary-border, var(--color-border));
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    color: var(--color-text);
+    transition: all var(--transition-fast);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light, rgba(37, 99, 235, 0.15));
+    background: var(--color-bg);
+}
+
+.btn-digit {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-weight: var(--fw-semibold);
+}
+
+

@@ -1,18 +1,17 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="jts-json">JSON Input</label>
-          <textarea id="jts-json" class="input-field" rows="15" placeholder='{"id": 1, "name": "Test", "active": true}'></textarea>
-        </div>
-
-        <div class="input-group">
-          <label>TypeScript Interface</label>
-          <div class="result-box" id="jts-code" style="font-family: monospace; white-space: pre-wrap; background: white; height: 320px; overflow: auto;"></div>
-          <button class="btn btn--secondary btn--sm result-box__copy" id="jts-copy">Copy Interface</button>
-        </div>
+    <div class="tool-layout__input">
+      <div class="input-group">
+        <label for="jts-json">Source JSON</label>
+        <textarea id="jts-json" class="input-field" rows="18" placeholder='{"id": 1, "name": "Antigravity", "active": true}' style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem;"></textarea>
       </div>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated Interfaces</h3>
+        <button class="btn btn--secondary btn--sm" id="jts-copy">📋 Copy Code</button>
+      </div>
+      <div class="result-box" id="jts-code" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 400px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

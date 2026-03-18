@@ -3,29 +3,42 @@ const LOREM_WORDS: string[] =
 
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="li-count">Number of paragraphs</label>
-          <input type="number" class="input-field" id="li-count" value="3" min="1" max="50" />
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Generator Settings</h4>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="li-count">Paragraphs</label>
+            <input type="number" class="input-field" id="li-count" value="3" min="1" max="50" style="padding: var(--space-3);" />
+          </div>
+          <div class="input-group">
+            <label for="li-sentPerPara">Sentences</label>
+            <input type="number" class="input-field" id="li-sentPerPara" value="5" min="1" max="20" style="padding: var(--space-3);" />
+          </div>
         </div>
-        <div class="input-group">
-          <label for="li-sentPerPara">Sentences per paragraph</label>
-          <input type="number" class="input-field" id="li-sentPerPara" value="5" min="1" max="20" />
+        <div style="margin-top: var(--space-4);">
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: var(--fs-sm);">
+            <input type="checkbox" id="li-startLorem" checked /> <span>Start with "Lorem ipsum..."</span>
+          </label>
         </div>
       </div>
-      <div class="checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="li-startLorem" checked />
-          Start with "Lorem ipsum..."
-        </label>
+      
+      <button class="btn btn--primary btn--block btn--lg" id="btn-generate">✨ Generate Text</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          Use this generated text to fill your layouts and test design responsiveness without needing actual content.
+        </p>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-generate">Generate</button>
-      <div class="input-group">
-        <label>Generated Text</label>
-        <textarea class="input-field" id="li-output" rows="12" readonly></textarea>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated Lorem Ipsum</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy Text</button>
       </div>
-      <button class="btn btn--secondary btn--block" id="btn-copy">📋 Copy to Clipboard</button>
+      <div class="input-group" style="height: calc(100% - 48px); margin-bottom: 0;">
+        <textarea class="result-box" id="li-output" rows="12" readonly style="width: 100%; height: 100%; min-height: 340px; resize: none; border: none; outline: none;"></textarea>
+      </div>
     </div>
   `;
 

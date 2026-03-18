@@ -59,16 +59,29 @@ export function render(container: HTMLElement): void {
     // and the user didn't ask for it, I'll use a standard crypto-js style MD5 if it's small enough.
 
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="md5-input">Input Text</label>
-        <textarea class="input-field" id="md5-input" rows="6" placeholder="Enter text to generate MD5 hash..."></textarea>
+    <div class="tool-layout">
+      <div class="tool-layout__input">
+        <div class="input-group" style="height: 100%; display: flex; flex-direction: column;">
+          <label for="md5-input">Source Text</label>
+          <textarea class="input-field" id="md5-input" rows="15" placeholder="Paste or type text to generate MD5 hash..." style="flex: 1; resize: vertical; padding: var(--space-4); font-size: 1rem;"></textarea>
+        </div>
+        
+        <div class="p-card" style="margin-top: var(--space-4);">
+          <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+            <strong>Security Note:</strong> MD5 is considered cryptographically broken and should not be used for password hashing.
+          </p>
+        </div>
       </div>
-
-      <div class="input-group">
-        <label>MD5 Hash Result</label>
-        <div class="result-box" id="md5-result" style="word-break: break-all; font-family: monospace;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="md5-copy">Copy</button>
+      
+      <div class="tool-layout__output">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+          <h3 style="font-size: var(--fs-base);">MD5 Fingerprint</h3>
+          <button class="btn btn--secondary btn--sm" id="md5-copy">📋 Copy</button>
+        </div>
+        <div class="result-box" style="padding: var(--space-10); display: flex; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 200px;">
+          <div id="md5-result" style="word-break: break-all; font-family: 'JetBrains Mono'; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); text-align: center; max-width: 100%;">—</div>
+        </div>
+        <div style="margin-top: var(--space-6); text-align: center; opacity: 0.05; font-size: 5rem;">🧬</div>
       </div>
     </div>
   `;

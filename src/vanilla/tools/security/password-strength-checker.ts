@@ -1,52 +1,65 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="psc-input">Enter Password</label>
-        <div style="position:relative;">
-          <input type="password" class="input-field" id="psc-input" placeholder="Type a password to test..." style="padding-right:48px;" />
-          <button class="btn btn--icon" id="btn-toggle" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--color-text-muted);font-size:1.2rem;">👁️</button>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Password Entry</h4>
+        <div class="input-group">
+          <label for="psc-input">Security Check</label>
+          <div style="position:relative;">
+            <input type="password" class="input-field" id="psc-input" placeholder="Enter password to analyze..." style="padding: var(--space-4); padding-right: 52px; font-family: 'JetBrains Mono'; font-size: 1.125rem;" />
+            <button id="btn-toggle" style="position:absolute; right: var(--space-2); top: 50%; translate: 0 -50%; border: none; background: var(--color-surface); padding: var(--space-2); border-radius: var(--radius-md); cursor: pointer; font-size: 1.25rem;">👁️</button>
+          </div>
         </div>
-      </div>
-      
-      <div style="margin-top:var(--space-6);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-2);">
-          <span style="font-size:var(--fs-lg);font-weight:var(--fw-bold);" id="psc-status">Too Short</span>
-          <span id="psc-score" style="font-size:var(--fs-md);background:var(--color-surface-alt);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);">0 / 5</span>
-        </div>
-        <div style="height:8px;border-radius:var(--radius-full);background:var(--color-border);overflow:hidden;margin-bottom:var(--space-4);">
-          <div id="psc-bar" style="height:100%;width:0%;border-radius:var(--radius-full);transition:all var(--transition-normal);background:var(--color-danger);"></div>
+        
+        <div style="margin-top: var(--space-6);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <span id="psc-status" style="font-weight: 700; font-size: var(--fs-sm);">No input</span>
+            <span id="psc-score" style="font-size: var(--fs-xs); color: var(--color-text-muted); font-weight: 600;">SCORE: 0/5</span>
+          </div>
+          <div style="height: 12px; background: var(--color-surface-hover); border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
+            <div id="psc-bar" style="height: 100%; width: 0%; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+          </div>
         </div>
       </div>
 
-      <div class="tool-grid-2" style="margin-top:var(--space-4);">
-        <div class="result-box">
-          <h4 style="margin-bottom:var(--space-3);color:var(--color-text-secondary);font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:0.05em;">Security Checklist</h4>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-3);">
-            <li class="psc-check" id="check-length" style="display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);">
-              <span class="icon">❌</span> At least 8 characters
-            </li>
-            <li class="psc-check" id="check-upper" style="display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);">
-              <span class="icon">❌</span> Contains uppercase letter
-            </li>
-            <li class="psc-check" id="check-lower" style="display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);">
-              <span class="icon">❌</span> Contains lowercase letter
-            </li>
-            <li class="psc-check" id="check-number" style="display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);">
-              <span class="icon">❌</span> Contains number (0-9)
-            </li>
-            <li class="psc-check" id="check-symbol" style="display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);">
-              <span class="icon">❌</span> Contains special character
-            </li>
-          </ul>
-        </div>
-        
-        <div class="result-box" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--color-surface-alt);">
-          <div style="font-size:var(--fs-sm);color:var(--color-text-secondary);margin-bottom:var(--space-2);text-transform:uppercase;letter-spacing:0.05em;">Estimated Time to Crack</div>
-          <div id="psc-time" style="font-size:var(--fs-3xl);font-weight:var(--fw-bold);color:var(--color-primary);line-height:1.2;">Instantly</div>
-          <div style="font-size:var(--fs-xs);color:var(--color-text-muted);margin-top:var(--space-4);max-width:80%;">Based on standard offline dictionary/brute-force attacks against modern hashing algorithms.</div>
-        </div>
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Security Checklist</h4>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+          <li class="psc-check" id="check-length" style="display:flex; align-items:center; gap:var(--space-2); font-size: var(--fs-sm); transition: color 0.3s;">
+            <span class="icon" style="font-size: 1rem;">❌</span> At least 8 characters
+          </li>
+          <li class="psc-check" id="check-upper" style="display:flex; align-items:center; gap:var(--space-2); font-size: var(--fs-sm); transition: color 0.3s;">
+            <span class="icon" style="font-size: 1rem;">❌</span> Contains uppercase
+          </li>
+          <li class="psc-check" id="check-lower" style="display:flex; align-items:center; gap:var(--space-2); font-size: var(--fs-sm); transition: color 0.3s;">
+            <span class="icon" style="font-size: 1rem;">❌</span> Contains lowercase
+          </li>
+          <li class="psc-check" id="check-number" style="display:flex; align-items:center; gap:var(--space-2); font-size: var(--fs-sm); transition: color 0.3s;">
+            <span class="icon" style="font-size: 1rem;">❌</span> Contains numbers
+          </li>
+          <li class="psc-check" id="check-symbol" style="display:flex; align-items:center; gap:var(--space-2); font-size: var(--fs-sm); transition: color 0.3s;">
+            <span class="icon" style="font-size: 1rem;">❌</span> Contains symbols
+          </li>
+        </ul>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Vulnerability Insight</h3>
+      </div>
+      <div class="stat-card" style="text-align: center; padding: var(--space-12); background: var(--color-surface-hover); border: 2px solid var(--color-border);">
+        <div style="font-size: var(--fs-xs); text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 0.1em; font-weight: 700; margin-bottom: var(--space-4);">Est. time to crack</div>
+        <div id="psc-time" style="font-size: 3.5rem; font-weight: 800; color: var(--color-primary); letter-spacing: -0.02em; line-height: 1;">—</div>
+        <p style="margin-top: var(--space-6); font-size: var(--fs-xs); color: var(--color-text-muted); max-width: 240px; margin-inline: auto;">
+          Based on standard offline brute-force attacks against modern hashing algorithms.
+        </p>
+      </div>
+      <div style="margin-top: var(--space-8); display: flex; justify-content: center; opacity: 0.05;">
+        <span style="font-size: 8rem;">🛡️</span>
+      </div>
+    </div>
+>
     </div>
   `;
 
@@ -111,8 +124,8 @@ function checkStrength(): void {
     ];
 
     document.getElementById('psc-score')!.textContent = `${score} / 5`;
-    document.getElementById('psc-status')!.textContent = pwd.length === 0 ? 'Enter a password' : statuses[score];
-    document.getElementById('psc-status')!.style.color = pwd.length === 0 ? 'var(--color-text)' : colors[score];
+    document.getElementById('psc-status')!.textContent = pwd.length === 0 ? 'No input' : statuses[score];
+    document.getElementById('psc-status')!.style.color = pwd.length === 0 ? 'var(--color-text-muted)' : colors[score];
 
     const bar = document.getElementById('psc-bar')!;
     bar.style.width = pwd.length === 0 ? '0%' : `${(score / 5) * 100}%`;

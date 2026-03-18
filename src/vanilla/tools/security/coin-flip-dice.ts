@@ -1,21 +1,34 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="stat-card" style="cursor: pointer;" id="coin-area">
-          <div class="stat-card__value" id="coin-result" style="font-size: 4rem;">🪙</div>
-          <div class="stat-card__label">Click to Flip Coin</div>
-        </div>
-        <div class="stat-card" style="cursor: pointer;" id="dice-area">
-          <div class="stat-card__value" id="dice-result" style="font-size: 4rem;">🎲</div>
-          <div class="stat-card__label">Click to Roll Dice</div>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Tactile Actions</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+          <div class="stat-card" style="cursor: pointer; background: var(--color-surface-hover); transition: transform 0.2s;" id="coin-area">
+            <div id="coin-result" style="font-size: 5rem; margin-bottom: var(--space-2); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">🪙</div>
+            <div class="stat-card__label" style="font-weight: 700;">Flip Coin</div>
+          </div>
+          <div class="stat-card" style="cursor: pointer; background: var(--color-surface-hover); transition: transform 0.2s;" id="dice-area">
+            <div id="dice-result" style="font-size: 5rem; margin-bottom: var(--space-2); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">🎲</div>
+            <div class="stat-card__label" style="font-weight: 700;">Roll Dice</div>
+          </div>
         </div>
       </div>
-
-      <div class="input-group">
-        <label>History</label>
-        <div class="result-box" id="roll-history" style="min-height: 100px; max-height: 200px; overflow-y: auto; font-size: var(--fs-xs);"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="clear-history">Clear History</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> Use these tools for quick decision-making or as simple game mechanics.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Interactive History</h3>
+        <button class="btn btn--secondary btn--sm" id="clear-history">🗑️ Clear</button>
+      </div>
+      <div class="result-box" id="roll-history" style="height: calc(100% - 48px); min-height: 400px; overflow-y: auto; padding: var(--space-4); background: var(--color-surface-hover); display: flex; flex-direction: column; gap: var(--space-2);">
+        <p style="color: var(--color-text-muted); text-align: center; margin-top: var(--space-8); font-size: var(--fs-sm);">No history yet. Start flipping or rolling!</p>
       </div>
     </div>
   `;
@@ -28,8 +41,22 @@ export function render(container: HTMLElement): void {
     const clearBtn = document.getElementById('clear-history')!;
 
     const addHistory = (text: string) => {
-        const time = new Date().toLocaleTimeString();
-        historyDiv.innerHTML = `<div>[${time}] ${text}</div>` + historyDiv.innerHTML;
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const item = document.createElement('div');
+        item.style.padding = 'var(--space-3) var(--space-4)';
+        item.style.background = 'var(--color-surface)';
+        item.style.borderRadius = 'var(--radius-md)';
+        item.style.display = 'flex';
+        item.style.justifyContent = 'space-between';
+        item.style.alignItems = 'center';
+        item.style.boxShadow = 'var(--shadow-sm)';
+        item.innerHTML = `
+            <span style="font-weight: 600; color: var(--color-text);">${text}</span>
+            <span style="font-size: var(--fs-xs); color: var(--color-text-muted);">${time}</span>
+        `;
+        
+        if (historyDiv.querySelector('p')) historyDiv.innerHTML = '';
+        historyDiv.prepend(item);
     };
 
     coinArea.addEventListener('click', () => {
@@ -61,6 +88,6 @@ export function render(container: HTMLElement): void {
     });
 
     clearBtn.addEventListener('click', () => {
-        historyDiv.innerHTML = '';
+        historyDiv.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; margin-top: var(--space-8); font-size: var(--fs-sm);">No history yet. Start flipping or rolling!</p>';
     });
 }

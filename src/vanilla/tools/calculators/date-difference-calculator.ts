@@ -1,28 +1,50 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Select Date Range</h4>
         <div class="input-group">
-          <label for="dd-start">Start Date</label>
-          <input type="date" class="input-field" id="dd-start">
+          <label for="dd-start">Starting Date</label>
+          <input type="date" class="input-field" id="dd-start" style="padding: var(--space-3); font-size: 1rem;">
         </div>
-        <div class="input-group">
-          <label for="dd-end">End Date</label>
-          <input type="date" class="input-field" id="dd-end">
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="dd-end">Ending Date</label>
+          <input type="date" class="input-field" id="dd-end" style="padding: var(--space-3); font-size: 1rem;">
         </div>
       </div>
-
-      <div class="input-group">
-        <label>Time Difference</label>
-        <div class="result-box" id="dd-result" style="background: white; padding: var(--space-6);">
-           <div id="dd-main" style="font-size: var(--fs-xl); font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-4);">Select dates</div>
-           <div class="tool-grid-2" style="font-size: var(--fs-sm); opacity: 0.8;">
-              <div id="dd-total-days">Total Days: --</div>
-              <div id="dd-total-weeks">Total Weeks: --</div>
-              <div id="dd-total-months">Total Months: --</div>
-              <div id="dd-total-yrs">Total Years: --</div>
-           </div>
-        </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> You can use this to calculate exactly how much time is left until a deadline or how long it's been since an event.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Time Duration Analysis</h3>
+      </div>
+      <div class="result-box" id="dd-result" style="padding: var(--space-8); background: var(--color-surface-hover); min-height: 350px; display: flex; flex-direction: column; justify-content: center;">
+         <div id="dd-main" style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-8); text-align: center; line-height: 1.1;">Select dates</div>
+         
+         <div class="stats-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="stat-card" style="padding: var(--space-4); text-align: center;">
+               <div class="stat-card__value" id="dd-total-days" style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">--</div>
+               <div class="stat-card__label">Days</div>
+            </div>
+            <div class="stat-card" style="padding: var(--space-4); text-align: center;">
+               <div class="stat-card__value" id="dd-total-weeks" style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">--</div>
+               <div class="stat-card__label">Weeks</div>
+            </div>
+            <div class="stat-card" style="padding: var(--space-4); text-align: center;">
+               <div class="stat-card__value" id="dd-total-months" style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">--</div>
+               <div class="stat-card__label">Months</div>
+            </div>
+            <div class="stat-card" style="padding: var(--space-4); text-align: center;">
+               <div class="stat-card__value" id="dd-total-yrs" style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">--</div>
+               <div class="stat-card__label">Years</div>
+            </div>
+         </div>
       </div>
     </div>
   `;
@@ -67,11 +89,11 @@ export function render(container: HTMLElement): void {
             months += 12;
         }
 
-        mainRes.textContent = `${Math.abs(years)} years, ${Math.abs(months)} months, ${Math.abs(days)} days`;
-        daysRes.textContent = `Total Days: ${diffDays.toLocaleString()}`;
-        weeksRes.textContent = `Total Weeks: ${(diffDays / 7).toFixed(1)}`;
-        monthsRes.textContent = `Total Months: ${(diffDays / 30.44).toFixed(1)}`;
-        yrsRes.textContent = `Total Years: ${(diffDays / 365.25).toFixed(1)}`;
+        mainRes.textContent = `${Math.abs(years)} yrs, ${Math.abs(months)} mos, ${Math.abs(days)} days`;
+        daysRes.textContent = `${diffDays.toLocaleString()}`;
+        weeksRes.textContent = `${(diffDays / 7).toFixed(1)}`;
+        monthsRes.textContent = `${(diffDays / 30.44).toFixed(1)}`;
+        yrsRes.textContent = `${(diffDays / 365.25).toFixed(1)}`;
     };
 
     [startIn, endIn].forEach(inp => inp.addEventListener('input', calculate));

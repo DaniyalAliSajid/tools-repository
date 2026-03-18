@@ -5,58 +5,56 @@ export function render(container: HTMLElement): void {
     <style>
       .qr-tabs {
         display: flex;
+        gap: var(--space-1);
+        padding: var(--space-1);
+        background: var(--color-surface-hover);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-6);
         overflow-x: auto;
-        gap: var(--space-2);
-        padding-bottom: var(--space-4);
-        border-bottom: 2px solid var(--color-border);
-        margin-bottom: var(--space-8);
         scrollbar-width: none;
-        -ms-overflow-style: none;
       }
       .qr-tabs::-webkit-scrollbar { display: none; }
       .qr-tab {
         display: flex;
-        flex-direction: column;
         align-items: center;
         gap: var(--space-2);
-        padding: var(--space-4) var(--space-6);
-        border-radius: var(--radius-xl);
-        background: var(--color-surface-alt);
+        padding: var(--space-2) var(--space-4);
+        border-radius: var(--radius-md);
         color: var(--color-text-secondary);
         cursor: pointer;
         transition: all var(--transition-normal);
-        min-width: 140px;
-        border: 2px solid transparent;
-        flex-shrink: 0;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        font-size: var(--fs-xs);
+        font-weight: 600;
       }
-      .qr-tab:hover { 
-        background: var(--color-surface-hover); 
-        color: var(--color-primary);
-        transform: translateY(-2px);
-      }
+      .qr-tab:hover { background: var(--color-surface); }
       .qr-tab.active { 
-        background: var(--color-primary-light); 
+        background: var(--color-surface); 
         color: var(--color-primary); 
-        border-color: var(--color-primary);
-        box-shadow: var(--shadow-md);
+        border-color: var(--color-primary-border);
+        box-shadow: var(--shadow-sm);
       }
-      .qr-tab__icon { font-size: 2rem; }
-      .qr-tab__label { font-size: var(--fs-xs); font-weight: var(--fw-bold); text-transform: uppercase; white-space: nowrap; }
+      .qr-tab__icon { font-size: 1rem; }
       .qr-form { display: none; }
-      .qr-form.active { display: flex; flex-direction: column; gap: var(--space-6); animation: fadeIn 0.3s ease-out; }
+      .qr-form.active { display: flex; flex-direction: column; gap: var(--space-4); }
       
       .preview-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: var(--space-8);
-        background: var(--color-surface-alt);
-        border-radius: var(--radius-2xl);
+        padding: var(--space-10);
+        background: var(--color-surface-hover);
+        border-radius: var(--radius-xl);
         border: 2px dashed var(--color-border);
-        margin: var(--space-8) 0;
+        margin-top: var(--space-2);
         min-height: 400px;
-        position: relative;
+        transition: border-color 0.3s ease;
+      }
+      .preview-container:has(canvas:not([style*="display: none"])) {
+        border-style: solid;
+        border-color: var(--color-primary-border);
       }
       
       #qr-canvas {
@@ -71,158 +69,99 @@ export function render(container: HTMLElement): void {
       .qr-actions {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--space-4);
-        width: 100%;
-        max-width: 500px;
-      }
-      
-      .input-group label {
-        margin-bottom: var(--space-1);
-        display: block;
-      }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        gap: var(--space-3);
+        margin-top: var(--space-6);
       }
     </style>
     
-    <div class="qr-tabs" id="qr-tabs">
-      <div class="qr-tab active" data-type="website">
-        <span class="qr-tab__icon">🌐</span>
-        <span class="qr-tab__label">Website</span>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Source Type</h4>
+        <div class="qr-tabs" id="qr-tabs">
+          <div class="qr-tab active" data-type="website"><span class="qr-tab__icon">🌐</span> <span class="qr-tab__label">Website</span></div>
+          <div class="qr-tab" data-type="vcard"><span class="qr-tab__icon">📇</span> <span class="qr-tab__label">vCard</span></div>
+          <div class="qr-tab" data-type="text"><span class="qr-tab__icon">📝</span> <span class="qr-tab__label">Text</span></div>
+          <div class="qr-tab" data-type="wifi"><span class="qr-tab__icon">📶</span> <span class="qr-tab__label">WiFi</span></div>
+        </div>
+
+        <div id="qr-forms">
+          <!-- Website -->
+          <div class="qr-form active" id="form-website">
+            <div class="input-group">
+              <label for="input-website">Website URL</label>
+              <input type="url" id="input-website" class="input-field" placeholder="https://example.com" value="https://toolsrepository.com" style="padding: var(--space-3);">
+            </div>
+          </div>
+
+          <!-- vCard -->
+          <div class="qr-form" id="form-vcard">
+            <div class="tool-grid-2">
+              <div class="input-group">
+                <label for="input-vcard-name">Full Name</label>
+                <input type="text" id="input-vcard-name" class="input-field" placeholder="John Doe" style="padding: var(--space-3);">
+              </div>
+              <div class="input-group">
+                <label for="input-vcard-phone">Phone Number</label>
+                <input type="tel" id="input-vcard-phone" class="input-field" placeholder="+1234567890" style="padding: var(--space-3);">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="qr-form" id="form-text">
+            <div class="input-group">
+              <label for="input-text">Text content</label>
+              <textarea id="input-text" class="input-field" rows="4" placeholder="Enter any text here..." style="padding: var(--space-3);"></textarea>
+            </div>
+          </div>
+
+          <!-- WiFi -->
+          <div class="qr-form" id="form-wifi">
+            <div class="tool-grid-2">
+              <div class="input-group">
+                <label for="input-wifi-ssid">SSID</label>
+                <input type="text" id="input-wifi-ssid" class="input-field" placeholder="Network Name" style="padding: var(--space-3);">
+              </div>
+              <div class="input-group">
+                <label for="input-wifi-pass">Password</label>
+                <input type="password" id="input-wifi-pass" class="input-field" placeholder="WiFi Password" style="padding: var(--space-3);">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="qr-tab" data-type="vcard">
-        <span class="qr-tab__icon">📇</span>
-        <span class="qr-tab__label">vCard</span>
-      </div>
-      <div class="qr-tab" data-type="text">
-        <span class="qr-tab__icon">📝</span>
-        <span class="qr-tab__label">Text</span>
-      </div>
-      <div class="qr-tab" data-type="wifi">
-        <span class="qr-tab__icon">📶</span>
-        <span class="qr-tab__label">WiFi</span>
-      </div>
-      <div class="qr-tab" data-type="pdf">
-        <span class="qr-tab__icon">📄</span>
-        <span class="qr-tab__label">PDF</span>
-      </div>
-      <div class="qr-tab" data-type="app">
-        <span class="qr-tab__icon">📱</span>
-        <span class="qr-tab__label">App Store</span>
+
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Styling Options</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+          <div class="input-group">
+            <label for="qr-size">Size (px)</label>
+            <input type="number" class="input-field" id="qr-size" value="300" min="100" max="1000" step="50" style="padding: var(--space-3);" />
+          </div>
+          <div class="input-group">
+            <label for="qr-color">Fill Color</label>
+            <input type="color" id="qr-color" value="#1e293b" style="width: 100%; height: 44px; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 2px; background: var(--color-surface); cursor: pointer;" />
+          </div>
+        </div>
+        <button class="btn btn--primary btn--block btn--lg" id="btn-generate" style="margin-top: var(--space-6);">✨ Generate QR Code</button>
       </div>
     </div>
 
-    <div id="qr-forms">
-      <!-- Website -->
-      <div class="qr-form active" id="form-website">
-        <div class="input-group">
-          <label for="input-website">Website URL</label>
-          <input type="url" id="input-website" class="input-field" placeholder="https://example.com" value="https://toolrepository.com">
-        </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+        <h3 style="font-size: var(--fs-base);">Interactive Preview</h3>
       </div>
-
-      <!-- vCard -->
-      <div class="qr-form" id="form-vcard">
-        <div class="tool-grid-2">
-          <div class="input-group">
-            <label for="input-vcard-name">Full Name</label>
-            <input type="text" id="input-vcard-name" class="input-field" placeholder="John Doe">
-          </div>
-          <div class="input-group">
-            <label for="input-vcard-phone">Phone Number</label>
-            <input type="tel" id="input-vcard-phone" class="input-field" placeholder="+1234567890">
-          </div>
-        </div>
-        <div class="tool-grid-2">
-          <div class="input-group">
-            <label for="input-vcard-email">Email Address</label>
-            <input type="email" id="input-vcard-email" class="input-field" placeholder="john@example.com">
-          </div>
-           <div class="input-group">
-            <label for="input-vcard-org">Organization</label>
-            <input type="text" id="input-vcard-org" class="input-field" placeholder="Company Name">
-          </div>
-        </div>
-      </div>
-
-      <!-- Text -->
-      <div class="qr-form" id="form-text">
-        <div class="input-group">
-          <label for="input-text">Text content</label>
-          <textarea id="input-text" class="input-field" placeholder="Enter any text here..."></textarea>
-        </div>
-      </div>
-
-      <!-- WiFi -->
-      <div class="qr-form" id="form-wifi">
-        <div class="tool-grid-2">
-          <div class="input-group">
-            <label for="input-wifi-ssid">Network Name (SSID)</label>
-            <input type="text" id="input-wifi-ssid" class="input-field" placeholder="My WiFi Network">
-          </div>
-          <div class="input-group">
-            <label for="input-wifi-encryption">Encryption</label>
-            <select id="input-wifi-encryption" class="input-field">
-              <option value="WPA">WPA/WPA2</option>
-              <option value="WEP">WEP</option>
-              <option value="nopass">None (Open)</option>
-            </select>
-          </div>
-        </div>
-        <div class="tool-grid-2">
-          <div class="input-group">
-            <label for="input-wifi-pass">Password</label>
-            <input type="password" id="input-wifi-pass" class="input-field" placeholder="password123">
-          </div>
-          <div class="input-group" style="flex-direction: row; align-items: center; gap: var(--space-2); margin-top: auto; height: 50px;">
-            <input type="checkbox" id="input-wifi-hidden" style="width: 20px; height: 20px;">
-            <label for="input-wifi-hidden" style="margin-bottom: 0; cursor: pointer;">Hidden Network</label>
-          </div>
-        </div>
-      </div>
-
-       <!-- PDF -->
-      <div class="qr-form" id="form-pdf">
-        <div class="input-group">
-          <label for="input-pdf">PDF URL</label>
-          <input type="url" id="input-pdf" class="input-field" placeholder="https://example.com/document.pdf">
-          <p style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: var(--space-2);">Note: Host your PDF online and paste the link here.</p>
-        </div>
-      </div>
-
-      <!-- App Store -->
-      <div class="qr-form" id="form-app">
-        <div class="input-group">
-          <label for="input-app">App Store / Play Store URL</label>
-          <input type="url" id="input-app" class="input-field" placeholder="https://apps.apple.com/app/id123456">
-        </div>
-      </div>
-    </div>
-
-    <div class="section-gap" style="margin-top: var(--space-8);">
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="qr-size">Size (px)</label>
-          <input type="number" class="input-field" id="qr-size" value="300" min="100" max="1000" step="50" />
-        </div>
-        <div class="input-group">
-          <label for="qr-color">Color</label>
-          <input type="color" class="input-field" id="qr-color" value="#000000" style="padding:var(--space-1);height:44px;" />
-        </div>
-      </div>
-      
-      <button class="btn btn--primary btn--block" id="btn-generate" style="margin-top: var(--space-4); font-size: var(--fs-lg); padding: var(--space-4);">✨ Generate QR Code</button>
-
       <div class="preview-container">
-        <canvas id="qr-canvas"></canvas>
-        <div id="qr-placeholder" style="color: var(--color-text-muted); text-align: center;">Your QR code will appear here</div>
+        <canvas id="qr-canvas" style="display: none;"></canvas>
+        <div id="qr-placeholder" style="color: var(--color-text-muted); text-align: center; font-size: var(--fs-sm); max-width: 200px;">
+          <div style="font-size: 3rem; margin-bottom: var(--space-4); opacity: 0.2;">📱</div>
+          Your generated QR code will appear here.
+        </div>
       </div>
 
-      <div class="qr-actions" style="margin: 0 auto;">
-        <button class="btn btn--secondary" id="btn-download">⬇️ Download</button>
-        <button class="btn btn--secondary" id="btn-copy">📋 Copy Text</button>
+      <div class="qr-actions">
+        <button class="btn btn--secondary btn--block" id="btn-download">💾 Download PNG</button>
+        <button class="btn btn--secondary btn--block" id="btn-copy">🔗 Copy Result</button>
       </div>
     </div>
   `;

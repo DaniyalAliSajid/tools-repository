@@ -1,12 +1,13 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Structure</h4>
         <div class="input-group">
           <label for="gg-type">Gradient Type</label>
           <select class="input-field" id="gg-type">
-            <option value="linear-gradient">Linear</option>
-            <option value="radial-gradient">Radial</option>
+            <option value="linear-gradient">Linear Gradient</option>
+            <option value="radial-gradient">Radial Gradient</option>
           </select>
         </div>
         <div class="slider-group">
@@ -17,27 +18,40 @@ export function render(container: HTMLElement): void {
           <input type="range" id="gg-angle" min="0" max="360" value="135" />
         </div>
       </div>
-      <div class="tool-grid-2">
-        <div class="input-group">
-          <label for="gg-color1">Color 1</label>
-          <input type="color" class="input-field" id="gg-color1" value="#6366f1" style="padding:var(--space-1);height:44px;" />
+
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Color Stops</h4>
+        <div class="tool-grid-2">
+          <div class="input-group">
+            <label for="gg-color1">Color 1</label>
+            <input type="color" class="input-field" id="gg-color1" value="#6366f1" style="padding:var(--space-1);height:44px;" />
+          </div>
+          <div class="input-group">
+            <label for="gg-color2">Color 2</label>
+            <input type="color" class="input-field" id="gg-color2" value="#ec4899" style="padding:var(--space-1);height:44px;" />
+          </div>
         </div>
-        <div class="input-group">
-          <label for="gg-color2">Color 2</label>
-          <input type="color" class="input-field" id="gg-color2" value="#ec4899" style="padding:var(--space-1);height:44px;" />
+        <div class="input-group" style="margin-top: var(--space-4); border-top: 1px solid var(--color-border); padding-top: var(--space-4);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <label for="gg-color3">Extra Color</label>
+            <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="gg-use3" /> <span>Enable</span>
+            </label>
+          </div>
+          <input type="color" class="input-field" id="gg-color3" value="#f59e0b" style="padding:var(--space-1);height:44px;" />
         </div>
       </div>
-      <div class="input-group">
-        <label for="gg-color3">Color 3 (optional)</label>
-        <input type="color" class="input-field" id="gg-color3" value="#f59e0b" style="padding:var(--space-1);height:44px;" />
-        <label class="checkbox-label" style="margin-top:var(--space-1);">
-          <input type="checkbox" id="gg-use3" /> Use 3rd color
-        </label>
+    </div>
+    <div class="tool-layout__output">
+      <h3 style="margin-bottom: var(--space-4); font-size: var(--fs-base);">Interactive Preview</h3>
+      <div id="gg-preview" style="height:300px; border-radius:var(--radius-2xl); border:1px solid var(--color-border); box-shadow:var(--shadow-lg); transition:background var(--transition-normal); margin-bottom: var(--space-6);"></div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase;">Generated CSS</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy Styles</button>
       </div>
-      <div id="gg-preview" style="height:200px;border-radius:var(--radius-xl);border:1px solid var(--color-border);box-shadow:var(--shadow-md);transition:background var(--transition-normal);"></div>
-      <div class="result-box" style="position:relative;">
-        <code id="gg-css" style="flex:1;font-size:var(--fs-sm);">background: linear-gradient(135deg, #6366f1, #ec4899);</code>
-        <button class="btn btn--sm btn--primary result-box__copy" id="btn-copy">📋</button>
+      <div class="result-box" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5;">
+        <code id="gg-css">background: linear-gradient(135deg, #6366f1, #ec4899);</code>
       </div>
     </div>
   `;

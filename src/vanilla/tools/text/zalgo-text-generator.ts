@@ -4,22 +4,30 @@ export function render(container: HTMLElement): void {
     const ZALGO_MID = ['\u0315', '\u031b', '\u0340', '\u0341', '\u0358', '\u0321', '\u0322', '\u0327', '\u0328', '\u0334', '\u0335', '\u0336', '\u034f', '\u035c', '\u035d', '\u035e', '\u035f', '\u0360', '\u0362', '\u0338', '\u0337', '\u0361', '\u0489'];
 
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="zalgo-input">Zalgo Input</label>
-        <textarea class="input-field" id="zalgo-input" rows="5" placeholder="Enter text to corrupt..."></textarea>
+        <label for="zalgo-input">Original Text</label>
+        <textarea class="input-field" id="zalgo-input" rows="12" placeholder="Enter text to corrupt..." style="resize: vertical; font-family: var(--font-main); font-size: 1rem;"></textarea>
       </div>
 
-      <div class="slider-group">
-        <label>Corrupt Intensity: <span id="zalgo-val">5</span></label>
-        <input type="range" id="zalgo-intensity" min="1" max="20" value="5">
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Corruption Level</h4>
+        <div class="slider-group">
+          <div class="slider-group__header">
+            <span class="slider-group__label">Intensity</span>
+            <span class="slider-group__value" id="zalgo-val">5</span>
+          </div>
+          <input type="range" id="zalgo-intensity" min="1" max="20" value="5">
+        </div>
       </div>
-
-      <div class="input-group">
-        <label>Zalgo Result</label>
-        <div class="result-box" id="zalgo-result" style="height: 200px; overflow: auto; background: white; font-size: var(--fs-lg);"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="zalgo-copy">Copy Zalgo</button>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Corrupted Output</h3>
+        <button class="btn btn--secondary btn--sm" id="zalgo-copy">📋 Copy Code</button>
       </div>
+      <div class="result-box" id="zalgo-result" style="padding: var(--space-8); font-family: 'JetBrains Mono'; font-size: 1.25rem; line-height: 2; height: calc(100% - 48px); min-height: 480px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap; background: #000; color: #0f0; text-shadow: 0 0 5px rgba(0,255,0,0.5);"></div>
     </div>
   `;
 

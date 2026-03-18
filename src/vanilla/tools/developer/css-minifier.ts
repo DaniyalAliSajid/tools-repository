@@ -1,30 +1,33 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="cm-input">Paste your CSS</label>
-        <textarea class="input-field" id="cm-input" rows="8" placeholder=".container {\n  display: flex;\n  /* Main layout */\n  gap: 16px;\n}"></textarea>
+        <label for="cm-input">Source CSS</label>
+        <textarea class="input-field" id="cm-input" rows="12" placeholder=".container {\n  display: flex;\n  gap: 16px;\n}" style="resize: vertical;"></textarea>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-minify">Minify CSS</button>
-      <div class="input-group">
-        <label>Minified Output</label>
-        <textarea class="input-field" id="cm-output" rows="5" readonly></textarea>
+      <button class="btn btn--primary btn--block" id="btn-minify" style="margin-top: var(--space-4);">⚡ Minify CSS</button>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Minified Result</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy</button>
       </div>
+      <textarea class="result-box" id="cm-output" rows="8" readonly style="width: 100%; min-height: 200px; margin-bottom: var(--space-6); border: none; outline: none;"></textarea>
+      
       <div class="stats-row">
         <div class="stat-card">
           <div class="stat-card__value" id="cm-original">0</div>
-          <div class="stat-card__label">Original (bytes)</div>
+          <div class="stat-card__label">Original Size</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__value" id="cm-minified">0</div>
-          <div class="stat-card__label">Minified (bytes)</div>
+          <div class="stat-card__label">Minified Size</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__value" id="cm-savings" style="color:var(--color-success)">0%</div>
-          <div class="stat-card__label">Savings</div>
+          <div class="stat-card__value" id="cm-savings" style="color:#10b981">0%</div>
+          <div class="stat-card__label">Total Savings</div>
         </div>
       </div>
-      <button class="btn btn--secondary btn--block" id="btn-copy">📋 Copy</button>
     </div>
   `;
 

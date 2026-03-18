@@ -1,16 +1,24 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="email-input">Paste Text to Extract Emails</label>
-        <textarea class="input-field" id="email-input" rows="8" placeholder="Contact us at info@example.com or support@test.org..."></textarea>
+        <label for="email-input">Source Text</label>
+        <textarea class="input-field" id="email-input" rows="18" placeholder="Paste web content, documents, or raw text here to find all buried email addresses..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>Extracted Emails (<span id="email-count">0</span>)</label>
-        <div class="result-box" id="email-result" style="height: 150px; overflow: auto; background: white;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="email-copy">Copy All</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> This tool uses deep regex scanning to find emails hidden in messy text. Duplicates are automatically removed.
+        </p>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Emails Found (<span id="email-count" style="color: var(--color-primary); font-weight: 700;">0</span>)</h3>
+        <button class="btn btn--secondary btn--sm" id="email-copy">📋 Copy All</button>
+      </div>
+      <div class="result-box" id="email-result" style="padding: var(--space-6); font-family: 'JetBrains Mono'; font-size: 0.9375rem; line-height: 1.6; height: calc(100% - 48px); min-height: 520px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap; background: var(--color-surface-hover);"></div>
     </div>
   `;
 

@@ -1,34 +1,41 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="section-gap">
-          <div class="input-group">
-            <label for="rob-agent">User-agent</label>
-            <input type="text" id="rob-agent" class="input-field" value="*">
-          </div>
-          <div class="input-group">
-            <label for="rob-allow">Allow Paths (one per line)</label>
-            <textarea id="rob-allow" class="input-field" rows="3" placeholder="/\n/public/"></textarea>
-          </div>
-          <div class="input-group">
-            <label for="rob-disallow">Disallow Paths (one per line)</label>
-            <textarea id="rob-disallow" class="input-field" rows="3" placeholder="/admin/\n/tmp/"></textarea>
-          </div>
-          <div class="input-group">
-            <label for="rob-sitemap">Sitemap URL (optional)</label>
-            <input type="text" id="rob-sitemap" class="input-field" placeholder="https://example.com/sitemap.xml">
-          </div>
-        </div>
-
-        <div class="section-gap">
-          <div class="input-group">
-            <label>Generated robots.txt</label>
-            <div class="result-box" id="rob-code" style="font-family: monospace; white-space: pre-wrap; background: white; height: 300px; overflow: auto;"></div>
-            <button class="btn btn--secondary btn--sm result-box__copy" id="rob-copy">Copy Content</button>
-          </div>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Bot Configuration</h4>
+        <div class="input-group">
+          <label for="rob-agent">User-agent</label>
+          <input type="text" id="rob-agent" class="input-field" value="*">
+          <p style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: 4px;">Use '*' for all bots</p>
         </div>
       </div>
+      
+      <div class="tool-grid-2" style="margin-bottom: var(--space-4);">
+        <div class="input-group">
+          <label for="rob-allow">Allow Paths</label>
+          <textarea id="rob-allow" class="input-field" rows="5" placeholder="/\n/public/"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="rob-disallow">Disallow Paths</label>
+          <textarea id="rob-disallow" class="input-field" rows="5" placeholder="/admin/\n/tmp/"></textarea>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Extra Info</h4>
+        <div class="input-group">
+          <label for="rob-sitemap">Sitemap URL (Recommended)</label>
+          <input type="text" id="rob-sitemap" class="input-field" placeholder="https://example.com/sitemap.xml">
+        </div>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Robots.txt Content</h3>
+        <button class="btn btn--secondary btn--sm" id="rob-copy">📋 Copy Text</button>
+      </div>
+      <div class="result-box" id="rob-code" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 480px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

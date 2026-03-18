@@ -1,25 +1,45 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Conversion Inputs</h4>
         <div class="input-group">
-          <label for="uts-timestamp">Unix Timestamp (seconds)</label>
-          <input type="number" class="input-field" id="uts-timestamp" value="${Math.floor(Date.now() / 1000)}">
-          <button class="btn btn--secondary btn--sm" id="uts-now" style="margin-top: var(--space-2);">Set to Now</button>
+          <label for="uts-timestamp">Unix Timestamp (Seconds)</label>
+          <div style="display: flex; gap: var(--space-2);">
+            <input type="number" class="input-field" id="uts-timestamp" value="${Math.floor(Date.now() / 1000)}" style="flex: 1; padding: var(--space-3); font-family: 'JetBrains Mono';">
+            <button class="btn btn--secondary btn--sm" id="uts-now">NOW</button>
+          </div>
         </div>
-        <div class="input-group">
-          <label for="uts-date">Human Date</label>
-          <input type="datetime-local" class="input-field" id="uts-date">
+        <div class="input-group" style="margin-top: var(--space-6);">
+          <label for="uts-date">Human Date & Time</label>
+          <input type="datetime-local" class="input-field" id="uts-date" style="padding: var(--space-3);">
         </div>
       </div>
-
-      <div class="input-group">
-        <label>ISO 8601 & UTC</label>
-        <div class="result-box" id="uts-result" style="background: white; padding: var(--space-6);">
-           <div style="margin-bottom: var(--space-2);"><strong>Local:</strong> <span id="uts-local">--</span></div>
-           <div style="margin-bottom: var(--space-2);"><strong>UTC:</strong> <span id="uts-utc">--</span></div>
-           <div><strong>Relative:</strong> <span id="uts-rel">--</span></div>
-        </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Utility:</strong> Quickly convert between Unix epoch timestamps and readable date formats. Perfect for developers debugging logs or databases.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Formatted Date Output</h3>
+      </div>
+      <div class="result-box" id="uts-result" style="padding: var(--space-8); background: var(--color-surface-hover); min-height: 300px; display: flex; flex-direction: column; justify-content: center; gap: var(--space-6);">
+         <div class="stat-card" style="text-align: left; padding: var(--space-4);">
+           <div class="stat-card__label" style="margin-bottom: var(--space-1); border-bottom: 1px solid var(--color-border); padding-bottom: 4px; display: inline-block;">Local Time</div>
+           <div id="uts-local" style="font-family: 'JetBrains Mono'; font-size: 1.25rem; font-weight: 700; color: var(--color-primary);">--</div>
+         </div>
+         <div class="stat-card" style="text-align: left; padding: var(--space-4);">
+           <div class="stat-card__label" style="margin-bottom: var(--space-1); border-bottom: 1px solid var(--color-border); padding-bottom: 4px; display: inline-block;">UTC Time</div>
+           <div id="uts-utc" style="font-family: 'JetBrains Mono'; font-size: 1rem; font-weight: 600; color: var(--color-text);">--</div>
+         </div>
+         <div class="stat-card" style="text-align: left; padding: var(--space-4);">
+           <div class="stat-card__label" style="margin-bottom: var(--space-1); border-bottom: 1px solid var(--color-border); padding-bottom: 4px; display: inline-block;">Relative Difference</div>
+           <div id="uts-rel" style="font-weight: 600; color: var(--color-text-secondary);">--</div>
+         </div>
       </div>
     </div>
   `;

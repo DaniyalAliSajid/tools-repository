@@ -1,20 +1,29 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="jf-input">Paste your JSON</label>
-        <textarea class="input-field" id="jf-input" rows="10" placeholder='{"key": "value"}'></textarea>
+    <div class="tool-layout__input">
+      <div class="input-group" style="height: 100%; display: flex; flex-direction: column;">
+        <label for="jf-input">Source JSON</label>
+        <textarea class="input-field" id="jf-input" rows="18" placeholder='{"key": "value"}' style="flex: 1; font-family: 'JetBrains Mono'; resize: vertical; font-size: 0.875rem;"></textarea>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
-        <button class="btn btn--primary" id="btn-format">Format / Beautify</button>
-        <button class="btn btn--secondary" id="btn-minify">Minify</button>
-        <button class="btn btn--secondary" id="btn-validate">Validate Only</button>
-        <button class="btn btn--secondary" id="btn-copy">📋 Copy</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">JSON Actions</h4>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:var(--space-2);">
+          <button class="btn btn--primary" id="btn-format">Prettify</button>
+          <button class="btn btn--secondary" id="btn-minify">Minify</button>
+          <button class="btn btn--secondary" id="btn-validate">Validate</button>
+        </div>
+        <div id="jf-status" style="margin-top: var(--space-4); padding:var(--space-3); border-radius:var(--radius-md); font-size:var(--fs-xs); font-weight:var(--fw-medium); display:none; border: 1px solid transparent;"></div>
       </div>
-      <div id="jf-status" style="padding:var(--space-3);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:var(--fw-medium);display:none;"></div>
-      <div class="input-group">
-        <label>Output</label>
-        <textarea class="input-field" id="jf-output" rows="10" readonly></textarea>
+    </div>
+
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Formatted Output</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy</button>
+      </div>
+      <div class="input-group" style="height: calc(100% - 48px); margin-bottom: 0;">
+        <textarea class="result-box" id="jf-output" rows="18" readonly placeholder="Parsed output will appear here..." style="width: 100%; height: 100%; min-height: 500px; resize: none; border: none; outline: none; font-family: 'JetBrains Mono'; font-size: 0.875rem; background: var(--color-surface-hover);"></textarea>
       </div>
     </div>
   `;
@@ -26,8 +35,9 @@ export function render(container: HTMLElement): void {
     function showStatus(msg: string, isError: boolean): void {
         status.style.display = 'block';
         status.textContent = msg;
-        status.style.background = isError ? 'var(--color-cat-security-bg)' : 'var(--color-cat-developer-bg)';
-        status.style.color = isError ? 'var(--color-error)' : 'var(--color-success)';
+        status.style.background = isError ? 'var(--color-error-light)' : 'var(--color-primary-light)';
+        status.style.color = isError ? 'var(--color-error)' : 'var(--color-primary)';
+        status.style.borderColor = isError ? 'var(--color-error-border)' : 'var(--color-primary-border)';
     }
 
     document.getElementById('btn-format')!.addEventListener('click', () => {

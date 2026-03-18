@@ -1,19 +1,37 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="img-input">Select an Image</label>
-        <input type="file" id="img-input" class="input-field" accept="image/*" />
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Select Source</h4>
+        <div class="input-group">
+          <label for="img-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed var(--color-border); padding: var(--space-8); border-radius: var(--radius-xl); cursor: pointer; transition: all 0.2s;">
+            <span style="font-size: 2rem; margin-bottom: var(--space-2);">🖼️</span>
+            <span style="font-weight: 600; color: var(--color-primary);">Click to upload image</span>
+            <span style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: 4px;">Supports PNG, JPG, WEBP, GIF</span>
+            <input type="file" id="img-input" class="input-field" accept="image/*" style="display: none;" />
+          </label>
+        </div>
       </div>
-
-      <div class="input-group" id="preview-group" style="display: none; text-align: center; margin-top: var(--space-4);">
-        <img id="img-preview" style="max-width: 100%; max-height: 250px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);" />
+      
+      <div id="preview-group" style="display: none;">
+        <h3 style="margin-bottom: var(--space-3); font-size: var(--fs-base);">Input Preview</h3>
+        <div class="preview-area" style="min-height: 250px;">
+          <img id="img-preview" style="max-width: 90%; max-height: 220px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" />
+        </div>
       </div>
-
-      <div class="input-group" id="base64-group" style="display: none; margin-top: var(--space-4); position: relative;">
-        <label>Base64 Encoded Output</label>
-        <textarea class="input-field" id="base64-result" rows="10" readonly style="font-family: monospace; font-size: 0.875rem; width: 100%; resize: vertical; padding-right: 5rem;"></textarea>
-        <button class="btn btn--secondary btn--sm" id="base64-copy" style="position: absolute; top: 2rem; right: 0.5rem; z-index: 10;">Copy All</button>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Base64 Result</h3>
+        <button class="btn btn--secondary btn--sm" id="base64-copy">📋 Copy All</button>
+      </div>
+      <div id="base64-group" style="display: none; height: calc(100% - 48px);">
+        <textarea class="result-box" id="base64-result" rows="15" readonly style="width: 100%; height: 100%; min-height: 400px; padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: 0.75rem; line-height: 1.4; border: none; outline: none; resize: none;"></textarea>
+      </div>
+      <div id="base64-placeholder" style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-text-muted); padding: var(--space-12); text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius-2xl);">
+        <span style="font-size: 3rem; margin-bottom: var(--space-4); opacity: 0.5;">📋</span>
+        <p>The Base64 encoded string will appear here after you select an image.</p>
       </div>
     </div>
   `;
@@ -41,6 +59,7 @@ export function render(container: HTMLElement): void {
 
             previewGroup.style.display = 'block';
             base64Group.style.display = 'block';
+            document.getElementById('base64-placeholder')!.style.display = 'none';
         };
         reader.readAsDataURL(file);
     });

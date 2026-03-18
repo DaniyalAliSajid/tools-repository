@@ -3,17 +3,18 @@ export function render(container: HTMLElement): void {
     // For production, a library like js-yaml would be better, but we'll stick to basic implementation
 
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="yaml-input">YAML Input (Basic)</label>
-        <textarea class="input-field" id="yaml-input" rows="10" placeholder="name: John Doe\nage: 30\ncity: New York"></textarea>
+        <label for="yaml-input">Source YAML</label>
+        <textarea class="input-field" id="yaml-input" rows="18" placeholder="name: John Doe\nage: 30\ncity: New York" style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>JSON Result</label>
-        <div class="result-box" id="yaml-result" style="height: 250px; overflow: auto; background: white;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="yaml-copy">Copy JSON</button>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated JSON</h3>
+        <button class="btn btn--secondary btn--sm" id="yaml-copy">📋 Copy Code</button>
       </div>
+      <div class="result-box" id="yaml-result" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 480px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

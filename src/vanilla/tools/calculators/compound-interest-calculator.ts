@@ -1,38 +1,54 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="ci-principal">Initial Investment ($)</label>
-        <input type="number" class="input-field" id="ci-principal" placeholder="1000" step="100">
-      </div>
-
-      <div class="input-group">
-        <label for="ci-contribution">Monthly Contribution ($)</label>
-        <input type="number" class="input-field" id="ci-contribution" value="0" step="50">
-      </div>
-
-      <div class="input-group">
-        <label for="ci-rate">Duration (Years)</label>
-        <input type="number" class="input-field" id="ci-years" value="10" step="1">
-      </div>
-
-      <div class="input-group">
-        <label for="ci-rate">Annual Interest Rate (%)</label>
-        <input type="number" class="input-field" id="ci-rate" value="7" step="0.1">
-      </div>
-
-      <div class="stats-row" id="ci-stats">
-        <div class="stat-card">
-          <div class="stat-card__value" id="ci-total">$0.00</div>
-          <div class="stat-card__label">Future Value</div>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Investment Plan</h4>
+        <div class="input-group">
+          <label for="ci-principal">Initial Investment ($)</label>
+          <input type="number" class="input-field" id="ci-principal" placeholder="1000" step="100" style="padding: var(--space-3);">
         </div>
-        <div class="stat-card">
-          <div class="stat-card__value" id="ci-invested">$0.00</div>
-          <div class="stat-card__label">Total Invested</div>
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="ci-contribution">Monthly Contribution ($)</label>
+          <input type="number" class="input-field" id="ci-contribution" value="0" step="50" style="padding: var(--space-3);">
         </div>
-        <div class="stat-card">
-          <div class="stat-card__value" id="ci-interest">$0.00</div>
-          <div class="stat-card__label">Total Interest</div>
+        <div class="tool-grid-2" style="margin-top: var(--space-4);">
+          <div class="input-group">
+            <label for="ci-years">Duration (Years)</label>
+            <input type="number" class="input-field" id="ci-years" value="10" step="1" style="padding: var(--space-3);">
+          </div>
+          <div class="input-group">
+            <label for="ci-rate">Annual Rate (%)</label>
+            <input type="number" class="input-field" id="ci-rate" value="7" step="0.1" style="padding: var(--space-3);">
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Power of Compounding:</strong> Reinvesting your earnings allows your investment to grow exponentially over time.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Growth Projection</h3>
+      </div>
+      
+      <div class="stats-row" id="ci-stats" style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div class="stat-card" style="background: var(--color-primary-light); border-color: var(--color-primary-border);">
+          <div class="stat-card__label" style="color: var(--color-primary);">Future Value</div>
+          <div class="stat-card__value" id="ci-total" style="font-size: 3rem; color: var(--color-primary);">$0.00</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+          <div class="stat-card">
+            <div class="stat-card__label">Total Invested</div>
+            <div class="stat-card__value" id="ci-invested" style="font-size: var(--fs-xl);">$0.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Total Interest</div>
+            <div class="stat-card__value" id="ci-interest" style="font-size: var(--fs-xl); color: var(--color-success);">$0.00</div>
+          </div>
         </div>
       </div>
     </div>

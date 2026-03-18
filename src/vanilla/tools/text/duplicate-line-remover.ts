@@ -1,40 +1,48 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Input Options</h4>
+        <div class="checkbox-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="dl-case" /> <span>Ignore Case</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="dl-trim" checked /> <span>Trim Space</span>
+          </label>
+        </div>
+      </div>
+      
       <div class="input-group">
-        <label for="dl-input">Paste your text (one item per line)</label>
-        <textarea class="input-field" id="dl-input" rows="8" placeholder="Line 1\nLine 2\nLine 1\nLine 3\nLine 2"></textarea>
+        <label for="dl-input">Paste Text (One per line)</label>
+        <textarea class="input-field" id="dl-input" rows="16" placeholder="Line 1\nLine 2\nLine 1\nLine 3\nLine 2" style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem;"></textarea>
       </div>
-      <div class="checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="dl-case" />
-          Case-insensitive comparison
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="dl-trim" checked />
-          Trim whitespace
-        </label>
+      
+      <button class="btn btn--primary btn--block btn--lg" id="btn-remove" style="margin-top: var(--space-4);">⚡ Remove Duplicates</button>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Unique Results</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy Code</button>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-remove">Remove Duplicates</button>
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-card__value" id="dl-original">0</div>
-          <div class="stat-card__label">Original Lines</div>
+
+      <div class="stats-row" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-4);">
+        <div class="stat-card" style="padding: var(--space-3); text-align: center;">
+          <div class="stat-card__value" id="dl-original" style="font-size: var(--fs-lg); font-weight: 700;">0</div>
+          <div class="stat-card__label" style="font-size: var(--fs-xs); color: var(--color-text-muted);">Original</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__value" id="dl-unique">0</div>
-          <div class="stat-card__label">Unique Lines</div>
+        <div class="stat-card" style="padding: var(--space-3); text-align: center;">
+          <div class="stat-card__value" id="dl-unique" style="font-size: var(--fs-lg); font-weight: 700; color: var(--color-primary);">0</div>
+          <div class="stat-card__label" style="font-size: var(--fs-xs); color: var(--color-text-muted);">Unique</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__value" id="dl-removed">0</div>
-          <div class="stat-card__label">Removed</div>
+        <div class="stat-card" style="padding: var(--space-3); text-align: center;">
+          <div class="stat-card__value" id="dl-removed" style="font-size: var(--fs-lg); font-weight: 700; color: #ef4444;">0</div>
+          <div class="stat-card__label" style="font-size: var(--fs-xs); color: var(--color-text-muted);">Removed</div>
         </div>
       </div>
-      <div class="input-group">
-        <label>Result</label>
-        <textarea class="input-field" id="dl-output" rows="8" readonly></textarea>
-      </div>
-      <button class="btn btn--secondary btn--block" id="btn-copy">📋 Copy Result</button>
+
+      <textarea class="input-field" id="dl-output" rows="18" readonly style="resize: vertical; font-family: 'JetBrains Mono'; font-size: 0.875rem; background: var(--color-surface-hover); border-color: var(--color-border);"></textarea>
     </div>
   `;
 

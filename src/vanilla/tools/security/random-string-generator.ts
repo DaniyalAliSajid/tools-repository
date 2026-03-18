@@ -1,33 +1,49 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="rsg-length">String Length: <span id="rsg-len-val">16</span></label>
-        <input type="range" id="rsg-length" min="1" max="128" value="16">
-      </div>
-
-      <div class="checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="rsg-upper" checked> Uppercase (A-Z)
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="rsg-lower" checked> Lowercase (a-z)
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="rsg-numbers" checked> Numbers (0-9)
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="rsg-symbols"> Symbols (!@#$%...)
-        </label>
-      </div>
-
-      <div class="input-group">
-        <label>Generated String</label>
-        <div class="result-box" id="rsg-result" style="word-break: break-all; font-family: monospace;"></div>
-        <div style="display: flex; gap: var(--space-2); margin-top: var(--space-2);">
-          <button class="btn btn--primary btn--sm" id="rsg-regen">Regenerate</button>
-          <button class="btn btn--secondary btn--sm" id="rsg-copy">Copy</button>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">String parameters</h4>
+        <div class="slider-group">
+          <div class="slider-group__header" style="margin-bottom: var(--space-2);">
+            <span class="slider-group__label" style="font-weight: 600;">Length</span>
+            <span class="slider-group__value" id="rsg-len-val" style="color: var(--color-primary); font-weight: 800;">16</span>
+          </div>
+          <input type="range" id="rsg-length" min="1" max="128" value="16" style="width: 100%; cursor: pointer; accent-color: var(--color-primary);">
         </div>
+
+        <div class="checkbox-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-6);">
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="rsg-upper" checked> <span>Uppercase</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="rsg-lower" checked> <span>Lowercase</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="rsg-numbers" checked> <span>Numbers</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="rsg-symbols"> <span>Symbols</span>
+          </label>
+        </div>
+      </div>
+      
+      <button class="btn btn--primary btn--block btn--lg" id="rsg-regen" style="margin-top: var(--space-4);">⚡ Generate Random String</button>
+    </div>
+
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated Result</h3>
+        <button class="btn btn--secondary btn--sm" id="rsg-copy">📋 Copy</button>
+      </div>
+      
+      <div class="result-box" style="padding: var(--space-10); display: flex; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 250px;">
+        <div id="rsg-result" style="word-break: break-all; font-family: 'JetBrains Mono'; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); text-align: center;"></div>
+      </div>
+      
+      <div class="p-card" style="margin-top: var(--space-6);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Utility:</strong> Perfect for generating secure tokens, keys, or random identifiers for development.
+        </p>
       </div>
     </div>
   `;

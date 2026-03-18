@@ -12,32 +12,57 @@ export function render(container: HTMLElement): void {
   };
 
   container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div id="gpa-rows">
-        <div class="tool-grid-2 gpa-row" style="margin-bottom: var(--space-4);">
-          <div class="input-group">
-            <label>Grade</label>
-            <select class="input-field gpa-grade">
+        <div class="gpa-row p-card" style="margin-bottom: var(--space-4); background: var(--color-surface-hover); padding: var(--space-4); display: flex; gap: var(--space-4);">
+          <div class="input-group" style="flex: 1.5;">
+            <label>Grade Secured</label>
+            <select class="input-field gpa-grade" style="padding: var(--space-3);">
               ${getGradeOptions()}
             </select>
           </div>
-          <div class="input-group">
-            <label>Credits</label>
-            <input type="number" class="input-field gpa-credit" value="3" min="1">
+          <div class="input-group" style="flex: 1;">
+            <label>Unit Credits</label>
+            <input type="number" class="input-field gpa-credit" value="3" min="1" style="padding: var(--space-3);">
           </div>
         </div>
       </div>
 
-      <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-6);">
-        <button class="btn btn--secondary btn--sm" id="gpa-add">Add Course</button>
-        <button class="btn btn--secondary btn--sm" id="gpa-reset">Reset</button>
+      <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6);">
+        <button class="btn btn--secondary" id="gpa-add" style="flex: 1; padding: var(--space-4);">➕ Add Course</button>
+        <button class="btn btn--outline" id="gpa-reset" style="flex: 1; padding: var(--space-4);">🔄 Reset All</button>
       </div>
-
-      <div class="input-group">
-        <label>Cumulative GPA</label>
-        <div class="result-box" id="gpa-result" style="text-align: center; padding: var(--space-8);">
-           <div id="gpa-score" style="font-size: 4rem; font-weight: 700; color: var(--color-primary);">4.00</div>
-           <div id="gpa-details" style="margin-top: var(--space-2); opacity: 0.7;">Total Credits: 3</div>
+      
+      <div class="p-card">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Method:</strong> GPA is calculated as the weighted average of grade points based on course credits.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Semester Performance</h3>
+      </div>
+      <div class="result-box" style="padding: var(--space-10); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 350px;">
+        <div style="font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">SEMESTER GPA</div>
+        <div id="gpa-score" style="font-size: 6rem; font-weight: 900; color: var(--color-primary); line-height: 1;">4.00</div>
+        
+        <div id="gpa-details" style="margin-top: var(--space-8); font-size: var(--fs-sm); font-weight: 600; color: var(--color-text-secondary); padding: var(--space-2) var(--space-4); background: var(--color-primary-light); border-radius: var(--radius-full);">Total Credits: 3</div>
+        
+        <div style="margin-top: var(--space-10); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); width: 100%;">
+          <div style="text-align: center;">
+            <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Points</div>
+            <div style="font-weight: 700;">12.0</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Status</div>
+            <div style="font-weight: 700; color: #10b981;">Excellent</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Scale</div>
+            <div style="font-weight: 700;">4.0</div>
+          </div>
         </div>
       </div>
     </div>
@@ -71,18 +96,22 @@ export function render(container: HTMLElement): void {
 
   const addRow = () => {
     const div = document.createElement('div');
-    div.className = 'tool-grid-2 gpa-row';
+    div.className = 'gpa-row p-card';
     div.style.marginBottom = 'var(--space-4)';
+    div.style.background = 'var(--color-surface-hover)';
+    div.style.padding = 'var(--space-4)';
+    div.style.display = 'flex';
+    div.style.gap = 'var(--space-4)';
     div.innerHTML = `
-      <div class="input-group">
-        <label>Grade</label>
-        <select class="input-field gpa-grade">
+      <div class="input-group" style="flex: 1.5;">
+        <label>Grade Secured</label>
+        <select class="input-field gpa-grade" style="padding: var(--space-3);">
           ${getGradeOptions()}
         </select>
       </div>
-      <div class="input-group">
-        <label>Credits</label>
-        <input type="number" class="input-field gpa-credit" value="3" min="1">
+      <div class="input-group" style="flex: 1;">
+        <label>Unit Credits</label>
+        <input type="number" class="input-field gpa-credit" value="3" min="1" style="padding: var(--space-3);">
       </div>
     `;
     rowsContainer.appendChild(div);

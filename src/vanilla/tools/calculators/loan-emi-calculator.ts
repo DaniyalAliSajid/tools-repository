@@ -2,46 +2,58 @@ import { getCurrencyOptionsHTML } from '../../utils/currencies';
 
 export function render(container: HTMLElement): void {
   container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Loan parameters</h4>
         <div class="input-group">
-          <label for="emi-currency">Currency</label>
-          <select id="emi-currency" class="input-field">
+          <label for="emi-currency">Currency Selection</label>
+          <select id="emi-currency" class="input-field" style="padding: var(--space-3);">
             ${getCurrencyOptionsHTML()}
           </select>
         </div>
-        <div class="input-group">
-          <label for="emi-amount">Loan Amount</label>
-          <input type="number" class="input-field" id="emi-amount" placeholder="e.g. 500000" min="1" />
+        <div class="input-group" style="margin-top: var(--space-4);">
+          <label for="emi-amount">Total Principal Amount</label>
+          <input type="number" class="input-field" id="emi-amount" value="500000" style="padding: var(--space-3);" />
         </div>
-        <div class="input-group">
-          <label for="emi-rate">Annual Interest Rate (%)</label>
-          <input type="number" class="input-field" id="emi-rate" placeholder="e.g. 8.5" min="0.1" step="0.1" />
+        <div class="tool-grid-2" style="margin-top: var(--space-4);">
+          <div class="input-group">
+            <label for="emi-rate">Interest Rate (%)</label>
+            <input type="number" class="input-field" id="emi-rate" value="8.5" step="0.1" style="padding: var(--space-3);" />
+          </div>
+          <div class="input-group">
+            <label for="emi-tenure">Tenure (Months)</label>
+            <input type="number" class="input-field" id="emi-tenure" value="60" style="padding: var(--space-3);" />
+          </div>
         </div>
-        <div class="input-group">
-          <label for="emi-tenure">Loan Tenure (months)</label>
-          <input type="number" class="input-field" id="emi-tenure" placeholder="e.g. 60" min="1" />
-        </div>
+        <button class="btn btn--primary btn--block btn--lg" id="btn-calc" style="margin-top: var(--space-6);">📊 Calculate Breakdown</button>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-calc">Calculate EMI</button>
-      <div id="emi-results" style="display:none">
-        <div style="text-align:center;padding:var(--space-6);background:var(--color-surface-alt);border-radius:var(--radius-lg);margin-bottom:var(--space-4);">
-          <div style="font-size:var(--fs-sm);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em">Monthly EMI</div>
-          <div style="font-size:var(--fs-4xl);font-weight:var(--fw-bold);color:var(--color-primary);" id="emi-monthly">—</div>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Did you know?</strong> A lower interest rate can save you thousands over long-term tenures. Use this to compare different loan offers.
+        </p>
+      </div>
+    </div>
+    <div class="tool-layout__output">
+      <h3 style="margin-bottom: var(--space-4); font-size: var(--fs-base);">EMI Summary</h3>
+      <div id="emi-results">
+        <div class="stat-card" style="margin-bottom: var(--space-6); background: #f0fdf4; border-color: #bbf7d0;">
+          <div class="stat-card__label" style="color: #16a34a;">Monthly EMI</div>
+          <div class="stat-card__value" id="emi-monthly" style="font-size: 3.5rem; color: #16a34a;">$0.00</div>
         </div>
         <div class="stats-row">
           <div class="stat-card">
-            <div class="stat-card__value" id="emi-principal">—</div>
             <div class="stat-card__label">Principal</div>
+            <div class="stat-card__value" id="emi-principal" style="font-size: var(--fs-xl);">—</div>
           </div>
           <div class="stat-card">
-            <div class="stat-card__value" id="emi-interest" style="color:var(--color-error)">—</div>
             <div class="stat-card__label">Total Interest</div>
+            <div class="stat-card__value" id="emi-interest" style="font-size: var(--fs-xl); color: #ef4444;">—</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__value" id="emi-total">—</div>
-            <div class="stat-card__label">Total Payment</div>
-          </div>
+        </div>
+        <div class="stat-card" style="margin-top: var(--space-4);">
+          <div class="stat-card__label">Total Payment</div>
+          <div class="stat-card__value" id="emi-total" style="font-size: var(--fs-2xl);">$0.00</div>
         </div>
       </div>
     </div>
@@ -63,7 +75,7 @@ export function render(container: HTMLElement): void {
     const totalPayment = emi * n;
     const totalInterest = totalPayment - P;
 
-    document.getElementById('emi-results')!.style.display = 'block';
+    // document.getElementById('emi-results')!.style.display = 'block';
     document.getElementById('emi-monthly')!.textContent = `${symbol}${emi.toFixed(2)}`;
     document.getElementById('emi-principal')!.textContent = `${symbol}${P.toLocaleString()}`;
     document.getElementById('emi-interest')!.textContent = `${symbol}${totalInterest.toFixed(2)}`;

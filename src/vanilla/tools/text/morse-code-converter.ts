@@ -15,22 +15,27 @@ const REVERSE_MORSE: { [key: string]: string } = Object.entries(MORSE_CODE).redu
 
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="morse-input">Text or Morse Code</label>
-        <textarea class="input-field" id="morse-input" rows="6" placeholder="Enter text to translate to Morse, or Morse code to translate to text..."></textarea>
-      </div>
-
-      <div class="toggle-group" id="morse-mode">
-        <button class="toggle-group__btn active" data-mode="to-morse">Text to Morse</button>
-        <button class="toggle-group__btn" data-mode="to-text">Morse to Text</button>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Mode Selection</h4>
+        <div class="toggle-group" id="morse-mode" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-1); background: var(--color-surface-hover); padding: 4px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+          <button class="toggle-group__btn active" data-mode="to-morse" style="padding: 10px; border-radius: var(--radius-md); font-size: var(--fs-xs);">Text to Morse</button>
+          <button class="toggle-group__btn" data-mode="to-text" style="padding: 10px; border-radius: var(--radius-md); font-size: var(--fs-xs);">Morse to Text</button>
+        </div>
       </div>
 
       <div class="input-group">
-        <label>Result</label>
-        <div class="result-box" id="morse-result"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="morse-copy">Copy</button>
+        <label for="morse-input">Source Content</label>
+        <textarea class="input-field" id="morse-input" rows="14" placeholder="Enter text or Morse code here..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Translation Result</h3>
+        <button class="btn btn--secondary btn--sm" id="morse-copy">📋 Copy</button>
+      </div>
+      <div class="result-box" id="morse-result" style="padding: var(--space-6); font-family: 'JetBrains Mono'; font-size: 1.25rem; font-weight: 600; line-height: 1.8; color: var(--color-primary); height: calc(100% - 48px); min-height: 520px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap; background: var(--color-surface-hover);"></div>
     </div>
   `;
 

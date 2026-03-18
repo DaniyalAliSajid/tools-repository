@@ -1,27 +1,39 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Financial Data</h4>
         <div class="input-group">
-          <label for="inf-amount">Initial Amount ($)</label>
-          <input type="number" class="input-field" id="inf-amount" value="1000">
+          <label for="inf-amount">Initial Principal Amount</label>
+          <input type="number" class="input-field" id="inf-amount" value="1000" style="padding: var(--space-3);">
         </div>
-        <div class="input-group">
-          <label for="inf-rate">Avg. Annual Inflation (%)</label>
-          <input type="number" class="input-field" id="inf-rate" value="3" step="0.1">
-        </div>
-        <div class="input-group">
-          <label for="inf-years">Number of Years</label>
-          <input type="number" class="input-field" id="inf-years" value="10">
+        <div class="tool-grid-2" style="margin-top: var(--space-4);">
+          <div class="input-group">
+            <label for="inf-rate">Annual Inflation (%)</label>
+            <input type="number" class="input-field" id="inf-rate" value="3" step="0.1" style="padding: var(--space-3);">
+          </div>
+          <div class="input-group">
+            <label for="inf-years">Duration (Years)</label>
+            <input type="number" class="input-field" id="inf-years" value="10" style="padding: var(--space-3);">
+          </div>
         </div>
       </div>
 
-      <div class="input-group">
-        <label>Future Value (Purchasing Power)</label>
-        <div class="result-box" id="inf-result" style="text-align: center; padding: var(--space-8);">
-           <div id="inf-value" style="font-size: 3rem; font-weight: 700; color: #991b1b;">$744.09</div>
-           <div id="inf-details" style="margin-top: var(--space-2); opacity: 0.7;">Effective loss: 25.59%</div>
-        </div>
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Concept:</strong> Inflation reduces the purchasing power of your money over time. This calculation shows what your initial amount will be "worth" in the future.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Purchasing Power Result</h3>
+      </div>
+      <div class="result-box" id="inf-result" style="padding: var(--space-12); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 250px;">
+         <div style="font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">FUTURE VALUE</div>
+         <div id="inf-value" style="font-size: 4rem; font-weight: 900; color: #991b1b; line-height: 1;">$744.09</div>
+         <div id="inf-details" style="margin-top: var(--space-6); font-weight: 600; color: var(--color-text-secondary); background: rgba(153, 27, 27, 0.1); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);">Effective loss: 25.59%</div>
       </div>
     </div>
   `;

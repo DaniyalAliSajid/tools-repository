@@ -1,34 +1,37 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="tool-grid-2">
-        <div class="section-gap">
-          <div class="input-group">
-            <label for="meta-title">Site Title</label>
-            <input type="text" id="meta-title" class="input-field" placeholder="My Awesome Website">
-          </div>
-          <div class="input-group">
-            <label for="meta-desc">Description</label>
-            <textarea id="meta-desc" class="input-field" rows="3" placeholder="A brief summary of your site..."></textarea>
-          </div>
-          <div class="input-group">
-            <label for="meta-keys">Keywords (comma separated)</label>
-            <input type="text" id="meta-keys" class="input-field" placeholder="web, developer, tools">
-          </div>
-          <div class="input-group">
-            <label for="meta-author">Author</label>
-            <input type="text" id="meta-author" class="input-field" placeholder="John Doe">
-          </div>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Basic Configuration</h4>
+        <div class="input-group">
+          <label for="meta-title">Page Title</label>
+          <input type="text" id="meta-title" class="input-field" placeholder="My Awesome Website">
         </div>
-
-        <div class="section-gap">
-          <div class="input-group">
-            <label>Generated Meta Tags</label>
-            <div class="result-box" id="meta-code" style="font-family: monospace; white-space: pre-wrap; background: white; height: 300px; overflow: auto;"></div>
-            <button class="btn btn--secondary btn--sm result-box__copy" id="meta-copy">Copy Tags</button>
-          </div>
+        <div class="input-group">
+          <label for="meta-desc">Meta Description</label>
+          <textarea id="meta-desc" class="input-field" rows="3" placeholder="A brief summary of your site (max 160 characters recommended)..."></textarea>
         </div>
       </div>
+      
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Advanced Detail</h4>
+        <div class="input-group">
+          <label for="meta-keys">Keywords (SEO)</label>
+          <input type="text" id="meta-keys" class="input-field" placeholder="web, developer, tools, seo">
+        </div>
+        <div class="input-group">
+          <label for="meta-author">Site Author</label>
+          <input type="text" id="meta-author" class="input-field" placeholder="John Doe">
+        </div>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated HTML Tags</h3>
+        <button class="btn btn--secondary btn--sm" id="meta-copy">📋 Copy Code</button>
+      </div>
+      <div class="result-box" id="meta-code" style="padding: var(--space-4); font-family: 'JetBrains Mono'; font-size: var(--fs-sm); line-height: 1.5; height: calc(100% - 48px); min-height: 480px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap;"></div>
     </div>
   `;
 

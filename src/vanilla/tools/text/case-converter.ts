@@ -1,21 +1,30 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="cc-input">Enter your text</label>
-        <textarea class="input-field" id="cc-input" rows="6" placeholder="Type your text here..."></textarea>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Transform Actions</h4>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-2);">
+          <button class="btn btn--secondary btn--sm" id="btn-upper">Uppercase</button>
+          <button class="btn btn--secondary btn--sm" id="btn-lower">Lowercase</button>
+          <button class="btn btn--secondary btn--sm" id="btn-title">Title Case</button>
+          <button class="btn btn--secondary btn--sm" id="btn-sentence">Sentence Case</button>
+          <button class="btn btn--secondary btn--sm" id="btn-toggle" style="grid-column: span 2;">Toggle Case</button>
+        </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
-        <button class="btn btn--primary" id="btn-upper">UPPERCASE</button>
-        <button class="btn btn--primary" id="btn-lower">lowercase</button>
-        <button class="btn btn--primary" id="btn-title">Title Case</button>
-        <button class="btn btn--primary" id="btn-sentence">Sentence case</button>
-        <button class="btn btn--primary" id="btn-toggle">tOGGLE cASE</button>
-        <button class="btn btn--secondary" id="btn-copy">📋 Copy</button>
-      </div>
+      
       <div class="input-group">
-        <label>Result</label>
-        <textarea class="input-field" id="cc-output" rows="6" readonly placeholder="Converted text will appear here..."></textarea>
+        <label for="cc-input">Original Text</label>
+        <textarea class="input-field" id="cc-input" rows="14" placeholder="Type your text here..." style="resize: vertical; font-size: 1rem;"></textarea>
+      </div>
+    </div>
+
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+        <h3 style="font-size: var(--fs-base);">Converted Result</h3>
+        <button class="btn btn--primary btn--sm" id="btn-copy">📋 Copy Text</button>
+      </div>
+      <div class="input-group" style="height: calc(100% - 44px);">
+        <textarea class="result-box" id="cc-output" rows="8" readonly placeholder="Converted text will appear here..." style="width: 100%; height: 100%; min-height: 240px; resize: none; border: none; outline: none;"></textarea>
       </div>
     </div>
   `;

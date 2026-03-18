@@ -1,30 +1,33 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="jm-input">Paste your JavaScript</label>
-        <textarea class="input-field" id="jm-input" rows="8" placeholder="function hello() {\n  // Say hello\n  console.log('Hello World');\n}"></textarea>
+        <label for="jm-input">Source JavaScript</label>
+        <textarea class="input-field" id="jm-input" rows="12" placeholder="function hello() {\n  console.log('Hello');\n}" style="resize: vertical;"></textarea>
       </div>
-      <button class="btn btn--primary btn--block" id="btn-minify">Minify JavaScript</button>
-      <div class="input-group">
-        <label>Minified Output</label>
-        <textarea class="input-field" id="jm-output" rows="5" readonly></textarea>
+      <button class="btn btn--primary btn--block" id="btn-minify" style="margin-top: var(--space-4);">⚡ Minify JS</button>
+    </div>
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Minified Result</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy</button>
       </div>
+      <textarea class="result-box" id="jm-output" rows="8" readonly style="width: 100%; min-height: 200px; margin-bottom: var(--space-6); border: none; outline: none;"></textarea>
+      
       <div class="stats-row">
         <div class="stat-card">
           <div class="stat-card__value" id="jm-original">0</div>
-          <div class="stat-card__label">Original (bytes)</div>
+          <div class="stat-card__label">Original Size</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__value" id="jm-minified">0</div>
-          <div class="stat-card__label">Minified (bytes)</div>
+          <div class="stat-card__label">Minified Size</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__value" id="jm-savings" style="color:var(--color-success)">0%</div>
-          <div class="stat-card__label">Savings</div>
+          <div class="stat-card__value" id="jm-savings" style="color:#10b981">0%</div>
+          <div class="stat-card__label">Total Savings</div>
         </div>
       </div>
-      <button class="btn btn--secondary btn--block" id="btn-copy">📋 Copy</button>
     </div>
   `;
 

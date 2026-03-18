@@ -1,16 +1,27 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="input-group">
-        <label for="sha-input">Input Text</label>
-        <textarea class="input-field" id="sha-input" rows="6" placeholder="Enter text to generate SHA-256 hash..."></textarea>
+    <div class="tool-layout__input">
+      <div class="input-group" style="height: 100%; display: flex; flex-direction: column;">
+        <label for="sha-input">Source Text</label>
+        <textarea class="input-field" id="sha-input" rows="15" placeholder="Enter text to generate SHA-256 hash..." style="flex: 1; resize: vertical; padding: var(--space-4); font-size: 1rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>SHA-256 Hash Result</label>
-        <div class="result-box" id="sha-result" style="word-break: break-all; font-family: monospace;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="sha-copy">Copy</button>
+      
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> SHA-256 is a member of the SHA-2 family and is widely used for secure hashing and digital signatures.
+        </p>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Secure Hash Result</h3>
+        <button class="btn btn--secondary btn--sm" id="sha-copy">📋 Copy</button>
+      </div>
+      <div class="result-box" style="padding: var(--space-10); display: flex; align-items: center; justify-content: center; background: var(--color-surface-hover); min-height: 200px;">
+        <div id="sha-result" style="word-break: break-all; font-family: 'JetBrains Mono'; font-size: 1.25rem; font-weight: 700; color: var(--color-primary); text-align: center; max-width: 100%;">—</div>
+      </div>
+      <div style="margin-top: var(--space-6); text-align: center; opacity: 0.05; font-size: 5rem;">🔑</div>
     </div>
   `;
 

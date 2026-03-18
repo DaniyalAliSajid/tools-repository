@@ -1,32 +1,59 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <div class="slider-group">
-        <div class="slider-group__header">
-          <span class="slider-group__label">Password Length</span>
-          <span class="slider-group__value" id="pg-len-val">16</span>
+    <div class="tool-layout__input">
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Length Control</h4>
+        <div class="slider-group">
+          <div class="slider-group__header" style="margin-bottom: var(--space-2);">
+            <span class="slider-group__label" style="font-weight: 600;">Characters count</span>
+            <span class="slider-group__value" id="pg-len-val" style="color: var(--color-primary); font-weight: 800;">16</span>
+          </div>
+          <input type="range" id="pg-length" min="4" max="128" value="16" style="width: 100%; cursor: pointer; accent-color: var(--color-primary);" />
         </div>
-        <input type="range" id="pg-length" min="4" max="128" value="16" />
       </div>
-      <div class="checkbox-group">
-        <label class="checkbox-label"><input type="checkbox" id="pg-upper" checked /> Uppercase (A-Z)</label>
-        <label class="checkbox-label"><input type="checkbox" id="pg-lower" checked /> Lowercase (a-z)</label>
-        <label class="checkbox-label"><input type="checkbox" id="pg-numbers" checked /> Numbers (0-9)</label>
-        <label class="checkbox-label"><input type="checkbox" id="pg-symbols" checked /> Symbols (!@#$)</label>
-      </div>
-      <button class="btn btn--primary btn--block" id="btn-generate">🔑 Generate Password</button>
-      <div class="result-box" style="font-size:var(--fs-lg);text-align:center;word-break:break-all;">
-        <span id="pg-output" style="flex:1;user-select:all;">Click generate to create a password</span>
-        <button class="btn btn--sm btn--primary result-box__copy" id="btn-copy">📋 Copy</button>
-      </div>
-      <div style="margin-top:var(--space-2);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-1);">
-          <span style="font-size:var(--fs-sm);color:var(--color-text-secondary)">Strength</span>
-          <span id="pg-strength-text" style="font-size:var(--fs-sm);font-weight:var(--fw-semibold);">—</span>
+
+      <div class="p-card" style="margin-bottom: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Security Options</h4>
+        <div class="checkbox-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="pg-upper" checked /> <span>Uppercase</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="pg-lower" checked /> <span>Lowercase</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="pg-numbers" checked /> <span>Numbers</span>
+          </label>
+          <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="pg-symbols" checked /> <span>Symbols</span>
+          </label>
         </div>
-        <div style="height:6px;border-radius:var(--radius-full);background:var(--color-border);overflow:hidden;">
-          <div id="pg-strength-bar" style="height:100%;width:0%;border-radius:var(--radius-full);transition:all var(--transition-normal);"></div>
+      </div>
+      
+      <button class="btn btn--primary btn--block btn--lg" id="btn-generate">⚡ Generate New Password</button>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Generated Password</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy">📋 Copy</button>
+      </div>
+      
+      <div class="result-box" style="padding: var(--space-8); display: flex; align-items: center; justify-content: center; min-height: 150px; margin-bottom: var(--space-6);">
+        <span id="pg-output" style="font-family: 'JetBrains Mono'; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); word-break: break-all; text-align: center;">Click generate to create a password</span>
+      </div>
+      
+      <div class="p-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
+          <span style="font-size:var(--fs-xs); font-weight: 600; color:var(--color-text-muted); text-transform: uppercase;">Security Strength</span>
+          <span id="pg-strength-text" style="font-size:var(--fs-sm); font-weight:var(--fw-bold);">—</span>
         </div>
+        <div style="height:10px; border-radius:var(--radius-full); background:var(--color-surface-hover); overflow:hidden; border: 1px solid var(--color-border);">
+          <div id="pg-strength-bar" style="height:100%; width:0%; border-radius:var(--radius-full); transition:all var(--transition-normal);"></div>
+        </div>
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: var(--space-4); line-height: 1.6;">
+          <strong>Tip:</strong> Longer passwords with mixed characters are significantly harder to crack using brute-force attacks.
+        </p>
       </div>
     </div>
   `;

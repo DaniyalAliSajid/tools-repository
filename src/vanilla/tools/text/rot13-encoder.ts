@@ -1,16 +1,23 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
+    <div class="tool-layout__input">
       <div class="input-group">
-        <label for="rot13-input">ROT13 Input/Output</label>
-        <textarea class="input-field" id="rot13-input" rows="8" placeholder="Type or paste text..."></textarea>
+        <label for="rot13-input">Source Text</label>
+        <textarea class="input-field" id="rot13-input" rows="18" placeholder="Type or paste text to obfuscate..." style="resize: vertical; font-size: 1rem;"></textarea>
       </div>
-
-      <div class="input-group">
-        <label>Result</label>
-        <div class="result-box" id="rot13-result" style="height: 150px; overflow: auto; background: white;"></div>
-        <button class="btn btn--secondary btn--sm result-box__copy" id="rot13-copy">Copy Result</button>
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Note:</strong> ROT13 is a simple substitution cipher that replaces a letter with the 13th letter after it in the alphabet.
+        </p>
       </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">ROT13 Result</h3>
+        <button class="btn btn--secondary btn--sm" id="rot13-copy">📋 Copy</button>
+      </div>
+      <div class="result-box" id="rot13-result" style="padding: var(--space-6); font-family: 'JetBrains Mono'; font-size: 1rem; line-height: 1.6; height: calc(100% - 48px); min-height: 500px; overflow-y: auto; border: none; outline: none; white-space: pre-wrap; background: var(--color-surface-hover);"></div>
     </div>
   `;
 

@@ -1,20 +1,40 @@
 export function render(container: HTMLElement): void {
     container.innerHTML = `
-    <div class="section-gap">
-      <button class="btn btn--primary btn--block" id="btn-generate" style="font-size:var(--fs-lg);padding:var(--space-4);">🆔 Generate UUID</button>
-      <div class="result-box" style="text-align:center;font-size:var(--fs-lg);font-family:'Courier New',monospace;letter-spacing:.05em;">
-        <span id="uuid-output" style="flex:1;user-select:all;">Click the button to generate a UUID</span>
-        <button class="btn btn--sm btn--primary result-box__copy" id="btn-copy">📋 Copy</button>
-      </div>
-      <div class="input-group">
-        <label>Bulk Generate</label>
-        <div style="display:flex;gap:var(--space-2);align-items:end;">
-          <input type="number" class="input-field" id="uuid-count" value="5" min="1" max="100" style="max-width:100px;" />
-          <button class="btn btn--secondary" id="btn-bulk">Generate Bulk</button>
+    <div class="tool-layout__input">
+      <div class="p-card">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Single Identifier</h4>
+        <div class="result-box" style="text-align:center; padding: var(--space-6); background: var(--color-surface-hover); border: 2px solid var(--color-primary-border); margin-bottom: var(--space-4);">
+          <div id="uuid-output" style="font-family: 'JetBrains Mono'; font-size: clamp(0.75rem, 4vw, 1.125rem); font-weight: 700; color: var(--color-primary); word-break: break-all;">Generating...</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2);">
+          <button class="btn btn--primary btn--block" id="btn-generate">⚡ New UUID</button>
+          <button class="btn btn--secondary btn--block" id="btn-copy">📋 Copy</button>
         </div>
       </div>
-      <textarea class="input-field" id="uuid-bulk" rows="8" readonly style="display:none;"></textarea>
-      <button class="btn btn--secondary btn--block" id="btn-copy-bulk" style="display:none;">📋 Copy All</button>
+
+      <div class="p-card" style="margin-top: var(--space-4);">
+        <h4 style="margin-bottom: var(--space-4); font-size: var(--fs-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Bulk Generation</h4>
+        <div style="display: flex; gap: var(--space-2); align-items: flex-end; margin-bottom: var(--space-4);">
+          <div class="input-group" style="flex: 1;">
+            <label for="uuid-count">Quantity</label>
+            <input type="number" class="input-field" id="uuid-count" value="10" min="1" max="100" style="padding: var(--space-3);" />
+          </div>
+          <button class="btn btn--secondary" id="btn-bulk" style="height: 48px; flex: 1.5;">✨ Multiple UUIDs</button>
+        </div>
+        <p style="font-size: var(--fs-xs); color: var(--color-text-muted); line-height: 1.6;">
+          <strong>Tip:</strong> UUID v4 is randomly generated using cryptographically strong pseudo-random numbers.
+        </p>
+      </div>
+    </div>
+    
+    <div class="tool-layout__output">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <h3 style="font-size: var(--fs-base);">Bulk Output</h3>
+        <button class="btn btn--secondary btn--sm" id="btn-copy-bulk" style="display:none;">📋 Copy All</button>
+      </div>
+      <div class="input-group" style="height: calc(100% - 48px); margin-bottom: 0;">
+        <textarea class="result-box" id="uuid-bulk" rows="18" readonly placeholder="Bulk results will appear here..." style="width: 100%; height: 100%; min-height: 500px; resize: none; border: none; outline: none; font-family: 'JetBrains Mono'; font-size: 0.875rem; background: var(--color-surface-hover); padding: var(--space-4); display: none;"></textarea>
+      </div>
     </div>
   `;
 
