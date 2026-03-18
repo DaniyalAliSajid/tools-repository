@@ -49,8 +49,9 @@ export default function HomeClient() {
                             placeholder="What tool do you need today?"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            aria-label="Search tools"
                         />
-                        <span className="search-bar__shortcut">ESC</span>
+                        <span className="search-bar__shortcut" aria-hidden="true">ESC</span>
                     </div>
                 </div>
 
@@ -82,7 +83,7 @@ export default function HomeClient() {
                     ) : (
                         <div className="no-results" style={{ gridColumn: '1 / -1' }}>
                             <div className="no-results__icon">🕵️‍♀️</div>
-                            <h3 className="no-results__text">No tools matched your search</h3>
+                            <h2 className="no-results__text">No tools matched your search</h2>
                             <button
                                 onClick={() => { setSearch(''); setActiveCategory('all'); }}
                                 style={{ marginTop: 'var(--space-6)', color: 'var(--color-primary)', fontWeight: 'var(--fw-bold)', cursor: 'pointer', background: 'none', border: 'none' }}
@@ -96,7 +97,7 @@ export default function HomeClient() {
 
             <section className="features container">
                 <div className="section-title">
-                    <h2>Everything you need. <span className="text-gradient">Nothing you don't.</span></h2>
+                    <h2>Everything you need. <span className="text-gradient">Nothing you don&apos;t.</span></h2>
                     <p>We built Tools Repository to be the fastest, most reliable tool companion for developers and creators.</p>
                 </div>
                 

@@ -21,8 +21,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <div id="app">
             <header className="header">
                 <div className="header__container">
-                    <Link href="/" onClick={closeMenu} className="header__logo">
-                        <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" />
+                    <Link href="/" onClick={closeMenu} className="header__logo" aria-label="Tools Repository Home">
+                        <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" width="160" height="40" style={{ height: '40px', width: 'auto' }} />
                     </Link>
 
                     <button
@@ -52,7 +52,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <div className={`drawer-overlay ${isMenuOpen ? 'open' : ''}`} onClick={closeMenu} />
             <aside className={`drawer ${isMenuOpen ? 'open' : ''}`}>
                 <div className="drawer__header">
-                    <img src="/logo.svg" alt="Tools Repository" style={{ height: '32px' }} />
+                    <img src="/logo.svg" alt="Tools Repository" width="128" height="32" style={{ height: '32px', width: 'auto' }} />
                     <button className="drawer__close" onClick={closeMenu} aria-label="Close menu">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
@@ -94,26 +94,26 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 <div className="container">
                     <div className="footer__inner">
                         <div className="footer__column">
-                            <Link href="/">
-                                <img src="/logo.svg" alt="Tools Repository" className="footer__logo-img" />
+                            <Link href="/" aria-label="Tools Repository Home">
+                                <img src="/logo.svg" alt="Tools Repository" className="footer__logo-img" width="128" height="32" style={{ height: '32px', width: 'auto' }} />
                             </Link>
                             <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: '1.6', marginTop: 'var(--space-4)' }}>
                                 High-performance browser tools for developers and creators. No tracking, 100% privacy-focused, and forever free.
                             </p>
                         </div>
                         <div className="footer__column">
-                            <h3>Product</h3>
+                            <h2 className="footer__heading">Product</h2>
                             <Link href="/" className="footer__link">Tools Registry</Link>
                             <Link href="/#faq" className="footer__link">Frequently Asked</Link>
                             <Link href="/advertise" className="footer__link">Advertise</Link>
                         </div>
                         <div className="footer__column">
-                            <h3>Company</h3>
+                            <h2 className="footer__heading">Company</h2>
                             <Link href="/about" className="footer__link">About Us</Link>
                             <Link href="/contact" className="footer__link">Contact Support</Link>
                         </div>
                         <div className="footer__column">
-                            <h3>Legal</h3>
+                            <h2 className="footer__heading">Legal</h2>
                             <Link href="/privacy" className="footer__link">Privacy Policy</Link>
                             <Link href="/terms" className="footer__link">Terms of Service</Link>
                         </div>
@@ -124,10 +124,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                             &copy; {new Date().getFullYear()} Tools Repository. All rights reserved. Built for creators.
                         </p>
                         <div className="footer__socials">
-                            <a href="#" className="footer__social-link" aria-label="Twitter">
+                            <a href="https://twitter.com" className="footer__social-link" aria-label="Visit our Twitter profile" target="_blank" rel="noopener noreferrer">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                             </a>
-                            <a href="#" className="footer__social-link" aria-label="GitHub">
+                            <a href="https://github.com/DaniyalAliSajid/tools-repository" className="footer__social-link" aria-label="Visit our GitHub repository" target="_blank" rel="noopener noreferrer">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                             </a>
                         </div>

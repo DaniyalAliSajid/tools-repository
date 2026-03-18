@@ -3,7 +3,7 @@ import { ToolEntry } from '../vanilla/types';
 
 export default function ToolCard({ tool }: { tool: ToolEntry }) {
     return (
-        <Link href={`/tool/${tool.slug}`} className="tool-card">
+        <Link href={`/tool/${tool.slug}`} className="tool-card" aria-label={`Use ${tool.name}: ${tool.description}`}>
             <div className="tool-card__icon">
                 {tool.icon}
             </div>

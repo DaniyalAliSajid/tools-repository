@@ -35,8 +35,6 @@ export default function ToolWrapper({ slug }: ToolWrapperProps) {
     }, [slug]);
 
     return (
-        <div className="tool-page__content animate-fade-in">
-            <div ref={containerRef} />
-        </div>
+        <div ref={containerRef} className="tool-layout" />
     );
 }
