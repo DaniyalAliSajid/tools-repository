@@ -162,7 +162,7 @@ export default function ContactPage() {
                         </div>
                         <button
                             type="button"
-                            className="btn btn--blue"
+                            className="btn btn--primary"
                             style={{ width: '100%', padding: '15px', fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}
                         >
                             Send Message

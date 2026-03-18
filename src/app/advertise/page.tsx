@@ -28,21 +28,21 @@ export default function AdvertisePage() {
             </section>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-8)', marginBottom: 'var(--space-16)' }}>
-                <div style={{ padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '32px', marginBottom: 'var(--space-4)' }}>🚀</div>
                     <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-3)' }}>High Traffic</h3>
                     <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: '1.6' }}>
                         Reach thousands of unique visitors daily who are actively looking for utility tools and developer resources.
                     </p>
                 </div>
-                <div style={{ padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '32px', marginBottom: 'var(--space-4)' }}>🎯</div>
                     <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-3)' }}>Targeted Audience</h3>
                     <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: '1.6' }}>
                         Our users include software engineers, data analysts, designers, and digital marketers—a prime tech-savvy demographic.
                     </p>
                 </div>
-                <div style={{ padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '32px', marginBottom: 'var(--space-4)' }}>💎</div>
                     <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-3)' }}>Premium Placement</h3>
                     <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: '1.6' }}>
@@ -79,8 +79,8 @@ export default function AdvertisePage() {
             </section>
 
             <section style={{ textAlign: 'center', padding: 'var(--space-12)', background: 'var(--grad-text)', borderRadius: 'var(--radius-2xl)', color: 'white', boxShadow: 'var(--shadow-glow)' }}>
-                <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-4)' }}>Ready to Get Started?</h2>
-                <p style={{ fontSize: 'var(--fs-lg)', marginBottom: 'var(--space-8)', opacity: 0.9 }}>
+                <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-4)', color: 'inherit' }}>Ready to Get Started?</h2>
+                <p style={{ fontSize: 'var(--fs-lg)', marginBottom: 'var(--space-8)', opacity: 0.9, color: 'inherit' }}>
                     Contact our sales team for a custom quote.
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', flexWrap: 'wrap' }}>

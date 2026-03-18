@@ -26,21 +26,21 @@ export default function AboutPage() {
             </section>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-12)' }}>
-                <div style={{ padding: 'var(--space-6)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '24px', marginBottom: 'var(--space-3)' }}>🛡️</div>
                     <h3 style={{ marginBottom: 'var(--space-2)', fontWeight: 'var(--fw-bold)', color: 'var(--color-text)' }}>Privacy First</h3>
                     <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
                         All our tools are 100% browser-based. Your data never leaves your computer. We don't track you, and we don't store your input.
                     </p>
                 </div>
-                <div style={{ padding: 'var(--space-6)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '24px', marginBottom: 'var(--space-3)' }}>⚡</div>
                     <h3 style={{ marginBottom: 'var(--space-2)', fontWeight: 'var(--fw-bold)', color: 'var(--color-text)' }}>High Performance</h3>
                     <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
                         Built with modern web technologies, our tools are lightning-fast and responsive, providing instant results as you type.
                     </p>
                 </div>
-                <div style={{ padding: 'var(--space-6)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+                <div style={{ background: 'var(--glass-bg, white)', backdropFilter: 'var(--glass-blur, blur(12px))', border: '1px solid var(--glass-border, var(--color-border))', borderRadius: 'var(--radius-xl)', padding: 'var(--space-8)', boxShadow: 'var(--shadow-md)' }}>
                     <div style={{ fontSize: '24px', marginBottom: 'var(--space-3)' }}>🆓</div>
                     <h3 style={{ marginBottom: 'var(--space-2)', fontWeight: 'var(--fw-bold)', color: 'var(--color-text)' }}>Always Free</h3>
                     <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
