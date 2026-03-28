@@ -9,6 +9,7 @@ import Script from 'next/script';
 import ClientLayout from '../components/ClientLayout';
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://toolsrepository.com'),
     title: {
         default: 'Tools Repository — 100+ Free Online Utility Tools',
         template: '%s | Tools Repository'
