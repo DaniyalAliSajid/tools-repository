@@ -58,6 +58,39 @@
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), transparent);
 }
 
+[data-theme="dark"] .btn--secondary {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .btn--secondary:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .search-bar {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .search-bar__input {
+    background: transparent;
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .category-nav__item {
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .category-nav__item.active {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
 [data-theme="dark"] .calc-btn {
     background: #334155;
     border-color: #475569;
