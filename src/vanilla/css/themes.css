@@ -91,6 +91,17 @@
     border-color: var(--color-primary);
 }
 
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .drawer {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .drawer {
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+}
+
 [data-theme="dark"] .calc-btn {
     background: #334155;
     border-color: #475569;
