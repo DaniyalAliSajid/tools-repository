@@ -26,7 +26,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                         <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" width="160" height="40" style={{ height: '40px', width: 'auto' }} />
                     </Link>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                    <div className="header__mobile-controls">
                         <ThemeToggle />
                         <button
                             className="header__nav-mobile-toggle"

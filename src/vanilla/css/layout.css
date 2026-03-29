@@ -63,6 +63,10 @@
     color: var(--color-text);
 }
 
+.header__mobile-controls {
+    display: none;
+}
+
 /* --- Main --- */
 .main {
     flex: 1;
@@ -433,6 +437,12 @@
     .header__logo-img { height: 32px; }
     .header__nav { display: none; }
     .header__nav-mobile-toggle { display: block; }
+    
+    .header__mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
     
     .hero { padding: var(--space-12) 0; }
     .hero__title { margin-bottom: var(--space-4); }
