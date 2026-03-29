@@ -57,7 +57,7 @@ export default function ContactPage() {
                         <div style={{
                             width: '48px',
                             height: '48px',
-                            background: 'var(--grad-text)',
+                            background: 'var(--grad-primary)',
                             borderRadius: '12px',
                             display: 'flex',
                             alignItems: 'center',
@@ -100,7 +100,7 @@ export default function ContactPage() {
                         <div style={{
                             width: '48px',
                             height: '48px',
-                            background: 'white',
+                            background: 'var(--color-surface-alt)',
                             borderRadius: '12px',
                             display: 'flex',
                             alignItems: 'center',

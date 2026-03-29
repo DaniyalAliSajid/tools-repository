@@ -54,21 +54,21 @@ export default function AdvertisePage() {
             <section style={{ background: 'var(--color-surface-alt)', padding: 'var(--space-12)', borderRadius: 'var(--radius-2xl)', border: '1px solid var(--color-border)', marginBottom: 'var(--space-16)' }}>
                 <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-8)', textAlign: 'center' }}>Ad Formats & Opportunities</h2>
                 <div style={{ display: 'grid', gap: 'var(--space-6)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                         <div style={{ width: '60px', height: '60px', background: 'rgba(79, 70, 229, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>🖼️</div>
                         <div>
                             <h4 style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-1)' }}>Display Banners</h4>
                             <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--color-text-secondary)' }}>Standard IAB sizes (Leaderboard, Rectangle) placed strategically across the site.</p>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                         <div style={{ width: '60px', height: '60px', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>⚡</div>
                         <div>
                             <h4 style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-1)' }}>Sponsored Tools</h4>
                             <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--color-text-secondary)' }}>Exclusive "Presented by" branding on specific high-traffic tool pages.</p>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'white', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-4)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                         <div style={{ width: '60px', height: '60px', background: 'rgba(245, 158, 11, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>✨</div>
                         <div>
                             <h4 style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-1)' }}>Newsletter Features</h4>
@@ -78,13 +78,13 @@ export default function AdvertisePage() {
                 </div>
             </section>
 
-            <section style={{ textAlign: 'center', padding: 'var(--space-12)', background: 'var(--grad-text)', borderRadius: 'var(--radius-2xl)', color: 'white', boxShadow: 'var(--shadow-glow)' }}>
+            <section style={{ textAlign: 'center', padding: 'var(--space-12)', background: 'var(--grad-primary)', borderRadius: 'var(--radius-2xl)', color: 'white', boxShadow: 'var(--shadow-glow)' }}>
                 <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-4)', color: 'inherit' }}>Ready to Get Started?</h2>
                 <p style={{ fontSize: 'var(--fs-lg)', marginBottom: 'var(--space-8)', opacity: 0.9, color: 'inherit' }}>
                     Contact our sales team for a custom quote.
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
-                    <Link href="/contact" style={{ padding: '14px 28px', background: 'white', color: 'var(--color-primary)', borderRadius: 'var(--radius-full)', fontWeight: 'var(--fw-bold)', textDecoration: 'none', boxShadow: 'var(--shadow-lg)' }}>
+                    <Link href="/contact" className="btn btn--secondary" style={{ padding: '14px 28px', borderRadius: 'var(--radius-full)', fontWeight: 'var(--fw-bold)', textDecoration: 'none', boxShadow: 'var(--shadow-lg)' }}>
                         Contact Sales
                     </Link>
                 </div>
