@@ -37,7 +37,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                         </button>
                     </div>
 
-                    <nav className="header__nav" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
+                    <nav className="header__nav">
                         <Link href="/" className="header__link">Home</Link>
                         <Link href="/blog" className="header__link">Blog</Link>
                         <Link href="/about" className="header__link">About</Link>
