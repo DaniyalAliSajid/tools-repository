@@ -33,7 +33,7 @@ export default function ContactPage() {
             </div>
 
             {/* ── Two-column layout ── */}
-            <div style={{
+            <div className="contact-split" style={{
                 maxWidth: '1080px',
                 margin: '0 auto',
                 padding: '0 var(--space-8) var(--space-16)',
