@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { ThemeToggle } from './ThemeToggle';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,20 +26,24 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                         <img src="/logo.svg" alt="Tools Repository" className="header__logo-img" width="160" height="40" style={{ height: '40px', width: 'auto' }} />
                     </Link>
 
-                    <button
-                        className="header__nav-mobile-toggle"
-                        onClick={() => setIsMenuOpen(true)}
-                        aria-label="Open Navigation"
-                    >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                        <ThemeToggle />
+                        <button
+                            className="header__nav-mobile-toggle"
+                            onClick={() => setIsMenuOpen(true)}
+                            aria-label="Open Navigation"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                        </button>
+                    </div>
 
-                    <nav className="header__nav">
+                    <nav className="header__nav" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
                         <Link href="/" className="header__link">Home</Link>
                         <Link href="/blog" className="header__link">Blog</Link>
                         <Link href="/about" className="header__link">About</Link>
                         <Link href="/contact" className="header__link">Contact</Link>
                         <Link href="/advertise" className="header__link">Advertise</Link>
+                        <ThemeToggle />
                         <Link
                             href="/#tools"
                             className="btn btn--primary btn--sm"

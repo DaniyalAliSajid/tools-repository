@@ -7,6 +7,7 @@ import '../vanilla/css/themes.css';
 import './globals.css';
 import Script from 'next/script';
 import ClientLayout from '../components/ClientLayout';
+import { ThemeProvider } from '../components/ThemeProvider';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://toolsrepository.com'),
@@ -79,9 +80,11 @@ export default function RootLayout({
                 </Script>
             </head>
             <body>
-                <ClientLayout>
-                    {children}
-                </ClientLayout>
+                <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+                    <ClientLayout>
+                        {children}
+                    </ClientLayout>
+                </ThemeProvider>
             </body>
         </html>
     );
