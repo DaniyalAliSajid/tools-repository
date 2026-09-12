@@ -10,6 +10,72 @@ export interface SEOPageConfig {
 }
 
 export const SEO_PAGES_CONFIG: SEOPageConfig[] = [
+  // --- Original 8 Seed Pages ---
+  {
+    keyword: 'word counter online',
+    slug: 'word-counter-online',
+    modifier: 'online',
+    cluster: 'text' as Cluster,
+    angle: 'transactional',
+    themeColor: '#3b82f6',
+  },
+  {
+    keyword: 'character count with spaces',
+    slug: 'character-count-with-spaces',
+    modifier: 'with spaces',
+    cluster: 'text' as Cluster,
+    angle: 'informational',
+    themeColor: '#3b82f6',
+  },
+  {
+    keyword: 'how to remove extra spaces',
+    slug: 'how-to-remove-extra-spaces',
+    modifier: 'how to',
+    cluster: 'text' as Cluster,
+    angle: 'informational',
+    themeColor: '#3b82f6',
+  },
+  {
+    keyword: 'calculate bmi online free',
+    slug: 'calculate-bmi-online-free',
+    modifier: 'free',
+    cluster: 'calculators' as Cluster,
+    angle: 'transactional',
+    themeColor: '#10b981',
+  },
+  {
+    keyword: 'loan emi calculator monthly',
+    slug: 'loan-emi-calculator-monthly',
+    modifier: 'monthly',
+    cluster: 'calculators' as Cluster,
+    angle: 'transactional',
+    themeColor: '#10b981',
+  },
+  {
+    keyword: 'json formatter validator',
+    slug: 'json-formatter-validator',
+    modifier: 'validator',
+    cluster: 'developer' as Cluster,
+    angle: 'transactional',
+    themeColor: '#8b5cf6',
+  },
+  {
+    keyword: 'css gradient generator online',
+    slug: 'css-gradient-generator-online',
+    modifier: 'online',
+    cluster: 'developer' as Cluster,
+    angle: 'transactional',
+    themeColor: '#8b5cf6',
+  },
+  {
+    keyword: 'strong password generator',
+    slug: 'strong-password-generator',
+    modifier: 'strong',
+    cluster: 'security' as Cluster,
+    angle: 'transactional',
+    themeColor: '#f43f5e',
+  },
+  // --- 82 Generated Pages ---
   {
     keyword: 'best text tools online',
     slug: 'best-word-counter-online',

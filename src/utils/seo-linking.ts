@@ -16,6 +16,16 @@ export interface InternalLinks {
 }
 
 export const CLUSTER_MAP: Record<string, ClusterEntry> = {
+  // --- Original 8 Seed Pages ---
+  'word-counter-online': { cluster: 'text' as Cluster, primary: 'word-counter', crossCluster: 'strong-password-generator' },
+  'character-count-with-spaces': { cluster: 'text' as Cluster, primary: 'character-counter', crossCluster: 'calculate-bmi-online-free' },
+  'how-to-remove-extra-spaces': { cluster: 'text' as Cluster, primary: 'remove-extra-spaces', crossCluster: 'calculate-bmi-online-free' },
+  'calculate-bmi-online-free': { cluster: 'calculators' as Cluster, primary: 'bmi-calculator', crossCluster: 'word-counter-online' },
+  'loan-emi-calculator-monthly': { cluster: 'calculators' as Cluster, primary: 'loan-emi-calculator', crossCluster: 'word-counter-online' },
+  'json-formatter-validator': { cluster: 'developer' as Cluster, primary: 'json-formatter', crossCluster: 'strong-password-generator' },
+  'css-gradient-generator-online': { cluster: 'developer' as Cluster, primary: 'gradient-generator', crossCluster: 'word-counter-online' },
+  'strong-password-generator': { cluster: 'security' as Cluster, primary: 'password-generator', crossCluster: 'word-counter-online' },
+  // --- 82 Generated Pages ---
   'best-word-counter-online': { cluster: 'text' as Cluster, primary: 'word-counter', crossCluster: 'best-basic-calculator-online' },
   'best-character-counter-online': { cluster: 'text' as Cluster, primary: 'character-counter', crossCluster: 'best-basic-calculator-online' },
   'best-case-converter-online': { cluster: 'text' as Cluster, primary: 'case-converter', crossCluster: 'best-basic-calculator-online' },
