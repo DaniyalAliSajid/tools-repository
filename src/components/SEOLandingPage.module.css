@@ -1,0 +1,301 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  padding: var(--space-20) 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+/* Very soft glowing orb in background instead of harsh gradient */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--theme-color) 0%, transparent 60%);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--fw-black);
+  line-height: 1.2;
+  margin-bottom: var(--space-6);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.h1 span {
+  /* Removed gradient text for better legibility, just use solid text color */
+  color: var(--color-text);
+}
+
+.heroDesc {
+  font-size: var(--fs-xl);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--theme-color);
+  color: white;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px -5px var(--theme-color);
+}
+
+.primaryCta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -5px var(--theme-color);
+  filter: brightness(1.1);
+}
+
+/* --- Content Section --- */
+.content {
+  padding: var(--space-16) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.prose {
+  font-size: var(--fs-lg);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-text);
+  background: var(--color-surface);
+  padding: var(--space-10);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.featureList {
+  list-style-type: disc;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.featureList li {
+  margin-bottom: var(--space-3);
+}
+
+.featureList strong {
+  color: var(--color-primary);
+}
+
+.useCaseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.useCaseCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.useCaseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--theme-color);
+}
+
+.useCaseCard h4 {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+  color: var(--theme-color);
+}
+
+.useCaseCard p {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --- Related Links Section --- */
+.relatedLinksSection {
+  padding: var(--space-16) 0;
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-8);
+  text-align: center;
+  color: var(--color-text);
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.pill {
+  display: inline-flex;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-base);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.pill:hover {
+  border-color: var(--theme-color);
+  color: var(--theme-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.parentPill {
+  border-color: var(--theme-color);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* --- FAQ Section --- */
+.faqWrapper {
+  padding: var(--space-16) 0;
+  background-color: var(--color-bg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-8);
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* --- Bottom CTA Section --- */
+.bottomCta {
+  padding: var(--space-20) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+}
+
+.bottomCta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--theme-color);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.bottomCtaContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.bottomCta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--fw-black);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.btnInverse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: var(--space-4) var(--space-10);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btnInverse:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}

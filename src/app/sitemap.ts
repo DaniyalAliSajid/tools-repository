@@ -73,5 +73,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error('Sitemap: Failed to fetch blog posts', err);
     }
 
-    return [...staticPages, ...toolPages, ...blogPosts];
+    // SEO Programmatic pages
+    const { SEO_PAGES_CONFIG } = await import('../utils/seo-pages.config');
+    const seoPages: MetadataRoute.Sitemap = SEO_PAGES_CONFIG.map((page) => ({
+        url: `${baseUrl}/seo/${page.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+    }));
+
+    return [...staticPages, ...toolPages, ...seoPages, ...blogPosts];
 }
