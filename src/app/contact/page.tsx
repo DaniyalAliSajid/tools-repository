@@ -137,7 +137,32 @@ export default function ContactPage() {
                     <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-8)', color: 'var(--color-text)' }}>
                         Send a Message
                     </h2>
-                    <form name="contact" method="POST" data-netlify="true" action="/contact" style={{ display: 'grid', gap: 'var(--space-5)' }}>
+                    <form
+                        name="contact"
+                        method="POST"
+                        data-netlify="true"
+                        style={{ display: 'grid', gap: 'var(--space-5)' }}
+                        onSubmit={async (e) => {
+                            e.preventDefault();
+                            const form = e.currentTarget;
+                            const formData = new FormData(form);
+                            try {
+                                const res = await fetch('/__forms.html', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                    body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+                                });
+                                if (res.ok) {
+                                    alert('Thank you! Your message has been sent.');
+                                    form.reset();
+                                } else {
+                                    alert('Something went wrong. Please try again.');
+                                }
+                            } catch {
+                                alert('Network error. Please try again.');
+                            }
+                        }}
+                    >
                         <input type="hidden" name="form-name" value="contact" />
                         {/* Name + Email row */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
