@@ -137,16 +137,18 @@ export default function ContactPage() {
                     <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--space-8)', color: 'var(--color-text)' }}>
                         Send a Message
                     </h2>
-                    <form style={{ display: 'grid', gap: 'var(--space-5)' }}>
+                    <form name="contact" method="POST" data-netlify="true" action="/contact" style={{ display: 'grid', gap: 'var(--space-5)' }}>
+                        <input type="hidden" name="form-name" value="contact" />
                         {/* Name + Email row */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
-                            <ContactField label="Full Name" type="text" placeholder="John Doe" />
-                            <ContactField label="Email Address" type="email" placeholder="john@example.com" />
+                            <ContactField label="Full Name" type="text" placeholder="John Doe" name="name" />
+                            <ContactField label="Email Address" type="email" placeholder="john@example.com" name="email" />
                         </div>
-                        <ContactField label="Subject" type="text" placeholder="I'd like to suggest a new tool..." />
+                        <ContactField label="Subject" type="text" placeholder="I'd like to suggest a new tool..." name="subject" />
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                             <label style={labelStyle}>Your Message</label>
                             <textarea
+                                name="message"
                                 rows={6}
                                 placeholder="How can we help you?"
                                 style={inputStyle as React.CSSProperties}
@@ -161,7 +163,7 @@ export default function ContactPage() {
                             />
                         </div>
                         <button
-                            type="button"
+                            type="submit"
                             className="btn btn--primary"
                             style={{ width: '100%', padding: '15px', fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}
                         >
@@ -204,11 +206,12 @@ const inputStyle: React.CSSProperties = {
     resize: 'vertical',
 };
 
-function ContactField({ label, type, placeholder }: { label: string; type: string; placeholder: string }) {
+function ContactField({ label, type, placeholder, name }: { label: string; type: string; placeholder: string; name: string }) {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
             <label style={labelStyle}>{label}</label>
             <input
+                name={name}
                 type={type}
                 placeholder={placeholder}
                 style={inputStyle}

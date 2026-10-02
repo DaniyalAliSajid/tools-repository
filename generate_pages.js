@@ -21,7 +21,19 @@ const categoryColors = {
   health: '#ec4899',
 };
 
-const selectedTools = tools.slice(0, 82);
+// SEO Overrides for exact match keywords based on GSC data
+const SEO_OVERRIDES = {
+  'button-generator': 'CSS Button Generator',
+  'flexbox-generator': 'CSS Flexbox Generator',
+  'html-table-generator': 'HTML Table Generator',
+  'steps-to-km': 'Steps to KM Converter',
+  'time-duration-calculator': 'Duration Calculator',
+  'cgpa-calculator': 'CGPA Calculator',
+  'zalgo-text-generator': 'Zalgo Text Generator',
+  'xml-to-csv': 'XML to CSV Converter'
+};
+
+const selectedTools = tools;
 
 let configTS = `export type Cluster = 'text' | 'calculators' | 'security' | 'developer' | 'converters' | 'productivity' | 'health';
 
@@ -57,7 +69,7 @@ export const CLUSTER_MAP: Record<string, ClusterEntry> = {\n`;
 
 selectedTools.forEach((tool, i) => {
   const seoSlug = `best-${tool.slug}-online`;
-  const keyword = `best ${tool.name.toLowerCase()} online`;
+  const keyword = SEO_OVERRIDES[tool.slug] || `best ${tool.name.toLowerCase()} online`;
   const color = categoryColors[tool.category] || '#3b82f6';
   
   const crossClusterTool = selectedTools.find(t => t.category !== tool.category);
@@ -142,4 +154,4 @@ export function getInternalLinks(currentSlug: string): InternalLinks {
 fs.writeFileSync('./src/utils/seo-pages.config.ts', configTS);
 fs.writeFileSync('./src/utils/seo-linking.ts', linkingTS);
 
-console.log('Successfully generated 82 new SEO pages and linked them!');
+console.log(`Successfully generated ${selectedTools.length} new SEO pages and linked them!`);

@@ -325,6 +325,16 @@ export const tools: ToolEntry[] = [
         module: () => import('./tools/calculators/loan-emi-calculator'),
     },
     {
+        id: 'student-loan-calculator',
+        name: 'Student Loan Calculator',
+        slug: 'student-loan-calculator',
+        category: 'calculators',
+        icon: '🎓',
+        description: 'Calculate monthly payments and total interest for student loans.',
+        keywords: ['student loan', 'education', 'college', 'interest', 'payment'],
+        module: () => import('./tools/calculators/student-loan-calculator'),
+    },
+    {
         id: 'scientific-calculator',
         name: 'Scientific Calculator',
         slug: 'scientific-calculator',
@@ -807,6 +817,16 @@ export const tools: ToolEntry[] = [
         description: 'Visually build and copy HTML table code.',
         keywords: ['table', 'html', 'generator'],
         module: () => import('./tools/developer/html-table-generator'),
+    },
+    {
+        id: 'xml-to-csv',
+        name: 'XML to CSV Converter',
+        slug: 'xml-to-csv',
+        category: 'converters',
+        icon: '🔄',
+        description: 'Convert XML data directly into flat CSV format.',
+        keywords: ['xml', 'csv', 'converter', 'data'],
+        module: () => import('./tools/converters/xml-to-csv'),
     },
     {
         id: 'image-to-base64',

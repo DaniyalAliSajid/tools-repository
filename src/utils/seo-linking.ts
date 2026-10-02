@@ -16,16 +16,6 @@ export interface InternalLinks {
 }
 
 export const CLUSTER_MAP: Record<string, ClusterEntry> = {
-  // --- Original 8 Seed Pages ---
-  'word-counter-online': { cluster: 'text' as Cluster, primary: 'word-counter', crossCluster: 'strong-password-generator' },
-  'character-count-with-spaces': { cluster: 'text' as Cluster, primary: 'character-counter', crossCluster: 'calculate-bmi-online-free' },
-  'how-to-remove-extra-spaces': { cluster: 'text' as Cluster, primary: 'remove-extra-spaces', crossCluster: 'calculate-bmi-online-free' },
-  'calculate-bmi-online-free': { cluster: 'calculators' as Cluster, primary: 'bmi-calculator', crossCluster: 'word-counter-online' },
-  'loan-emi-calculator-monthly': { cluster: 'calculators' as Cluster, primary: 'loan-emi-calculator', crossCluster: 'word-counter-online' },
-  'json-formatter-validator': { cluster: 'developer' as Cluster, primary: 'json-formatter', crossCluster: 'strong-password-generator' },
-  'css-gradient-generator-online': { cluster: 'developer' as Cluster, primary: 'gradient-generator', crossCluster: 'word-counter-online' },
-  'strong-password-generator': { cluster: 'security' as Cluster, primary: 'password-generator', crossCluster: 'word-counter-online' },
-  // --- 82 Generated Pages ---
   'best-word-counter-online': { cluster: 'text' as Cluster, primary: 'word-counter', crossCluster: 'best-basic-calculator-online' },
   'best-character-counter-online': { cluster: 'text' as Cluster, primary: 'character-counter', crossCluster: 'best-basic-calculator-online' },
   'best-case-converter-online': { cluster: 'text' as Cluster, primary: 'case-converter', crossCluster: 'best-basic-calculator-online' },
@@ -57,6 +47,7 @@ export const CLUSTER_MAP: Record<string, ClusterEntry> = {
   'best-bmi-calculator-online': { cluster: 'calculators' as Cluster, primary: 'bmi-calculator', crossCluster: 'best-word-counter-online' },
   'best-discount-calculator-online': { cluster: 'calculators' as Cluster, primary: 'discount-calculator', crossCluster: 'best-word-counter-online' },
   'best-loan-emi-calculator-online': { cluster: 'calculators' as Cluster, primary: 'loan-emi-calculator', crossCluster: 'best-word-counter-online' },
+  'best-student-loan-calculator-online': { cluster: 'calculators' as Cluster, primary: 'student-loan-calculator', crossCluster: 'best-word-counter-online' },
   'best-scientific-calculator-online': { cluster: 'calculators' as Cluster, primary: 'scientific-calculator', crossCluster: 'best-word-counter-online' },
   'best-time-duration-calculator-online': { cluster: 'calculators' as Cluster, primary: 'time-duration-calculator', crossCluster: 'best-word-counter-online' },
   'best-tip-calculator-online': { cluster: 'calculators' as Cluster, primary: 'tip-calculator', crossCluster: 'best-word-counter-online' },
@@ -105,9 +96,32 @@ export const CLUSTER_MAP: Record<string, ClusterEntry> = {
   'best-robots-txt-generator-online': { cluster: 'developer' as Cluster, primary: 'robots-txt-generator', crossCluster: 'best-word-counter-online' },
   'best-sitemap-generator-online': { cluster: 'developer' as Cluster, primary: 'sitemap-generator', crossCluster: 'best-word-counter-online' },
   'best-html-table-generator-online': { cluster: 'developer' as Cluster, primary: 'html-table-generator', crossCluster: 'best-word-counter-online' },
+  'best-xml-to-csv-online': { cluster: 'converters' as Cluster, primary: 'xml-to-csv', crossCluster: 'best-word-counter-online' },
   'best-image-to-base64-online': { cluster: 'developer' as Cluster, primary: 'image-to-base64', crossCluster: 'best-word-counter-online' },
   'best-base64-to-image-online': { cluster: 'developer' as Cluster, primary: 'base64-to-image', crossCluster: 'best-word-counter-online' },
   'best-image-resizer-online': { cluster: 'developer' as Cluster, primary: 'image-resizer', crossCluster: 'best-word-counter-online' },
+  'best-pomodoro-timer-online': { cluster: 'productivity' as Cluster, primary: 'pomodoro-timer', crossCluster: 'best-word-counter-online' },
+  'best-habit-tracker-online': { cluster: 'productivity' as Cluster, primary: 'habit-tracker', crossCluster: 'best-word-counter-online' },
+  'best-todo-list-online': { cluster: 'productivity' as Cluster, primary: 'todo-list', crossCluster: 'best-word-counter-online' },
+  'best-decision-wheel-online': { cluster: 'productivity' as Cluster, primary: 'decision-wheel', crossCluster: 'best-word-counter-online' },
+  'best-stopwatch-online': { cluster: 'productivity' as Cluster, primary: 'stopwatch', crossCluster: 'best-word-counter-online' },
+  'best-world-clock-online': { cluster: 'productivity' as Cluster, primary: 'world-clock', crossCluster: 'best-word-counter-online' },
+  'best-countdown-timer-online': { cluster: 'productivity' as Cluster, primary: 'countdown-timer', crossCluster: 'best-word-counter-online' },
+  'best-leap-year-checker-online': { cluster: 'productivity' as Cluster, primary: 'leap-year-checker', crossCluster: 'best-word-counter-online' },
+  'best-morse-audio-online': { cluster: 'productivity' as Cluster, primary: 'morse-audio', crossCluster: 'best-word-counter-online' },
+  'best-simple-scratchpad-online': { cluster: 'productivity' as Cluster, primary: 'simple-scratchpad', crossCluster: 'best-word-counter-online' },
+  'best-water-intake-online': { cluster: 'health' as Cluster, primary: 'water-intake', crossCluster: 'best-word-counter-online' },
+  'best-ideal-weight-online': { cluster: 'health' as Cluster, primary: 'ideal-weight', crossCluster: 'best-word-counter-online' },
+  'best-body-fat-online': { cluster: 'health' as Cluster, primary: 'body-fat', crossCluster: 'best-word-counter-online' },
+  'best-macros-calculator-online': { cluster: 'health' as Cluster, primary: 'macros-calculator', crossCluster: 'best-word-counter-online' },
+  'best-running-pace-online': { cluster: 'health' as Cluster, primary: 'running-pace', crossCluster: 'best-word-counter-online' },
+  'best-interval-timer-online': { cluster: 'health' as Cluster, primary: 'interval-timer', crossCluster: 'best-word-counter-online' },
+  'best-steps-to-km-online': { cluster: 'health' as Cluster, primary: 'steps-to-km', crossCluster: 'best-word-counter-online' },
+  'best-bsa-calculator-online': { cluster: 'health' as Cluster, primary: 'bsa-calculator', crossCluster: 'best-word-counter-online' },
+  'best-length-converter-online': { cluster: 'converters' as Cluster, primary: 'length-converter', crossCluster: 'best-word-counter-online' },
+  'best-weight-converter-online': { cluster: 'converters' as Cluster, primary: 'weight-converter', crossCluster: 'best-word-counter-online' },
+  'best-temperature-converter-online': { cluster: 'converters' as Cluster, primary: 'temperature-converter', crossCluster: 'best-word-counter-online' },
+  'best-digital-data-converter-online': { cluster: 'converters' as Cluster, primary: 'digital-data-converter', crossCluster: 'best-word-counter-online' },
 };
 
 const ANCHOR_VARIATIONS = [
